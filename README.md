@@ -1,0 +1,2 @@
+# Funcy_Portfolio_Android
+FuncyのポートフォリオサービスのAndroidリポジトリ 
