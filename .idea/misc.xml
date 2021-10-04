@@ -12,6 +12,12 @@
         <entry key="..\:/Users/maket/Desktop/Funcy_Portfolio_Android/app/src/main/res/layout/fragment_mypage.xml" value="0.1" />
         <entry key="..\:/Users/maket/Desktop/Funcy_Portfolio_Android/app/src/main/res/layout/fragment_second.xml" value="0.1" />
         <entry key="..\:/Users/maket/Desktop/Funcy_Portfolio_Android/app/src/main/res/menu/menu_main.xml" value="0.10648148148148148" />
+        <entry key="app/src/main/res/drawable/bt_edit.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/bt_share.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/img_account.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/img_creation_detail_thumbnail.xml" value="0.3140625" />
+        <entry key="app/src/main/res/layout/fragment_creation_detail.xml" value="0.335" />
       </map>
     </option>
   </component>
