@@ -7,25 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentSecondBinding
+import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+
 class CreationDetailFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentCreationDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        binding = FragmentCreationDetailBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -34,12 +28,8 @@ class CreationDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_CreationDetailFragment_to_MainFragment)
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

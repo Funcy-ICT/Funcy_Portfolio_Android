@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.main
+package com.example.funcy_portfolio_android.ui.creationRegister
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,33 +7,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
+import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
 import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
 
+class CreationRegisterFragment : Fragment() {
 
-class MainFragment : Fragment() {
-
-    private lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentCreationRegisterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentCreationRegisterBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_CreationDetailFragment)
+        binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(R.id.action_CreationRegisterFragment_to_MainFragment)
         }
 
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
-        }
     }
 
 }
