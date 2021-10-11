@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.ActivityMainBinding
+import com.example.funcy_portfolio_android.ui.main.CardAdapter
+import com.example.funcy_portfolio_android.ui.main.WorkData
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,14 +23,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val Worklist = listOf<work>(
-            work(R.drawable.garden_strand, "garden_strand", "ネックレス"),
-            work(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
-            work(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
-            work(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
-            work(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
-            work(R.drawable.varsity_sovks, "varsity_sovks","ソックス"),
-            work(R.drawable.whitey_belt, "whitey_belt","ベルト"),
+        val Worklist = listOf<WorkData>(
+            WorkData(R.drawable.garden_strand, "garden_strand", "ネックレス"),
+            WorkData(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
+            WorkData(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
+            WorkData(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
+            WorkData(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
+            WorkData(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
+            WorkData(R.drawable.whitey_belt, "whitey_belt","ベルト"),
 
             )
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)

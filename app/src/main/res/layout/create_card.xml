@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:background="@color/white"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:paddingStart="5dp"/>
 
         <TextView
             android:id="@+id/name_text"
@@ -33,7 +34,8 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:background="@color/white"
-            android:textAppearance="?attr/textAppearanceBody2" />
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:paddingStart="5dp"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
