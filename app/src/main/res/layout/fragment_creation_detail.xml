@@ -16,16 +16,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.creationDetail.CreationDetailFragment">
 
-        <Button
-            android:id="@+id/button_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/previous"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvVideo" />
-
         <ImageButton
             android:id="@+id/btBack"
             android:layout_width="wrap_content"

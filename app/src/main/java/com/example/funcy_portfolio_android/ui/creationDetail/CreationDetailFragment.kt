@@ -52,8 +52,7 @@ class CreationDetailFragment : Fragment() {
             navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
         }
         binding.btBack.setOnClickListener {
-            //findNavController().navigate(R.id.action_CreationDetailFragment_to_MainFragment)
-            //固定の画面でなく，ちゃんと一つ前の画面に戻る感じで
+            findNavController().popBackStack()
         }
         binding.btEdit.setOnClickListener {
             //editの処理
