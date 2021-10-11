@@ -11,4 +11,25 @@
     <string name="hello_main_fragment">Hello main fragment</string>
     <string name="hello_creation_detail_fragment">Hello creationDetail fragment</string>
     <string name="hello_creation_register_fragment">Hello creationRegister fragment</string>
+
+    <!--  CreationRegisterFragment  -->
+    <string name="creation_public_setting">公開設定</string>
+    <string name="creation_public">公開</string>
+    <string name="creation_private">非公開</string>
+    <string name="creation_title">タイトル</string>
+    <string name="creation_desc">説明文</string>
+    <string name="creation_github_link">GitHubリンク</string>
+    <string name="creation_youtube_link">YouTubeリンク</string>
+    <string name="creation_tag">タグの設定</string>
+    <string name="creation_add_tag">タグ追加</string>
+
+
+    <string name="toolbar_back">戻る</string>
+    <string name="toolbar_icon">アイコン</string>
+    <string name="toolbar_register">投稿</string>
+    <string name="toolbar_draft">下書き</string>
+
+
+
+
 </resources>
