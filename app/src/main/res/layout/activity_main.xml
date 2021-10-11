@@ -60,10 +60,5 @@
             android:layout_margin="16dp">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-
-
-
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
