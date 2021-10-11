@@ -42,9 +42,6 @@ class CreationDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_CreationDetailFragment_to_MainFragment)
-        }
         binding.tvVideoLink.setOnClickListener {
             navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
         }
