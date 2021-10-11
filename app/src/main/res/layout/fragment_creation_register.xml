@@ -15,14 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                >
+                android:layout_height="?attr/actionBarSize">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -75,165 +72,166 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.AppBarLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".ui.creationRegister.CreationRegisterFragment">
 
-            <TextView
-                android:id="@+id/tvPublicSetting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/creation_public_setting"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/swPublic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:checked="true"
-                android:text="@string/creation_public"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
-
-            <TextView
-                android:id="@+id/tvCreationTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/creation_title"
-                app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
-                app:layout_constraintTop_toBottomOf="@+id/swPublic" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/otfTitle"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCreationTitle">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/tvPublicSetting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/creation_public_setting"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swPublic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:checked="true"
+                    android:text="@string/creation_public"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
+
+                <TextView
+                    android:id="@+id/tvCreationTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/creation_title"
+                    app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
+                    app:layout_constraintTop_toBottomOf="@+id/swPublic" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfTitle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreationTitle">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvCreationDesc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/creation_desc"
-                app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
-                app:layout_constraintTop_toBottomOf="@+id/otfTitle" />
+                <TextView
+                    android:id="@+id/tvCreationDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/creation_desc"
+                    app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
+                    app:layout_constraintTop_toBottomOf="@+id/otfTitle" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/otfDescription"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCreationDesc">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfDescription"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreationDesc">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvGitHubLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/creation_github_link"
-                app:layout_constraintStart_toStartOf="@+id/tvCreationDesc"
-                app:layout_constraintTop_toBottomOf="@+id/otfDescription" />
+                <TextView
+                    android:id="@+id/tvGitHubLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/creation_github_link"
+                    app:layout_constraintStart_toStartOf="@+id/tvCreationDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/otfDescription" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/otfGitHubLink"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfGitHubLink"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvYouTubeLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/creation_youtube_link"
-                app:layout_constraintStart_toStartOf="@+id/tvGitHubLink"
-                app:layout_constraintTop_toBottomOf="@+id/otfGitHubLink" />
+                <TextView
+                    android:id="@+id/tvYouTubeLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/creation_youtube_link"
+                    app:layout_constraintStart_toStartOf="@+id/tvGitHubLink"
+                    app:layout_constraintTop_toBottomOf="@+id/otfGitHubLink" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/otfYouTubeLink"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfYouTubeLink"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/creation_tag"
-                app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
-                app:layout_constraintTop_toBottomOf="@+id/otfYouTubeLink" />
+                <TextView
+                    android:id="@+id/tvTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/creation_tag"
+                    app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
+                    app:layout_constraintTop_toBottomOf="@+id/otfYouTubeLink" />
 
-            <ImageButton
-                android:id="@+id/btAddTag"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/creation_add_tag"
-                android:background="@drawable/bt_tag_circle"
-                android:src="@drawable/bt_add_24dp"
-                app:layout_constraintStart_toStartOf="@+id/otfYouTubeLink"
-                app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+                <ImageButton
+                    android:id="@+id/btAddTag"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bt_tag_circle"
+                    android:contentDescription="@string/creation_add_tag"
+                    android:src="@drawable/bt_add_24dp"
+                    app:layout_constraintStart_toStartOf="@+id/otfYouTubeLink"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

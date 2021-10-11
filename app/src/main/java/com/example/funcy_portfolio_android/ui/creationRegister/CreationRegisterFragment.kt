@@ -29,7 +29,7 @@ class CreationRegisterFragment : Fragment() {
         }
 
         binding.swPublic.setOnCheckedChangeListener { buttonView, isChecked ->
-            when(isChecked){
+            when (isChecked) {
                 true -> buttonView.text = "公開"
                 false -> buttonView.text = "非公開"
             }
