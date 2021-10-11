@@ -31,8 +31,11 @@ class MainActivity : AppCompatActivity() {
             WorkData(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
             WorkData(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
             WorkData(R.drawable.whitey_belt, "whitey_belt","ベルト"),
-
+            WorkData(R.drawable.copper_wire_rack, "whitey_belt","ラック"),
+            WorkData(R.drawable.gilt_desk_trio, "whitey_belt","小物入れ"),
+            WorkData(R.drawable.shrug_bag, "whitey_belt","バッグ")
             )
+
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
 
         recyclerView.adapter = CardAdapter(Worklist)
