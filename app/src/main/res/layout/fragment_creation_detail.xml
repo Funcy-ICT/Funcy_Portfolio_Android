@@ -7,6 +7,10 @@
 
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,10 +20,11 @@
             android:id="@+id/button_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:text="@string/previous"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideo" />
 
         <ImageButton
             android:id="@+id/btBack"
@@ -48,7 +53,8 @@
             android:layout_height="19dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="田中太郎(仮)"
+            android:text="名前"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imgAccount"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
@@ -71,6 +77,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="タイトル"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgThumbnail" />
 
@@ -92,17 +99,18 @@
             android:layout_marginTop="16dp"
             android:text="GitHub"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+            app:layout_constraintTop_toBottomOf="@+id/flexTag" />
 
-        <TextView
-            android:id="@+id/tvTag"
-            android:layout_width="wrap_content"
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexTag"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="タグ（仮）"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvExplanation" />
+            android:layout_margin="12dp"
+            android:layout_marginTop="32dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvExplanation" />
 
         <TextView
             android:id="@+id/tvVideo"
@@ -124,7 +132,7 @@
             android:text="https://github.com/Funcy-ICT"
             android:textColor="#004BB1"
             app:layout_constraintStart_toEndOf="@+id/tvGithub"
-            app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+            app:layout_constraintTop_toBottomOf="@+id/flexTag" />
 
         <TextView
             android:id="@+id/tvVideoLink"
@@ -168,4 +176,5 @@
             app:srcCompat="@drawable/bt_share" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
