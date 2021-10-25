@@ -30,11 +30,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fab.setOnClickListener {
+        binding.fabDetail.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_CreationDetailFragment)
         }
 
-        binding.fab.setOnClickListener {
+        binding.fabRegister.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
         }
 
