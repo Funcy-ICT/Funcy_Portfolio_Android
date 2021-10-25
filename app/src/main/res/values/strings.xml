@@ -22,6 +22,7 @@
     <string name="creation_youtube_link">YouTubeリンク</string>
     <string name="creation_tag">タグの設定</string>
     <string name="creation_add_tag">タグ追加</string>
+    <string name="creation_necessary">*</string>
 
 
     <string name="toolbar_back">戻る</string>

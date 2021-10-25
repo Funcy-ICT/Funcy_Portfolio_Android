@@ -35,6 +35,9 @@ class CreationRegisterFragment : Fragment() {
             }
         }
 
+        binding.btAddImage.setOnClickListener {
+
+        }
     }
 
 }
