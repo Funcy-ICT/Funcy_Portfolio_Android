@@ -30,6 +30,14 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_CreationDetailFragment)
+        }
+
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
+        }
+
         val Worklist = listOf<WorkData>(
             WorkData(R.drawable.garden_strand, "garden_strand", "ネックレス"),
             WorkData(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
