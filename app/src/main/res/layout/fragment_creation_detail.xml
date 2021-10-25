@@ -152,7 +152,8 @@
             android:background="@null"
             app:layout_constraintEnd_toStartOf="@+id/btShare"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bt_edit" />
+            app:srcCompat="@drawable/bt_edit"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/btShare"
@@ -163,7 +164,8 @@
             android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bt_share" />
+            app:srcCompat="@drawable/bt_share"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
