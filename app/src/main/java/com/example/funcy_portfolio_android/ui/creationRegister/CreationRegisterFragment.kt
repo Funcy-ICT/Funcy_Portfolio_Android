@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
-import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
 
 class CreationRegisterFragment : Fragment() {
 
@@ -17,7 +16,7 @@ class CreationRegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCreationRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -25,10 +24,20 @@ class CreationRegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
+        binding.btBack.setOnClickListener {
             findNavController().navigate(R.id.action_CreationRegisterFragment_to_MainFragment)
         }
 
+        binding.swPublic.setOnCheckedChangeListener { buttonView, isChecked ->
+            when (isChecked) {
+                true -> buttonView.text = "公開"
+                false -> buttonView.text = "非公開"
+            }
+        }
+
+        binding.btAddImage.setOnClickListener {
+
+        }
     }
 
 }
