@@ -54,6 +54,10 @@
 
 
 
+    <!--  NewGroupFragment  -->
+    <string name ="new_group_status">あなたはグループに所属していません</string>
+    <string name ="new_group_register">新しくグループを登録する</string>
+
     <!--  GroupRegisterFragment  -->
     <string name ="regigroup_name">グループ名</string>
     <string name ="regigroup_intro">グループ紹介</string>
@@ -72,6 +76,9 @@
     <string name ="editgroup_name">グループ名</string>
     <string name ="editgroup_intro">グループ紹介文</string>
     <string name ="editgroup_skill">スキル</string>
+
+
+
 
 
     <!--  LoginFragment  -->
@@ -94,7 +101,7 @@
 
     <!--  SettingFragment  -->
     <string name ="set_password">現在のパスワード</string>
-    <string name ="set_newpassword">新しいパスワード</string>
+    <string name ="set_new_password">新しいパスワード</string>
     <string name ="set_confirm_password">確認用のパスワード</string>
     <string name ="set_button">パスワードを変更する</string>
 
