@@ -47,6 +47,12 @@
     <string name ="mypage_skill">スキル</string>
     <string name ="mypage_mail_address">メールアドレス</string>
 
+    <!--  MypageEditFragment  -->
+    <string name ="editpersonal_public_name">表示名</string>
+    <string name ="editpersonal_profile">プロフィール</string>
+    <string name ="editpersonal_skill">スキル</string>
+
+
     <!--  LoginFragment  -->
     <string name ="login_mail_address">メールアドレス</string>
     <string name ="login_password">パスワード</string>
