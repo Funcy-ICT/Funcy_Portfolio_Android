@@ -2,19 +2,14 @@ package com.example.funcy_portfolio_android.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.ui.setupWithNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.ActivityMainBinding
-import com.example.funcy_portfolio_android.ui.main.CardAdapter
-import com.example.funcy_portfolio_android.ui.main.WorkData
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,12 +19,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-//        setSupportActionBar(binding.toolbar)
-//
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
-//        val navController = navHostFragment.navController
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        val bottomNavigation: BottomNavigationView = binding.bottomNavigation
+        val navController =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        bottomNavigation.setupWithNavController(navController.navController)
 
     }
 

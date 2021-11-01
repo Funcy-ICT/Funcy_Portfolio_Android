@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--  TODO:titleをstring.xmlにいれてもろて！！  -->
+    <item
+        android:id="@+id/MainFragment"
+        android:icon="@drawable/bt_search_bottom"
+        android:title="検索" />
+    <item
+        android:id="@+id/MypageFragment"
+        android:icon="@drawable/bt_person_bottom"
+        android:title="マイページ" />
+    <item
+        android:id="@+id/GroupFragment"
+        android:icon="@drawable/bt_group_bottom"
+        android:title="グループ" />
+    <item
+        android:id="@+id/SettingFragment"
+        android:icon="@drawable/bt_setting_bottom"
+        android:title="設定" />
+</menu>
