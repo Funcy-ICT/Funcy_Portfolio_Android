@@ -53,6 +53,13 @@
     <string name ="editpersonal_skill">スキル</string>
 
 
+
+    <!--  GroupRegisterFragment  -->
+    <string name ="regigroup_name">グループ名</string>
+    <string name ="regigroup_intro">グループ紹介</string>
+    <string name ="regigroup_mail_address">代表者のメールアドレス</string>
+    <string name ="regigroup_button">登録</string>
+    
     <!--  GroupMypageFragment  -->
     <string name ="group_name">Group Name</string>
     <string name ="group_invite">招待</string>
