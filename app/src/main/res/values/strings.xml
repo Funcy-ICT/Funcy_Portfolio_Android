@@ -59,7 +59,7 @@
     <string name ="regigroup_intro">グループ紹介</string>
     <string name ="regigroup_mail_address">代表者のメールアドレス</string>
     <string name ="regigroup_button">登録</string>
-    
+
     <!--  GroupMypageFragment  -->
     <string name ="group_name">Group Name</string>
     <string name ="group_invite">招待</string>
@@ -72,7 +72,6 @@
     <string name ="editgroup_name">グループ名</string>
     <string name ="editgroup_intro">グループ紹介文</string>
     <string name ="editgroup_skill">スキル</string>
-
 
 
     <!--  LoginFragment  -->
@@ -92,6 +91,13 @@
     <string name ="registration_grade">学年</string>
     <string name ="registration_course">所属コース</string>
     <string name ="registration_button">上記の内容で登録</string>
+
+    <!--  SettingFragment  -->
+    <string name ="set_password">現在のパスワード</string>
+    <string name ="set_newpassword">新しいパスワード</string>
+    <string name ="set_confirm_password">確認用のパスワード</string>
+    <string name ="set_button">パスワードを変更する</string>
+
 
 
 
