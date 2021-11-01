@@ -31,6 +31,11 @@
     <string name="toolbar_draft">下書き</string>
 
 
-
-
+    <!--  CreationDetailFragment  -->
+    <string name="detail_user_name">名前</string>
+    <string name="detail_title">タイトル</string>
+    <string name="detail_desc">説明文</string>
+    <string name="detail_github">Github</string>
+    <string name="detail_youtube">動画</string>
+    
 </resources>
