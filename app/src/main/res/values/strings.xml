@@ -41,7 +41,7 @@
     <!--  MainFragment  -->
     <string name ="main_toolbar_title">Search</string>
 
-    <!--  MypageFragment  -->
+    <!--  PersonalMypageFragment  -->
     <string name ="mypage_username">田中太朗</string>
     <string name ="mypage_profile">プロフィール</string>
     <string name ="mypage_skill">スキル</string>
@@ -51,6 +51,21 @@
     <string name ="editpersonal_public_name">表示名</string>
     <string name ="editpersonal_profile">プロフィール</string>
     <string name ="editpersonal_skill">スキル</string>
+
+
+    <!--  GroupMypageFragment  -->
+    <string name ="group_name">Group Name</string>
+    <string name ="group_invite">招待</string>
+    <string name ="group_intro">グループ紹介</string>
+    <string name ="group_mail_address">代表者のメールアドレス</string>
+    <string name ="group_member">メンバー一覧</string>
+
+    <!--  GroupEditFragment  -->
+    <string name ="editgroup_button">保存</string>
+    <string name ="editgroup_name">グループ名</string>
+    <string name ="editgroup_intro">グループ紹介文</string>
+    <string name ="editgroup_skill">スキル</string>
+
 
 
     <!--  LoginFragment  -->
