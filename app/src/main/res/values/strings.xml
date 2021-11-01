@@ -37,5 +37,8 @@
     <string name="detail_desc">説明文</string>
     <string name="detail_github">Github</string>
     <string name="detail_youtube">動画</string>
-    
+
+    <!--  MainFragment  -->
+    <string name ="main_toolbar_title">Search</string>
+
 </resources>
