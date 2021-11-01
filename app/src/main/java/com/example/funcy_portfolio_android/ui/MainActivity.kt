@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.ActivityMainBinding
+import com.example.funcy_portfolio_android.ui.main.CardAdapter
+import com.example.funcy_portfolio_android.ui.main.WorkData
 
 class MainActivity : AppCompatActivity() {
 
