@@ -41,4 +41,13 @@
     <!--  MainFragment  -->
     <string name ="main_toolbar_title">Search</string>
 
+    <!--  MypageFragment  -->
+    <string name ="mypage_username">田中太朗</string>
+    <string name ="mypage_profile">プロフィール</string>
+    <string name ="mypage_skill">スキル</string>
+    <string name ="mypage_mail_address">メールアドレス</string>
+
+
+
+
 </resources>
