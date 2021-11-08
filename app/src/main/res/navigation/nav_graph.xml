@@ -3,7 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainFragment">
+    app:startDestination="@id/LoginFragment">
+
+<!--  TODO:上２つと下３つString.xmlに保存する  -->
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.funcy_portfolio_android.ui.login.LoginFragment"
+        android:label="Login Fragment"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_LoginFragment_to_SignupFragment"
+            app:destination="@id/SignupFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignupFragment"
+        android:name="com.example.funcy_portfolio_android.ui.signup.SignupFragment"
+        android:label="Signup Fragment"
+        tools:layout="@layout/fragment_signup">
+
+        <action
+            android:id="@+id/action_SignupFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/MainFragment"
@@ -40,5 +67,24 @@
             android:id="@+id/action_CreationRegisterFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/MypageFragment"
+        android:name="com.example.funcy_portfolio_android.ui.mypage.MypageFragment"
+        android:label="Mypage Fragment"
+        tools:layout="@layout/fragment_mypage" />
+
+    <fragment
+        android:id="@+id/GroupFragment"
+        android:name="com.example.funcy_portfolio_android.ui.group.GroupFragment"
+        android:label="Group Fragment"
+        tools:layout="@layout/fragment_group" />
+
+    <fragment
+        android:id="@+id/SettingFragment"
+        android:name="com.example.funcy_portfolio_android.ui.setting.SettingFragment"
+        android:label="Setting Fragment"
+        tools:layout="@layout/fragment_setting" />
+
 
 </navigation>
