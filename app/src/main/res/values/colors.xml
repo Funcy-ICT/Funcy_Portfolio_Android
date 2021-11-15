@@ -8,4 +8,12 @@
     <color name="red">#D80404</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--color palette pink ver-->
+    <color name="sub_color">#FDB3CA</color>
+    <color name="secondary_color">#A9DFE2</color>
+    <color name="text_color">#3B4043</color>
+    <color name="subtext_color">#707F89</color>
+    <color name="button_color">#E5E5E5</color>
+
 </resources>
