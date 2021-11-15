@@ -75,20 +75,19 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".ui.creationRegister.CreationRegisterFragment">
 
             <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/btAddImage"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context=".ui.creationRegister.CreationRegisterFragment">
+
+                <!--android:paddingTop="48dp"-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -99,11 +98,9 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@drawable/bt_tag_circle"
                         android:contentDescription="@string/creation_add_tag"
                         android:src="@drawable/bt_add_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/otfYouTubeLink"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
@@ -256,21 +253,56 @@
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <HorizontalScrollView
+                        android:id="@+id/horaizotalScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btAddTag">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageButton
+                                android:id="@+id/btAddImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/bt_image_24dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <!--    TODO:仮置き（リスト化，削除ボタンの追加）    -->
+                                <ImageView
+                                    android:id="@+id/ivThumbnail1"
+                                    android:layout_width="64dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginStart="16dp"
+                                    android:background="@null"
+                                    android:scaleType="fitCenter" />
+
+                                <ImageView
+                                    android:id="@+id/ivThumbnail2"
+                                    android:layout_width="64dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginStart="16dp"
+                                    android:background="@null"
+                                    android:scaleType="fitCenter" />
+
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </HorizontalScrollView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
-
-            <ImageButton
-                android:id="@+id/btAddImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:paddingTop="16dp"
-                android:src="@drawable/bt_image_24dp"
-                android:background="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
