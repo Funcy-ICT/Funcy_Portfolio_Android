@@ -22,6 +22,7 @@
     <string name="creation_youtube_link">YouTubeリンク</string>
     <string name="creation_tag">タグの設定</string>
     <string name="creation_add_tag">タグ追加</string>
+    <string name="creation_member">関わったメンバー</string>
     <string name="creation_necessary">*</string>
 
 
@@ -35,23 +36,23 @@
     <string name="detail_user_name">名前</string>
     <string name="detail_title">タイトル</string>
     <string name="detail_desc">説明文</string>
+    <string name="detail_member">参加メンバー</string>
     <string name="detail_github">Github</string>
     <string name="detail_youtube">動画</string>
 
     <!--  MainFragment  -->
     <string name ="main_toolbar_title">Search</string>
 
-    <!--  PersonalMypageFragment  -->
-    <string name ="mypage_username">田中太朗</string>
-    <string name ="mypage_profile">プロフィール</string>
-    <string name ="mypage_skill">スキル</string>
-    <string name ="mypage_mail_address">メールアドレス</string>
+    <!--  PersonalFragment  -->
+    <string name ="personal_username">名前</string>
+    <string name ="personal_profile">プロフィール</string>
+    <string name ="personal_skill">スキル</string>
+    <string name ="personal_mail_address">メールアドレス</string>
 
-    <!--  MypageEditFragment  -->
-    <string name ="editpersonal_public_name">表示名</string>
-    <string name ="editpersonal_profile">プロフィール</string>
-    <string name ="editpersonal_skill">スキル</string>
-
+    <!--  PersonalEditFragment  -->
+    <string name ="edit_personal_public_name">表示名</string>
+    <string name ="edit_personal_profile">プロフィール</string>
+    <string name ="edit_personal_skill">スキル</string>
 
 
     <!--  NewGroupFragment  -->
@@ -59,12 +60,13 @@
     <string name ="new_group_register">新しくグループを登録する</string>
 
     <!--  GroupRegisterFragment  -->
-    <string name ="regigroup_name">グループ名</string>
-    <string name ="regigroup_intro">グループ紹介</string>
-    <string name ="regigroup_mail_address">代表者のメールアドレス</string>
-    <string name ="regigroup_button">登録</string>
+    <string name ="register_group_name">グループ名</string>
+    <string name ="register_group_intro">グループ紹介</string>
+    <string name ="register_group_mail_address">代表者のメールアドレス</string>
+    <string name ="register_group_reference">メンバーはグループ登録後に追加できます</string>
+    <string name ="register_group_button">登録</string>
 
-    <!--  GroupMypageFragment  -->
+    <!--  GroupFragment  -->
     <string name ="group_name">Group Name</string>
     <string name ="group_invite">招待</string>
     <string name ="group_intro">グループ紹介</string>
@@ -72,13 +74,10 @@
     <string name ="group_member">メンバー一覧</string>
 
     <!--  GroupEditFragment  -->
-    <string name ="editgroup_button">保存</string>
-    <string name ="editgroup_name">グループ名</string>
-    <string name ="editgroup_intro">グループ紹介文</string>
-    <string name ="editgroup_skill">スキル</string>
-
-
-
+    <string name ="edit_group_button">保存</string>
+    <string name ="edit_group_name">グループ名</string>
+    <string name ="edit_group_intro">グループ紹介文</string>
+    <string name ="edit_group_skill">スキル</string>
 
 
     <!--  LoginFragment  -->
@@ -104,11 +103,6 @@
     <string name ="set_new_password">新しいパスワード</string>
     <string name ="set_confirm_password">確認用のパスワード</string>
     <string name ="set_button">パスワードを変更する</string>
-
-
-
-
-
 
 
 </resources>
