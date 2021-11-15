@@ -15,7 +15,7 @@
         <!-- TODO: Update blank fragment layout -->
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvMailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -36,7 +36,7 @@
             app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/tvMailLabel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btRegister1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -55,17 +55,17 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btRogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="ログインする"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/tvExplain" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvPasswordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -86,7 +86,7 @@
             app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
+            app:layout_constraintTop_toBottomOf="@+id/tvPasswordLabel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -97,7 +97,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvExplain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -116,7 +116,7 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/btRogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
