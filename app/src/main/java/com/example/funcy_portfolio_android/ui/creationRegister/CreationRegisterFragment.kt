@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
@@ -18,16 +20,11 @@ import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterB
 class CreationRegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentCreationRegisterBinding
+    private lateinit var viewModel: CreationRegisterViewModel
 
-    private val image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
-        val adapter = ArrayAdapter<Uri>(requireContext(), android.R.layout.simple_list_item_1, it)
-        binding.ivThumbnail1.setImageURI(it[0])
-        binding.ivThumbnail2.setImageURI(it[1])
-        binding.ivThumbnail3.setImageURI(it[2])
-
-        binding.ivThumbnail1.setBackgroundColor(Color.BLACK)
-        binding.ivThumbnail2.setBackgroundColor(Color.BLACK)
-        binding.ivThumbnail3.setBackgroundColor(Color.BLACK)
+    private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
+        //val adapter = ArrayAdapter<Uri>(requireContext(), android.R.layout.simple_list_item_1, it)
+        viewModel.saveImage(it)
     }
 
     override fun onCreateView(
@@ -35,8 +32,20 @@ class CreationRegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCreationRegisterBinding.inflate(inflater, container, false)
-        return binding.root
+        viewModel = ViewModelProvider(this).get(CreationRegisterViewModel::class.java)
 
+        //画像反映
+        viewModel.thumbnail1.observe(viewLifecycleOwner, Observer {
+            binding.ivThumbnail1.setBackgroundColor(Color.BLACK)
+            binding.ivThumbnail2.setBackgroundColor(Color.BLACK)
+            binding.ivThumbnail3.setBackgroundColor(Color.BLACK)
+
+            binding.ivThumbnail1.setImageURI(viewModel.thumbnail1.value)
+            binding.ivThumbnail2.setImageURI(viewModel.thumbnail2.value)
+            binding.ivThumbnail3.setImageURI(viewModel.thumbnail3.value)
+        })
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,5 +66,4 @@ class CreationRegisterFragment : Fragment() {
             image_launchar.launch(arrayOf("image/*"))
         }
     }
-
 }
