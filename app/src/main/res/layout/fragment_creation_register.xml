@@ -266,25 +266,29 @@
                         android:id="@+id/btAddImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="56dp"
+                        android:layout_marginTop="40dp"
                         android:background="@null"
                         android:src="@drawable/bt_image_24dp"
                         app:layout_constraintStart_toStartOf="@+id/btAddTag"
                         app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
 
                     <HorizontalScrollView
-                        android:id="@+id/horaizotalScrollView"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/horizontalScrollView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="64dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
                         android:paddingBottom="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/btAddImage"
                         app:layout_constraintTop_toBottomOf="@id/tvAddImage">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -293,7 +297,7 @@
                                 android:id="@+id/ivThumbnail1"
                                 android:layout_width="128dp"
                                 android:layout_height="96dp"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginHorizontal="8dp"
                                 android:background="@null"
                                 android:scaleType="fitCenter" />
 
@@ -301,7 +305,15 @@
                                 android:id="@+id/ivThumbnail2"
                                 android:layout_width="128dp"
                                 android:layout_height="96dp"
-                                android:layout_marginStart="16dp"
+                                android:layout_marginHorizontal="8dp"
+                                android:background="@null"
+                                android:scaleType="fitCenter" />
+
+                            <ImageView
+                                android:id="@+id/ivThumbnail3"
+                                android:layout_width="128dp"
+                                android:layout_height="96dp"
+                                android:layout_marginHorizontal="8dp"
                                 android:background="@null"
                                 android:scaleType="fitCenter" />
 

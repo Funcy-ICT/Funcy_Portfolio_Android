@@ -1,5 +1,6 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
+import android.graphics.Color
 import android.media.Image
 import android.net.Uri
 import android.os.Bundle
@@ -22,6 +23,11 @@ class CreationRegisterFragment : Fragment() {
         val adapter = ArrayAdapter<Uri>(requireContext(), android.R.layout.simple_list_item_1, it)
         binding.ivThumbnail1.setImageURI(it[0])
         binding.ivThumbnail2.setImageURI(it[1])
+        binding.ivThumbnail3.setImageURI(it[2])
+
+        binding.ivThumbnail1.setBackgroundColor(Color.BLACK)
+        binding.ivThumbnail2.setBackgroundColor(Color.BLACK)
+        binding.ivThumbnail3.setBackgroundColor(Color.BLACK)
     }
 
     override fun onCreateView(
