@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <Button
-            android:id="@+id/btRogin"
+            android:id="@+id/btLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -116,7 +116,7 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btRogin" />
+            app:layout_constraintTop_toBottomOf="@+id/btLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
