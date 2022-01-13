@@ -5,7 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/LoginFragment">
 
-<!--  TODO:上２つと下３つString.xmlに保存する  -->
+<!--  TODO:上２つと下４つString.xmlに保存する  -->
 
     <fragment
         android:id="@+id/LoginFragment"
@@ -78,13 +78,23 @@
         android:id="@+id/GroupFragment"
         android:name="com.example.funcy_portfolio_android.ui.group.GroupFragment"
         android:label="Group Fragment"
-        tools:layout="@layout/fragment_group" />
+        tools:layout="@layout/fragment_group" >
+
+        <action
+            android:id="@+id/action_GroupFragment_to_GroupRegisterFragment"
+            app:destination="@id/GroupRegisterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/GroupRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupRegisterFragment"
+        android:label="Group Register Fragment"
+        tools:layout="@layout/fragment_group_register" />
 
     <fragment
         android:id="@+id/SettingFragment"
         android:name="com.example.funcy_portfolio_android.ui.setting.SettingFragment"
         android:label="Setting Fragment"
         tools:layout="@layout/fragment_setting" />
-
 
 </navigation>
