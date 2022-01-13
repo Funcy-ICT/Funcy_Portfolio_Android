@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="グループ名"
+                android:text="@string/register_group_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="グループ紹介"
+                android:text="@string/register_group_intro"
                 app:layout_constraintStart_toStartOf="@+id/tvGroupName"
                 app:layout_constraintTop_toBottomOf="@+id/otfGroupName" />
 
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="代表者メールアドレス"
+                android:text="@string/register_group_mail_address"
                 app:layout_constraintStart_toStartOf="@+id/tvGroupDesc"
                 app:layout_constraintTop_toBottomOf="@+id/otfGroup" />
 
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="※メンバーはグループ登録後に追加できます"
+                android:text="@string/register_group_reference"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/otfGroupLeaderAddress" />
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="登録"
+                android:text="@string/register_group_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAddMemberDesc" />
