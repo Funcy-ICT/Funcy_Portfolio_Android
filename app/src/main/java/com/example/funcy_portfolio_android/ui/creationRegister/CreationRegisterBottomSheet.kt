@@ -36,7 +36,7 @@ class CreationRegisterBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btAdd.setOnClickListener {
+        binding.btAddTagName.setOnClickListener {
             val etTagNameTrim = binding.etTagName.text.toString().trim()
             if(etTagNameTrim != ""){
                 viewModel.setTag(etTagNameTrim)
