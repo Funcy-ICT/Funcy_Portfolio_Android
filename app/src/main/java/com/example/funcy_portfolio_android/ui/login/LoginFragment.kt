@@ -28,7 +28,7 @@ class LoginFragment : Fragment() {
         binding.btLogin.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_MainFragment)
         }
-        binding.btRegister1.setOnClickListener {
+        binding.btUserRegister.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_SignupFragment)
         }
     }
