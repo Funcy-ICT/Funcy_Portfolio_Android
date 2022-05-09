@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mypage.MypageFragment">
+        android:orientation="vertical"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp">
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/imageAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                app:srcCompat="@drawable/img_account" />
+
+            <TextView
+                android:id="@+id/personalUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="5"
+                android:text="@string/personal_username"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/buttonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/bt_edit" />
+
+            <ImageButton
+                android:id="@+id/buttonShare"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/bt_share" />
+        </LinearLayout>
+
+    </LinearLayout>
 </layout>
