@@ -7,52 +7,61 @@
 
     </data>
 
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginHorizontal="8dp"
         android:layout_marginVertical="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageAccount"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="64dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            app:layout_constraintEnd_toStartOf="@+id/personalUserName"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_account" />
 
-            <ImageView
-                android:id="@+id/imageAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                app:srcCompat="@drawable/img_account" />
+        <TextView
+            android:id="@+id/personalUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/personal_username"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageAccount"
+            app:layout_constraintEnd_toStartOf="@id/buttonEdit"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toEndOf="@id/imageAccount"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/personalUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="5"
-                android:text="@string/personal_username"
-                android:textSize="24sp" />
+        <ImageButton
+            android:id="@+id/buttonEdit"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="Edit Button"
+            app:layout_constraintEnd_toEndOf="@id/buttonShare"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/personalUserName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bt_edit" />
 
-            <ImageButton
-                android:id="@+id/buttonEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                app:srcCompat="@drawable/bt_edit" />
+        <ImageButton
+            android:id="@+id/buttonShare"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="Share Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/buttonEdit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bt_share" />
 
-            <ImageButton
-                android:id="@+id/buttonShare"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                app:srcCompat="@drawable/bt_share" />
-        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
 </layout>
