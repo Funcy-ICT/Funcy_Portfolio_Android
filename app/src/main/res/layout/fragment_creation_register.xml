@@ -264,61 +264,26 @@
 
                     <ImageButton
                         android:id="@+id/btAddImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="40dp"
                         android:background="@null"
+                        android:paddingBottom="40dp"
                         android:src="@drawable/bt_image_24dp"
                         app:layout_constraintStart_toStartOf="@+id/btAddTag"
                         app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
 
-                    <HorizontalScrollView
-                        android:id="@+id/horizontalScrollView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="64dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:paddingBottom="16dp"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rlThumbnail"
+                        android:layout_width="312dp"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btAddImage"
-                        app:layout_constraintTop_toBottomOf="@id/tvAddImage">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <!--    TODO:仮置き（リスト化，削除ボタンの追加）    -->
-                            <ImageView
-                                android:id="@+id/ivThumbnail1"
-                                android:layout_width="128dp"
-                                android:layout_height="96dp"
-                                android:layout_marginHorizontal="8dp"
-                                android:background="@null"
-                                android:scaleType="fitCenter" />
-
-                            <ImageView
-                                android:id="@+id/ivThumbnail2"
-                                android:layout_width="128dp"
-                                android:layout_height="96dp"
-                                android:layout_marginHorizontal="8dp"
-                                android:background="@null"
-                                android:scaleType="fitCenter" />
-
-                            <ImageView
-                                android:id="@+id/ivThumbnail3"
-                                android:layout_width="128dp"
-                                android:layout_height="96dp"
-                                android:layout_marginHorizontal="8dp"
-                                android:background="@null"
-                                android:scaleType="fitCenter" />
-
-                        </LinearLayout>
-                    </HorizontalScrollView>
+                        app:layout_constraintStart_toEndOf="@+id/btAddImage"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddImage" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

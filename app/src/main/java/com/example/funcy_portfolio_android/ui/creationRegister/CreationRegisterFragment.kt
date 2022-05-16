@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.media.Image
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
 
@@ -23,8 +27,12 @@ class CreationRegisterFragment : Fragment() {
     private lateinit var viewModel: CreationRegisterViewModel
 
     private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
-        //val adapter = ArrayAdapter<Uri>(requireContext(), android.R.layout.simple_list_item_1, it)
         viewModel.saveImage(it)
+        binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(
+            viewModel.thumbnail.value!!
+        ) }
+        //binding.rlThumbnail.setHasFixedSize(true)
     }
 
     override fun onCreateView(
@@ -35,14 +43,10 @@ class CreationRegisterFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CreationRegisterViewModel::class.java)
 
         //画像反映
-        viewModel.thumbnail1.observe(viewLifecycleOwner, Observer {
-            binding.ivThumbnail1.setBackgroundColor(Color.BLACK)
-            binding.ivThumbnail2.setBackgroundColor(Color.BLACK)
-            binding.ivThumbnail3.setBackgroundColor(Color.BLACK)
-
-            binding.ivThumbnail1.setImageURI(viewModel.thumbnail1.value)
-            binding.ivThumbnail2.setImageURI(viewModel.thumbnail2.value)
-            binding.ivThumbnail3.setImageURI(viewModel.thumbnail3.value)
+        viewModel.thumbnail.observe(viewLifecycleOwner, Observer {
+            //binding.rlThumbnail.setBackgroundColor(Color.BLACK)
+            //binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            //binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(it) }
         })
 
         return binding.root
