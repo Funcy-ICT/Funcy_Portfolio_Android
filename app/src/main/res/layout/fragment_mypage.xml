@@ -32,6 +32,7 @@
             android:layout_gravity="center_vertical"
             android:text="@string/personal_username"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageAccount"
             app:layout_constraintEnd_toStartOf="@id/buttonEdit"
             app:layout_constraintHorizontal_weight="3"
@@ -62,84 +63,64 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bt_share" />
 
+
         <TextView
             android:id="@+id/textProfile"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
             android:text="@string/personal_profile"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonProfile"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageAccount" />
+            app:layout_constraintTop_toBottomOf="@+id/imageAccount" />
+
+        <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandableProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="1000"
+                app:el_expanded="true"
+                app:el_parallax="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textProfile">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="Fixed height" />
+        </net.cachapa.expandablelayout.ExpandableLayout>
 
         <TextView
             android:id="@+id/textSkill"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
             android:text="@string/personal_skill"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonSkill"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profilePersonal" />
+            app:layout_constraintTop_toBottomOf="@+id/expandableProfile" />
 
-        <Button
-            android:id="@+id/buttonProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="@id/textProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textProfile"
-            app:layout_constraintTop_toTopOf="@id/textProfile" />
-
-        <Button
-            android:id="@+id/buttonSkill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="@id/textSkill"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textSkill"
-            app:layout_constraintTop_toTopOf="@id/textSkill" />
-
-        <TextView
-            android:id="@+id/profilePersonal"
+        <net.cachapa.expandablelayout.ExpandableLayout
+            android:id="@+id/expandableSkill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:textSize="18sp"
+            app:el_duration="1000"
+            app:el_expanded="true"
+            app:el_parallax="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textProfile"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/textSkill">
 
-        <TextView
-            android:id="@+id/skillPersonal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textSkill"
-            android:visibility="gone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Fixed height" />
+        </net.cachapa.expandablelayout.ExpandableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>
