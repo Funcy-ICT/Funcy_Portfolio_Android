@@ -50,5 +50,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.browser:browser:1.3.0"
     implementation 'com.google.android:flexbox:1.1.0'
-    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
 }
