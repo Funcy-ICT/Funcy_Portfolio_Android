@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="mypageViewModel"
+            type="com.example.funcy_portfolio_android.ui.mypage.MypageViewModel" />
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="8dp">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/imageAccount"
@@ -30,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/personal_username"
+            android:text="@{mypageViewModel.userName}"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageAccount"
@@ -64,13 +66,42 @@
             app:srcCompat="@drawable/bt_share" />
 
 
+        <View
+            android:id="@+id/dividerProfile"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/textProfile"
+            app:layout_constraintEnd_toEndOf="@+id/textProfile"
+            app:layout_constraintStart_toStartOf="@+id/textProfile" />
+
+        <View
+            android:id="@+id/dividerProfileSkill"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="@+id/textProfile"
+            app:layout_constraintStart_toStartOf="@+id/textProfile"
+            app:layout_constraintTop_toBottomOf="@+id/expandableProfile" />
+
+        <View
+            android:id="@+id/dividerSkill"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/textSkill"
+            app:layout_constraintStart_toStartOf="@+id/textSkill"
+            app:layout_constraintTop_toBottomOf="@+id/expandableSkill" />
+
         <TextView
             android:id="@+id/textProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:paddingVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:gravity="left|center_vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
             android:text="@string/personal_profile"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -79,29 +110,32 @@
             app:layout_constraintTop_toBottomOf="@+id/imageAccount" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expandableProfile"
+            android:id="@+id/expandableProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            app:el_duration="500"
+            app:el_expanded="false"
+            app:el_parallax="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textProfile">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:el_duration="1000"
-                app:el_expanded="false"
-                app:el_parallax="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textProfile">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Fixed height" />
+                android:padding="16dp"
+                android:text="@{mypageViewModel.profileText}" />
         </net.cachapa.expandablelayout.ExpandableLayout>
 
         <TextView
             android:id="@+id/textSkill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="left|center_vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
             android:text="@string/personal_skill"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -111,9 +145,10 @@
 
         <net.cachapa.expandablelayout.ExpandableLayout
             android:id="@+id/expandableSkill"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:el_duration="1000"
+            android:paddingHorizontal="8dp"
+            app:el_duration="500"
             app:el_expanded="false"
             app:el_parallax="0.5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -124,12 +159,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="Fixed height" />
+                android:text="ここにスキル一覧" />
+
+
         </net.cachapa.expandablelayout.ExpandableLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,6 +175,7 @@
             app:layout_constraintTop_toBottomOf="@+id/expandableSkill">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </androidx.core.widget.NestedScrollView>
