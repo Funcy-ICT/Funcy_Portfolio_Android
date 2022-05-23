@@ -87,7 +87,6 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:context=".ui.creationRegister.CreationRegisterFragment">
 
-                <!--android:paddingTop="48dp"-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -97,12 +96,28 @@
                         android:id="@+id/btAddTag"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
                         android:background="@drawable/bt_tag_circle"
                         android:contentDescription="@string/creation_add_tag"
                         android:src="@drawable/bt_add_24dp"
-                        app:layout_constraintStart_toStartOf="@+id/otfYouTubeLink"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/flexTag"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="8dp"
+                        app:flexWrap="wrap"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btAddTag"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+
+
 
                     <TextView
                         android:id="@+id/tvPublicSetting"
@@ -258,7 +273,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="画像の追加"
+                        android:text="@string/creation_add_img"
                         app:layout_constraintStart_toStartOf="@+id/tvTag"
                         app:layout_constraintTop_toBottomOf="@id/btAddTag" />
 

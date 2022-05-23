@@ -11,6 +11,7 @@
     <string name="hello_main_fragment">Hello main fragment</string>
     <string name="hello_creation_detail_fragment">Hello creationDetail fragment</string>
     <string name="hello_creation_register_fragment">Hello creationRegister fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--  CreationRegisterFragment  -->
     <string name="creation_public_setting">公開設定</string>
@@ -22,15 +23,89 @@
     <string name="creation_youtube_link">YouTubeリンク</string>
     <string name="creation_tag">タグの設定</string>
     <string name="creation_add_tag">タグ追加</string>
+    <string name="creation_member">関わったメンバー</string>
     <string name="creation_necessary">*</string>
+    <string name="creation_add_img">画像の追加</string>
 
 
     <string name="toolbar_back">戻る</string>
     <string name="toolbar_icon">アイコン</string>
     <string name="toolbar_register">投稿</string>
     <string name="toolbar_draft">下書き</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 
+    <!--  CreationDetailFragment  -->
+    <string name="detail_user_name">名前</string>
+    <string name="detail_title">タイトル</string>
+    <string name="detail_desc">説明文</string>
+    <string name="detail_member">参加メンバー</string>
+    <string name="detail_github">Github</string>
+    <string name="detail_youtube">動画</string>
+
+    <!--  MainFragment  -->
+    <string name ="main_toolbar_title">Search</string>
+
+    <!--  PersonalFragment  -->
+    <string name ="personal_username">名前</string>
+    <string name ="personal_profile">プロフィール</string>
+    <string name ="personal_skill">スキル</string>
+    <string name ="personal_mail_address">メールアドレス</string>
+
+    <!--  PersonalEditFragment  -->
+    <string name ="edit_personal_public_name">表示名</string>
+    <string name ="edit_personal_profile">プロフィール</string>
+    <string name ="edit_personal_skill">スキル</string>
+
+
+    <!--  NewGroupFragment  -->
+    <string name ="new_group_status">あなたはグループに所属していません</string>
+    <string name ="new_group_register">新しくグループを登録する</string>
+
+    <!--  GroupRegisterFragment  -->
+    <string name ="register_group_name">グループ名</string>
+    <string name ="register_group_intro">グループ紹介</string>
+    <string name ="register_group_mail_address">代表者のメールアドレス</string>
+    <string name ="register_group_reference">メンバーはグループ登録後に追加できます</string>
+    <string name ="register_group_button">登録</string>
+
+    <!--  GroupFragment  -->
+    <string name ="group_name">Group Name</string>
+    <string name ="group_invite">招待</string>
+    <string name ="group_intro">グループ紹介</string>
+    <string name ="group_mail_address">代表者のメールアドレス</string>
+    <string name ="group_member">メンバー一覧</string>
+
+    <!--  GroupEditFragment  -->
+    <string name ="edit_group_button">保存</string>
+    <string name ="edit_group_name">グループ名</string>
+    <string name ="edit_group_intro">グループ紹介文</string>
+    <string name ="edit_group_skill">スキル</string>
+
+
+    <!--  LoginFragment  -->
+    <string name ="login_mail_address">メールアドレス</string>
+    <string name ="login_password">パスワード</string>
+    <string name ="login_setting">メールアドレス、パスワードを忘れた方はこちら</string>
+    <string name ="login_button">ログイン</string>
+    <string name ="login_registration">新規会員登録</string>
+
+    <!--  NewRegistrationFragment  -->
+    <string name ="registration_public_name">表示名</string>
+    <string name ="registration_family_name">姓</string>
+    <string name ="registration_first_name">名</string>
+    <string name ="registration_mail_address">メールアドレス</string>
+    <string name ="registration_password">パスワード</string>
+    <string name ="registration_confirm_password">パスワード確認</string>
+    <string name ="registration_grade">学年</string>
+    <string name ="registration_course">所属コース</string>
+    <string name ="registration_button">上記の内容で登録</string>
+
+    <!--  SettingFragment  -->
+    <string name ="set_password">現在のパスワード</string>
+    <string name ="set_new_password">新しいパスワード</string>
+    <string name ="set_confirm_password">確認用のパスワード</string>
+    <string name ="set_button">パスワードを変更する</string>
 
 
 </resources>
