@@ -17,9 +17,9 @@ class MypageViewModel:ViewModel() {
     val skillList : LiveData<List<String>> = _skillList
 
     init {
-        val htmlText ="<html>情報システムコース（学部４年）<br><br>バナナが大好きな太郎君です．<br>どうぞフォローしてください^^ <br><br> <b>メールアドレス</b>  hoge@fun.ac.jp</html>"
+        val profileHtmlText ="<html>情報システムコース（学部４年）<br><br>バナナが大好きな太郎君です．<br>どうぞフォローしてください^^ <br><br> <b>メールアドレス</b>  hoge@fun.ac.jp</html>"
         _userName.value = "テストネーム"
-        _profileText.value = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        _profileText.value = HtmlCompat.fromHtml(profileHtmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
         val skills = listOf(
             "Swift",
             "Illustrator",

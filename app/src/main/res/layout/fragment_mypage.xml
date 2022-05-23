@@ -71,17 +71,17 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/textProfile"
-            app:layout_constraintEnd_toEndOf="@+id/textProfile"
-            app:layout_constraintStart_toStartOf="@+id/textProfile" />
+            app:layout_constraintBottom_toTopOf="@+id/titleProfile"
+            app:layout_constraintEnd_toEndOf="@+id/buttonOpenProfile"
+            app:layout_constraintStart_toStartOf="@+id/titleProfile" />
 
         <View
             android:id="@+id/dividerProfileSkill"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="@+id/textProfile"
-            app:layout_constraintStart_toStartOf="@+id/textProfile"
+            app:layout_constraintEnd_toEndOf="@+id/buttonOpenProfile"
+            app:layout_constraintStart_toStartOf="@+id/titleProfile"
             app:layout_constraintTop_toBottomOf="@+id/expandableProfile" />
 
         <View
@@ -89,25 +89,38 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/textSkill"
+            app:layout_constraintEnd_toEndOf="@id/buttonOpenSkill"
             app:layout_constraintStart_toStartOf="@+id/textSkill"
             app:layout_constraintTop_toBottomOf="@+id/expandableSkill" />
 
         <TextView
-            android:id="@+id/textProfile"
-            android:layout_width="match_parent"
+            android:id="@+id/titleProfile"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="32dp"
             android:gravity="left|center_vertical"
-            android:paddingHorizontal="8dp"
             android:paddingVertical="8dp"
+            android:paddingStart="8dp"
             android:text="@string/personal_profile"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonOpenProfile"
+            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageAccount" />
+
+
+        <ImageButton
+            android:id="@+id/buttonOpenProfile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/titleProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/titleProfile"
+            app:layout_constraintTop_toTopOf="@id/titleProfile"
+            app:srcCompat="@drawable/bt_arrow_down_24" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
             android:id="@+id/expandableProfile"
@@ -119,29 +132,66 @@
             app:el_parallax="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textProfile">
+            app:layout_constraintTop_toBottomOf="@+id/titleProfile">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@{mypageViewModel.profileText}" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@{mypageViewModel.profileText}"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonCloseProfile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/buttonCloseProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textProfile"
+                    app:srcCompat="@drawable/bt_arrow_up_24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </net.cachapa.expandablelayout.ExpandableLayout>
 
         <TextView
             android:id="@+id/textSkill"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:gravity="left|center_vertical"
             android:paddingHorizontal="8dp"
             android:paddingVertical="8dp"
             android:text="@string/personal_skill"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/buttonOpenSkill"
+            app:layout_constraintEnd_toStartOf="@+id/buttonOpenSkill"
+            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/expandableProfile" />
+
+        <ImageButton
+            android:id="@+id/buttonOpenSkill"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/textSkill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/textSkill"
+            app:layout_constraintTop_toTopOf="@id/textSkill"
+            app:srcCompat="@drawable/bt_arrow_down_24" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
             android:id="@+id/expandableSkill"
@@ -155,11 +205,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textSkill">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="ここにスキル一覧" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/listSkill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="ここにスキル一覧"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonCloseSkill"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/buttonCloseSkill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/listSkill"
+                    app:srcCompat="@drawable/bt_arrow_up_24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </net.cachapa.expandablelayout.ExpandableLayout>

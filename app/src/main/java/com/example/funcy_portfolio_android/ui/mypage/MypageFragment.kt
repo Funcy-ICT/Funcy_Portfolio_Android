@@ -34,13 +34,26 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textProfile.setOnClickListener{
+        binding.buttonOpenProfile.setOnClickListener{
             val expandableLayout = binding.expandableProfile
-            expandableLayout.toggle()
+            expandableLayout.expand()
+            it.visibility = View.GONE
         }
-        binding.textSkill.setOnClickListener{
+        binding.buttonCloseProfile.setOnClickListener {
+            val expandableLayout = binding.expandableProfile
+            expandableLayout.collapse()
+            binding.buttonOpenProfile.visibility = View.VISIBLE
+        }
+
+        binding.buttonOpenSkill.setOnClickListener{
             val expandableLayout = binding.expandableSkill
-            expandableLayout.toggle()
+            expandableLayout.expand()
+            it.visibility = View.GONE
+        }
+        binding.buttonCloseSkill.setOnClickListener {
+            val expandableLayout = binding.expandableSkill
+            expandableLayout.collapse()
+            binding.buttonOpenSkill.visibility = View.VISIBLE
         }
 
         val Worklist = listOf<WorkData>(
