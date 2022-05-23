@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
@@ -54,6 +55,9 @@ class MypageFragment : Fragment() {
             val expandableLayout = binding.expandableSkill
             expandableLayout.collapse()
             binding.buttonOpenSkill.visibility = View.VISIBLE
+        }
+
+        binding.fabDetail.setOnClickListener {
         }
 
         val Worklist = listOf<WorkData>(
