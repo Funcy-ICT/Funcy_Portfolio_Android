@@ -1,7 +1,6 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,9 +10,13 @@ class CreationRegisterViewModel : ViewModel() {
     val thumbnail: LiveData<MutableList<Uri>>
         get() = _thumbnail
 
+    init{
+        //サムネイルの初期値として[no_image]の画像を設定
+        _thumbnail.value = mutableListOf<Uri>(Uri.parse("android.resource://com.example.funcy_portfolio_android/drawable/img_no_image"))
+    }
+
     fun saveImage(thumbnails: List<Uri>) {
         _thumbnail.value?.clear()
         _thumbnail.value = thumbnails.toMutableList()
-        Log.i("change", _thumbnail.value.toString())
     }
 }
