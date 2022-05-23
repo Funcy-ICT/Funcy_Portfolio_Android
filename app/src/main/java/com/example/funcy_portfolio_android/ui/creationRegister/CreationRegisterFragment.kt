@@ -20,7 +20,6 @@ import com.example.funcy_portfolio_android.databinding.ItemTagBinding
 class CreationRegisterFragment : Fragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentCreationRegisterBinding
-    //private lateinit var viewModel: CreationRegisterViewModel
 
     //画像選択
     private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
@@ -32,7 +31,6 @@ class CreationRegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCreationRegisterBinding.inflate(inflater, container, false)
-        //viewModel = ViewModelProvider(this).get(CreationRegisterViewModel::class.java)
 
         val tags = viewModel.resetTag()
         Log.e("resetTag",tags.toString())
