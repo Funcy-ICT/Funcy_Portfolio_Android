@@ -28,11 +28,6 @@ class CreationRegisterFragment : Fragment() {
 
     private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
         viewModel.saveImage(it)
-        binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(
-            viewModel.thumbnail.value!!
-        ) }
-        //binding.rlThumbnail.setHasFixedSize(true)
     }
 
     override fun onCreateView(
@@ -42,11 +37,11 @@ class CreationRegisterFragment : Fragment() {
         binding = FragmentCreationRegisterBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(CreationRegisterViewModel::class.java)
 
-        //画像反映
+        //画像変更検知
         viewModel.thumbnail.observe(viewLifecycleOwner, Observer {
-            //binding.rlThumbnail.setBackgroundColor(Color.BLACK)
-            //binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-            //binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(it) }
+            Log.i("change", "viewModel変わったで")
+            binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(it) }
         })
 
         return binding.root

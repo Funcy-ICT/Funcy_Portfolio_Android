@@ -14,5 +14,6 @@ class CreationRegisterViewModel : ViewModel() {
     fun saveImage(thumbnails: List<Uri>) {
         _thumbnail.value?.clear()
         _thumbnail.value = thumbnails.toMutableList()
+        Log.i("change", _thumbnail.value.toString())
     }
 }
