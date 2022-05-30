@@ -78,7 +78,7 @@ class CreationRegisterFragment : Fragment() {
 
             if(tags.size != 0){
                 val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
-                itemTagBinding.tvTag.text = tags[tags.lastIndex]
+                itemTagBinding.chipTag.text = tags[tags.lastIndex]
 //                Log.e("tagtext",)
             }
         }
