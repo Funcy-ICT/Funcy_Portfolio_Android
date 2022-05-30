@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
@@ -18,6 +20,11 @@ import com.example.funcy_portfolio_android.databinding.ItemTagBinding
 class CreationRegisterFragment : Fragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentCreationRegisterBinding
+
+    //画像選択
+    private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
+        viewModel.saveImage(it)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +34,13 @@ class CreationRegisterFragment : Fragment() {
 
         val tags = viewModel.resetTag()
         Log.e("resetTag",tags.toString())
+
+        //画像変更
+        viewModel.thumbnail.observe(viewLifecycleOwner, Observer {
+            binding.rlThumbnail.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            binding.rlThumbnail.adapter = viewModel.thumbnail.value?.let { CreationRegisterCardAdapter(it) }
+        })
+
         return binding.root
     }
 
@@ -44,10 +58,6 @@ class CreationRegisterFragment : Fragment() {
             }
         }
 
-        binding.btAddImage.setOnClickListener{
-
-        }
-
         binding.btAddTag.setOnClickListener {
             val creationRegisterBottomSheet = CreationRegisterBottomSheet()
             activity?.let { it ->
@@ -61,7 +71,6 @@ class CreationRegisterFragment : Fragment() {
 
         val tags = mutableListOf<String>()
 
-
         val tagObserver = Observer<List<String>>{ newTagList ->
             tags.clear()
             tags.addAll(newTagList)
@@ -74,6 +83,9 @@ class CreationRegisterFragment : Fragment() {
             }
         }
         viewModel.tagList.observe(viewLifecycleOwner, tagObserver)
-    }
 
+        binding.btAddImage.setOnClickListener {
+            image_launchar.launch(arrayOf("image/*"))
+        }
+    }
 }

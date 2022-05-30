@@ -75,20 +75,18 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".ui.creationRegister.CreationRegisterFragment">
 
             <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/btAddImage"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context=".ui.creationRegister.CreationRegisterFragment">
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -270,21 +268,38 @@
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:id="@+id/tvAddImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/creation_add_img"
+                        app:layout_constraintStart_toStartOf="@+id/tvTag"
+                        app:layout_constraintTop_toBottomOf="@id/btAddTag" />
+
+                    <ImageButton
+                        android:id="@+id/btAddImage"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@null"
+                        android:paddingBottom="40dp"
+                        android:src="@drawable/bt_image_24dp"
+                        app:layout_constraintStart_toStartOf="@+id/btAddTag"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rlThumbnail"
+                        android:layout_width="312dp"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btAddImage"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddImage" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
-
-            <ImageButton
-                android:id="@+id/btAddImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:paddingTop="16dp"
-                android:src="@drawable/bt_image_24dp"
-                android:background="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
