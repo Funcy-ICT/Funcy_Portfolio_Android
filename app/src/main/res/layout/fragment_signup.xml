@@ -63,6 +63,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="4dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="@id/textPublicName"
             app:layout_constraintEnd_toStartOf="@+id/imageAccount"
             app:layout_constraintHorizontal_bias="0.5"
@@ -79,7 +80,7 @@
         <ImageView
             android:id="@+id/imageAccount"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="1"
@@ -107,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -144,7 +145,7 @@
             android:layout_marginVertical="4dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="32dp"
             android:paddingVertical="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -158,21 +159,12 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/buttonSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/registration_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputCourse" />
-
         <TextView
             android:id="@+id/textMailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="16dp"
             android:text="@string/registration_mail_address"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputFirstName" />
@@ -182,8 +174,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -201,6 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:text="@string/registration_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputMailAddress" />
@@ -210,8 +202,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -229,6 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:text="@string/registration_confirm_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputPassword" />
@@ -238,8 +230,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -256,7 +247,8 @@
             android:id="@+id/textGrade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="16dp"
             android:text="@string/registration_grade"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputConfirmPassword" />
@@ -266,8 +258,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -285,6 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:text="@string/registration_course"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputGrade" />
@@ -294,8 +286,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="32dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
@@ -307,6 +298,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_button"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputCourse" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
