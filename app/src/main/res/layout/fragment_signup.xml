@@ -9,7 +9,9 @@
             type="com.example.funcy_portfolio_android.ui.signup.SignupViewModel" />
     </data>
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +63,6 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="4dp"
-            android:text="Name"
             app:layout_constraintBottom_toBottomOf="@id/textPublicName"
             app:layout_constraintEnd_toStartOf="@+id/imageAccount"
             app:layout_constraintHorizontal_bias="0.5"
@@ -110,7 +111,6 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingVertical="8dp"
-            android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="4"
@@ -144,7 +144,6 @@
             android:layout_marginVertical="4dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
             android:layout_marginEnd="8dp"
             android:paddingVertical="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +166,147 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/inputCourse" />
 
+        <TextView
+            android:id="@+id/textMailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/registration_mail_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputFirstName" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputMailAddress"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textMailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/registration_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputMailAddress" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textConfirmPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/registration_confirm_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputPassword" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textConfirmPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/registration_grade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputConfirmPassword" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputGrade"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textGrade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/registration_course"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputGrade" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCourse"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textCourse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
