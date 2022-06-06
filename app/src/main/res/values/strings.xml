@@ -99,6 +99,7 @@
     <string name ="registration_grade">学年</string>
     <string name ="registration_course">所属コース</string>
     <string name ="registration_button">上記の内容で登録</string>
+    <string name ="registration_student_number">学籍番号</string>
 
     <!--  SettingFragment  -->
     <string name ="set_password">現在のパスワード</string>
