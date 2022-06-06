@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import com.google.android.material.chip.Chip
 
 class CreationRegisterFragment : Fragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
@@ -66,7 +66,6 @@ class CreationRegisterFragment : Fragment() {
                     CreationRegisterBottomSheet.TAG
                 )
             }
-
         }
 
         val tags = mutableListOf<String>()
@@ -79,7 +78,10 @@ class CreationRegisterFragment : Fragment() {
             if(tags.size != 0){
                 val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
                 itemTagBinding.chipTag.text = tags[tags.lastIndex]
-//                Log.e("tagtext",)
+                itemTagBinding.chipTag.setOnCloseIconClickListener {
+                    Log.i("flextag", "tap")
+                    itemTagBinding.chipTag.visibility = View.GONE
+                }
             }
         }
         viewModel.tagList.observe(viewLifecycleOwner, tagObserver)

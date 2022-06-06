@@ -96,12 +96,12 @@
                         android:id="@+id/btAddTag"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/bt_tag_circle"
                         android:contentDescription="@string/creation_add_tag"
                         android:src="@drawable/bt_add_24dp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/flexTag"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
                     <com.google.android.material.chip.ChipGroup
@@ -110,11 +110,12 @@
                         android:layout_height="wrap_content"
                         app:singleSelection="true"
                         android:layout_margin="12dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btAddTag"
+                        app:layout_constraintStart_toEndOf="@id/tvTag"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
                     <TextView
@@ -270,7 +271,7 @@
                         android:id="@+id/tvAddImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="72dp"
+                        android:layout_marginTop="60dp"
                         android:text="@string/creation_add_img"
                         app:layout_constraintStart_toStartOf="@+id/tvTag"
                         app:layout_constraintTop_toBottomOf="@id/flexTag" />

@@ -34,6 +34,11 @@ class CreationRegisterViewModel : ViewModel() {
         return tags.toList()
     }
 
+    fun removeTag(position: Int){
+        tags.removeAt(position)
+        _tagList.value = tags
+    }
+
     fun saveImage(thumbnails: List<Uri>) {
         _thumbnail.value?.clear()
         _thumbnail.value = thumbnails.toMutableList()
