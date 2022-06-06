@@ -25,6 +25,7 @@
     <string name="creation_add_tag">タグ追加</string>
     <string name="creation_member">関わったメンバー</string>
     <string name="creation_necessary">*</string>
+    <string name="creation_error_title_null">タイトルが入力されていません</string>
 
 
     <string name="toolbar_back">戻る</string>
@@ -105,6 +106,5 @@
     <string name ="set_new_password">新しいパスワード</string>
     <string name ="set_confirm_password">確認用のパスワード</string>
     <string name ="set_button">パスワードを変更する</string>
-
 
 </resources>

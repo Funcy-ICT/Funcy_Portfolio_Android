@@ -78,7 +78,16 @@ class CreationRegisterFragment : Fragment() {
 
         /* 作品投稿処理 */
         binding.btRegister.setOnClickListener{
-            viewModel.registerCreation(binding.etCreationTitle.text.toString(),binding.etCreationDescription.text.toString(),1)
+            if(binding.etCreationTitle.text.toString() != "") {
+                viewModel.registerCreation(
+                    binding.etCreationTitle.text.toString(),
+                    binding.etCreationDescription.text.toString(),
+                    1
+                )
+            }else{
+                binding.otfTitle.isErrorEnabled = true
+                binding.otfTitle.error = getString(R.string.creation_error_title_null)
+            }
         }
     }
 

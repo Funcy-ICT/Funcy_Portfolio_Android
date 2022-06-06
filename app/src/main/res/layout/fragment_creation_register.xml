@@ -23,19 +23,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <!--    TODO:仮置き（戻るボタンを追加する）    -->
                     <ImageButton
                         android:id="@+id/btBack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:contentDescription="@string/toolbar_back"
-                        android:src="@android:drawable/arrow_up_float"
+                        android:src="@drawable/bt_back"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--    TODO:仮置き（アイコンを追加する）    -->
+                    <!--    TODO:仮置き（ユーザーアイコンを追加する）    -->
                     <ImageButton
                         android:id="@+id/btIcon"
                         android:layout_width="wrap_content"
@@ -215,7 +214,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCreationTitle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -252,7 +253,8 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -269,7 +271,8 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
