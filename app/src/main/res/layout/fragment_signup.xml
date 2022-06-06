@@ -61,7 +61,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="4dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="@id/textPublicName"
@@ -110,7 +109,6 @@
             android:layout_marginVertical="4dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -144,7 +142,6 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:layout_marginEnd="32dp"
             android:paddingVertical="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +173,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
             app:layout_constraintTop_toBottomOf="@id/textMailAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -184,7 +180,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -204,7 +201,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
             app:layout_constraintTop_toBottomOf="@id/textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +208,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -232,7 +229,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
             app:layout_constraintTop_toBottomOf="@id/textConfirmPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +236,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -260,11 +257,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
-            app:layout_constraintTop_toBottomOf="@id/textGrade"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textGrade">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -288,7 +284,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:paddingVertical="8dp"
             app:layout_constraintTop_toBottomOf="@id/textCourse"
             app:layout_constraintEnd_toEndOf="parent"
