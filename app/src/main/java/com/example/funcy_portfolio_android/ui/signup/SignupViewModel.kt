@@ -22,9 +22,9 @@ class SignupViewModel: ViewModel() {
     fun setCourseId(){
         Log.i("こんにちはスピナーです",selectedItem.value.toString())
         val item = selectedItem.value!!
-        if(item in 1..4){
+        if(item in 0..3){
             _courseId.value = R.array.array_bachelor_courses
-        }else if(item > 4){
+        }else if(item > 3){
             _courseId.value = R.array.array_doctor_courses
         }
     }
