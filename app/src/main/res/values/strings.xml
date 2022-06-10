@@ -108,7 +108,6 @@
     <string name ="set_button">パスワードを変更する</string>
 
     <string-array name="array_grades">
-        <item>該当なし</item>
         <item>B1</item>
         <item>B2</item>
         <item>B3</item>
