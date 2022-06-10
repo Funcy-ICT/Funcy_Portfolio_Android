@@ -107,5 +107,30 @@
     <string name ="set_confirm_password">確認用のパスワード</string>
     <string name ="set_button">パスワードを変更する</string>
 
-
+    <string-array name="array_grades">
+        <item>該当なし</item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>B4</item>
+        <item>M1</item>
+        <item>M2</item>
+        <item>D1</item>
+        <item>D2</item>
+    </string-array>
+    <string-array name="array_bachelor_courses">
+        <item>コース割当なし</item>
+        <item>情報システムコース</item>
+        <item>高度ICTコース</item>
+        <item>情報デザインコース</item>
+        <item>複雑系コース</item>
+        <item>知能システムコース</item>
+    </string-array>
+    <string-array name="array_doctor_courses">
+        <item>情報アーキテクチャ領域</item>
+        <item>高度ICT領域</item>
+        <item>情メディアデザイン領域</item>
+        <item>複雑系情報科学領域</item>
+        <item>知能情報科学領域</item>
+    </string-array>
 </resources>
