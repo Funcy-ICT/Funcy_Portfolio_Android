@@ -2,20 +2,22 @@ package com.example.funcy_portfolio_android.ui.creationRegister
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.Observer
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+
 
 class CreationRegisterFragment : Fragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
@@ -70,17 +72,18 @@ class CreationRegisterFragment : Fragment() {
 
         val tags = mutableListOf<String>()
 
+
         val tagObserver = Observer<List<String>>{ newTagList ->
             tags.clear()
             tags.addAll(newTagList)
-            Log.e("tagName",tags.toString())
 
-            if(tags.size != 0){
+            if(tags.size != 0 && viewModel.getTagFlag()){
                 val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
                 itemTagBinding.chipTag.text = tags[tags.lastIndex]
                 itemTagBinding.chipTag.setOnCloseIconClickListener {
-                    Log.i("flextag", "tap")
                     itemTagBinding.chipTag.visibility = View.GONE
+                    viewModel.delTagFlag()
+                    viewModel.removeTag(itemTagBinding.chipTag.text as String)
                 }
             }
         }
