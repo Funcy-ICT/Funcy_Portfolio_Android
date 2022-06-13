@@ -116,6 +116,7 @@
         <item>M2</item>
         <item>D1</item>
         <item>D2</item>
+        <item>D3</item>
     </string-array>
     <string-array name="array_bachelor_courses">
         <item>コース割当なし</item>
