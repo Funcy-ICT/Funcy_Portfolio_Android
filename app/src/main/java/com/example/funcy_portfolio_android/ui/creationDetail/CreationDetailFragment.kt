@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
@@ -20,13 +21,7 @@ import com.example.funcy_portfolio_android.databinding.ItemTagBinding
 class CreationDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCreationDetailBinding
-
-    //仮置きのテキスト達
-    val userName = "田中太郎"
-    val title = "ブロック崩し"
-    val explanation = "授業で作ったよ\nよくあるブロック崩しだよ\nほげほげ\nほーげほげ"
-    val tags = arrayListOf<String>("processing", "ブロック崩し", "情報処理演習","ほげほげ","ぴよぴよ")
-
+    private  val viewModel by viewModels<CreationDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,13 +52,6 @@ class CreationDetailFragment : Fragment() {
         binding.btShare.setOnClickListener {
             //shareの処理
         }
-        tags.forEach{
-            val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
-            itemTagBinding.chipTag.text = it
-        }
-        binding.tvName.text = userName
-        binding.tvTitle.text = title
-        binding.tvExplanation.text = explanation
     }
 
     /** YouTube */
