@@ -30,6 +30,8 @@ class CreationDetailFragment : Fragment() {
 
         binding = FragmentCreationDetailBinding.inflate(inflater, container, false)
 
+        binding.viewModel = viewModel
+
         return binding.root
 
     }
@@ -38,10 +40,10 @@ class CreationDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvVideoLink.setOnClickListener {
-            navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
+            viewModel.navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
         }
         binding.tvGithubLink.setOnClickListener {
-            navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
+            viewModel.navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
         }
         binding.btBack.setOnClickListener {
             findNavController().popBackStack()
@@ -51,28 +53,6 @@ class CreationDetailFragment : Fragment() {
         }
         binding.btShare.setOnClickListener {
             //shareの処理
-        }
-    }
-
-    /** YouTube */
-    private fun navigateToYouTube(url: String, context: Context) {
-        val uri = Uri.parse(url)
-        try {
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            context.startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            navigateToCustomTab(url, context)
-        }
-    }
-
-    /** GitHub用 CustomTab */
-    private fun navigateToCustomTab(url: String, context: Context) {
-        val uri = Uri.parse(url)
-        CustomTabsIntent.Builder().also { builder ->
-            builder.setShowTitle(true)
-            builder.build().also {
-                it.launchUrl(context, uri)
-            }
         }
     }
 
