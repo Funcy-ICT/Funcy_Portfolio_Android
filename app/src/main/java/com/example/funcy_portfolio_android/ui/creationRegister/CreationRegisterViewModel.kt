@@ -1,7 +1,5 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
-import android.media.Image
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,6 +18,7 @@ class CreationRegisterViewModel() : ViewModel() {
     val tagList: LiveData<List<TagData>> = _tagList
 
     val tags = mutableListOf<TagData>()
+    var res: String? = ""
 
     fun getTag(): List<TagData> {
         return tags.toList()
@@ -37,10 +36,13 @@ class CreationRegisterViewModel() : ViewModel() {
 
     fun registerCreation(title: String, description: String, security: Int){
         viewModelScope.launch{
-            repository.registerCreation(CreationData( listOf(ImageData("")), 1, description, title, listOf() ,null))
+            res = repository.registerCreation(CreationData( listOf(ImageData("")), 1, description, title, listOf() ,null))
         }
     }
 
-
+    @JvmName("getRes1")
+    fun getRes(): String? {
+        return res
+    }
 
 }

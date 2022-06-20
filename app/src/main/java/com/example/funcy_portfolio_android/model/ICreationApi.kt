@@ -8,8 +8,8 @@ import retrofit2.http.POST
 
 interface ICreationApi {
     /* 作品の投稿（個人） */
-    @Headers("token:aaa")
-    @POST("article")
+    @Headers("token:Token1")
+    @POST("work")
     fun registerCreationData(@Body creation:CreationData): Call<CreationData>
 
 }
