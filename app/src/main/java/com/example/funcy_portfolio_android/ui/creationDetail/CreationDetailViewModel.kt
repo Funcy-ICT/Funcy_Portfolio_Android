@@ -4,12 +4,21 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.funcy_portfolio_android.ui.creationDetail.network.Creation
+import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDetailNetwork
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 class CreationDetailViewModel: ViewModel() {
+    private val _creation = MutableLiveData<Creation>()
+    val creation: LiveData<Creation> = _creation
+
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
@@ -36,8 +45,21 @@ class CreationDetailViewModel: ViewModel() {
         _tags.value = listOf("processing", "ブロック崩し", "情報処理演習","ほげほげ","ぴよぴよ")
         _youtubeUrl.value = "https://www.youtube.com/watch?v=IoIl_ZE_YPM"
         _githubUrl.value = "https://github.com/Funcy-ICT"
+        getCreationFromNetwork("Token1", "01G5YDNC8ZQQNJZ149SWS67VD1")
     }
 
+
+    private fun getCreationFromNetwork(token: String, creationId: String) = viewModelScope.launch {
+        try {
+            _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(token, creationId)
+        }catch (networkError: IOException){
+            Log.e("CreationDetail", "ネットワークエラー")
+        }
+    }
+
+    fun setCreationDetail(){
+
+    }
 
     //Web遷移系の処理//////////////////////////////////
     /** YouTube */

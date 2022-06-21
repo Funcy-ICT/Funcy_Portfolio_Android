@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
@@ -54,6 +55,9 @@ class CreationDetailFragment : Fragment() {
         binding.btShare.setOnClickListener {
             //shareの処理
         }
+        binding.viewModel.creation.observe(viewLifecycleOwner, Observer {
+            binding.viewModel.setCreationDetail()
+        })
     }
 
 }
