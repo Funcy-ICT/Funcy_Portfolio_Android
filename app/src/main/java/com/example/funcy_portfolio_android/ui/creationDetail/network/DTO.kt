@@ -1,7 +1,6 @@
 package com.example.funcy_portfolio_android.ui.creationDetail.network
 
 import com.squareup.moshi.JsonClass
-import retrofit2.Call
 
 @JsonClass(generateAdapter = true)
 data class Creation(
