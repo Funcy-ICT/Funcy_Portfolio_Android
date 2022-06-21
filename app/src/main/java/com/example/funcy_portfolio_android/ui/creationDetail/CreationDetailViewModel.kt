@@ -15,9 +15,14 @@ import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDet
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+enum class CreationApiStatus{LOADING, ERROR, DONE}
+
 class CreationDetailViewModel: ViewModel() {
     private val _creation = MutableLiveData<Creation>()
     val creation: LiveData<Creation> = _creation
+
+    private val _creationDetailStatus = MutableLiveData<CreationApiStatus>()
+    val creationDetailStatus: LiveData<CreationApiStatus> = _creationDetailStatus
 
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
@@ -50,10 +55,13 @@ class CreationDetailViewModel: ViewModel() {
 
 
     private fun getCreationFromNetwork(token: String, creationId: String) = viewModelScope.launch {
+        _creationDetailStatus.value = CreationApiStatus.LOADING
         try {
             _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(token, creationId)
+            _creationDetailStatus.value = CreationApiStatus.DONE
         }catch (networkError: IOException){
             Log.e("CreationDetail", "ネットワークエラー")
+            _creationDetailStatus.value = CreationApiStatus.ERROR
         }
     }
 

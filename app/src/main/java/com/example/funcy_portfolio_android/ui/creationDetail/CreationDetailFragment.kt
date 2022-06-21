@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -55,8 +56,18 @@ class CreationDetailFragment : Fragment() {
         binding.btShare.setOnClickListener {
             //shareの処理
         }
-        binding.viewModel.creation.observe(viewLifecycleOwner, Observer {
-            binding.viewModel.setCreationDetail()
+        viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->
+            when(status!!){
+                CreationApiStatus.LOADING ->{
+                    //ローディングアニメーション？？
+                }
+                CreationApiStatus.DONE ->{
+                    viewModel.setCreationDetail()
+                }
+                CreationApiStatus.ERROR ->{
+                    Toast.makeText(context, "作品が取得できませんでした", Toast.LENGTH_LONG).show()
+                }
+            }
         })
     }
 
