@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.ui.creationDetail.network.Creation
 import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDetailNetwork
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -39,7 +41,7 @@ class CreationDetailViewModel: ViewModel() {
     private val _youtubeUrl = MutableLiveData<String>()
     val youtubeUrl: LiveData<String> = _youtubeUrl
 
-    private val _githubUrl = MutableLiveData<String>("")
+    private val _githubUrl = MutableLiveData<String>()
     val githubUrl: LiveData<String> = _githubUrl
 
     init{
@@ -65,9 +67,12 @@ class CreationDetailViewModel: ViewModel() {
         }
     }
 
-    fun setEachTag(){
+    fun setEachTag(chipGroup: ChipGroup, context: Context){
+        chipGroup.removeAllViews()
         _tags.value?.forEach { tag ->
-
+            val chip = Chip(context)
+            chip.text = tag
+            chipGroup.addView(chip)
         }
     }
 

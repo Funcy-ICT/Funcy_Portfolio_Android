@@ -58,14 +58,8 @@ class CreationDetailFragment : Fragment() {
             //shareの処理
         }
 
-        viewModel.tags.observe(viewLifecycleOwner, Observer { tags ->
-            val chipGroup = binding.flexTag
-            chipGroup.removeAllViews()
-            tags.forEach { tagText ->
-                val chip = Chip(context)
-                chip.text = tagText
-                chipGroup.addView(chip)
-            }
+        viewModel.tags.observe(viewLifecycleOwner, Observer {
+            viewModel.setEachTag(binding.flexTag, requireContext())
         })
 
         viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->
