@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import com.google.android.material.chip.Chip
 
 
 class CreationDetailFragment : Fragment() {
@@ -56,6 +57,17 @@ class CreationDetailFragment : Fragment() {
         binding.btShare.setOnClickListener {
             //shareの処理
         }
+
+        viewModel.tags.observe(viewLifecycleOwner, Observer { tags ->
+            val chipGroup = binding.flexTag
+            chipGroup.removeAllViews()
+            tags.forEach { tagText ->
+                val chip = Chip(context)
+                chip.text = tagText
+                chipGroup.addView(chip)
+            }
+        })
+
         viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status!!){
                 CreationApiStatus.LOADING ->{

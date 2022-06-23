@@ -65,8 +65,13 @@ class CreationDetailViewModel: ViewModel() {
         }
     }
 
-    fun setCreationDetail(){
+    fun setEachTag(){
+        _tags.value?.forEach { tag ->
 
+        }
+    }
+
+    fun setCreationDetail(){
     }
 
     //Web遷移系の処理//////////////////////////////////
