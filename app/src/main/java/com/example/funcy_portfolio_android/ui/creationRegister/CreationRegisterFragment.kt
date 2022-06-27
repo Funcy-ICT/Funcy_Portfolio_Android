@@ -86,19 +86,13 @@ class CreationRegisterFragment : Fragment() {
                         viewModel.registerCreation(
                             binding.etCreationTitle.text.toString(),
                             binding.etCreationDescription.text.toString(),
-                            1
+                            1,
+                            binding.etGitHubLink.text.toString(),
+                            binding.etYoutubeLink.text.toString()
                         )
-                        val res = viewModel.getRes()
-                        Log.e("resviewmodel",res.toString())
-                        if(res != "") {
-                            findNavController().navigate(R.id.action_CreationRegisterFragment_to_MainFragment)
 
-                            val toast = Toast.makeText(context, "投稿できました", Toast.LENGTH_LONG)
-                            toast.show()
-                        }else{
-                            val toast = Toast.makeText(context, "投稿できませんでした\n もう1度お試しください", Toast.LENGTH_LONG)
-                            toast.show()
-                        }
+                        findNavController().navigate(R.id.action_CreationRegisterFragment_to_MainFragment)
+
                     })
                     .setNegativeButton("キャンセル", null)
                     .show()

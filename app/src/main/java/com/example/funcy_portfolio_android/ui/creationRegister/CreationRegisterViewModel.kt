@@ -1,5 +1,6 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,15 +35,18 @@ class CreationRegisterViewModel() : ViewModel() {
         return tags.toList()
     }
 
-    fun registerCreation(title: String, description: String, security: Int){
+    fun registerCreation(
+        title: String,
+        description: String,
+        security: Int,
+        work_url: String,
+        youtube_url: String
+    ): String? {
         viewModelScope.launch{
-            res = repository.registerCreation(CreationData( listOf(ImageData("")), 1, description, title, listOf() ,null))
+            res = repository.registerCreation(CreationData( title,description, listOf(ImageData("")), work_url, youtube_url, tags,null,security))
+            Log.e("res",res!!)
         }
-    }
 
-    @JvmName("getRes1")
-    fun getRes(): String? {
         return res
     }
-
 }

@@ -252,6 +252,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etGitHubLink"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textUri"/>
@@ -270,6 +271,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etYoutubeLink"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textUri"/>
