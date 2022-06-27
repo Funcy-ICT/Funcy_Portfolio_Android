@@ -72,7 +72,11 @@
         android:id="@+id/MypageFragment"
         android:name="com.example.funcy_portfolio_android.ui.mypage.MypageFragment"
         android:label="Mypage Fragment"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_mypage" >
+        <action
+            android:id="@+id/action_MypageFragment_to_CreationRegisterFragment"
+            app:destination="@id/CreationRegisterFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/GroupFragment"

@@ -1,5 +1,6 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,23 +12,39 @@ import com.example.funcy_portfolio_android.model.Repository
 import com.example.funcy_portfolio_android.model.TagData
 import kotlinx.coroutines.launch
 
-class CreationRegisterViewModel() : ViewModel() {
+class CreationRegisterViewModel : ViewModel() {
 
     private val repository = Repository()
-
-    private val _tagList: MutableLiveData<List<TagData>> = MutableLiveData(listOf())
-    val tagList: LiveData<List<TagData>> = _tagList
-
-    val tags = mutableListOf<TagData>()
+    
     var res: String? = ""
+  
+    private val _tagList: MutableLiveData<List<String>> = MutableLiveData(listOf())
+    val tagList: LiveData<List<String>> = _tagList
+    val tags = mutableListOf<String>()
 
-    fun getTag(): List<TagData> {
+    private var _thumbnail = MutableLiveData<MutableList<Uri>>()
+    val thumbnail: LiveData<MutableList<Uri>>
+        get() = _thumbnail
+    private var tagFlag:Int
+
+    init{
+        //サムネイルの初期値として[no_image]の画像を設定
+        _thumbnail.value = mutableListOf<Uri>(Uri.parse("android.resource://com.example.funcy_portfolio_android/drawable/img_no_image"))
+        tagFlag = -1
+    }
+
+    fun getTag(): List<String> {
         return tags.toList()
     }
 
-    fun setTag(tag: String) {
-        tags.add(TagData(tag))
-        _tagList.value = tags
+    fun setTag(tag: String): Boolean{
+        return if(!tags.contains(tag)){
+            tags.add(tag)
+            _tagList.value = tags
+            true
+        }else{
+            false
+        }
     }
 
     fun resetTag(): List<TagData>{
@@ -35,6 +52,20 @@ class CreationRegisterViewModel() : ViewModel() {
         return tags.toList()
     }
 
+    fun removeTag(tag: String){
+        tags -= tag
+        _tagList.value = tags
+    }
+
+    fun saveImage(thumbnails: List<Uri>) {
+        _thumbnail.value?.clear()
+        _thumbnail.value = thumbnails.toMutableList()
+    }
+
+    fun addTagFlag(){tagFlag = 1}
+    fun delTagFlag(){tagFlag = -1}
+    fun getTagFlag():Boolean{return (tagFlag>0)}
+    
     fun registerCreation(
         title: String,
         description: String,

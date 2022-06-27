@@ -12,6 +12,7 @@ import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterB
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import android.widget.Toast
 
 class CreationRegisterBottomSheet : BottomSheetDialogFragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
@@ -37,9 +38,12 @@ class CreationRegisterBottomSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btAddTagName.setOnClickListener {
+            viewModel.addTagFlag()
             val etTagNameTrim = binding.etTagName.text.toString().trim()
             if(etTagNameTrim != ""){
-                viewModel.setTag(etTagNameTrim)
+                if(!viewModel.setTag(etTagNameTrim)){
+                    Toast.makeText(context, "このタグはすでにあります", Toast.LENGTH_SHORT).show()
+                }
             }
             dismiss()
         }

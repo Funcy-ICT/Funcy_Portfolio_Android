@@ -59,7 +59,7 @@ class CreationDetailFragment : Fragment() {
         }
         tags.forEach{
             val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
-            itemTagBinding.tvTag.text = it
+            itemTagBinding.chipTag.text = it
         }
         binding.tvName.text = userName
         binding.tvTitle.text = title
