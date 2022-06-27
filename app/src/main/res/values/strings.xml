@@ -25,6 +25,7 @@
     <string name="creation_add_tag">タグ追加</string>
     <string name="creation_member">関わったメンバー</string>
     <string name="creation_necessary">*</string>
+    <string name="creation_error_title_null">タイトルが入力されていません</string>
     <string name="creation_add_img">画像の追加</string>
 
 

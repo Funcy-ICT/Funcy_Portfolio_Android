@@ -1,5 +1,7 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +19,6 @@ import com.example.funcy_portfolio_android.databinding.FragmentCreationRegisterB
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-
 
 class CreationRegisterFragment : Fragment() {
     private val viewModel: CreationRegisterViewModel by activityViewModels()
@@ -62,7 +63,7 @@ class CreationRegisterFragment : Fragment() {
 
         binding.btAddTag.setOnClickListener {
             val creationRegisterBottomSheet = CreationRegisterBottomSheet()
-            activity?.let { it ->
+            activity?.let {
                 creationRegisterBottomSheet.show(
                     it.supportFragmentManager,
                     CreationRegisterBottomSheet.TAG
@@ -71,8 +72,7 @@ class CreationRegisterFragment : Fragment() {
         }
 
         val tags = mutableListOf<String>()
-
-
+        
         val tagObserver = Observer<List<String>>{ newTagList ->
             tags.clear()
             tags.addAll(newTagList)
@@ -89,6 +89,32 @@ class CreationRegisterFragment : Fragment() {
         }
         viewModel.tagList.observe(viewLifecycleOwner, tagObserver)
 
+        /* 作品投稿処理 */
+        binding.btRegister.setOnClickListener{
+            if(binding.etCreationTitle.text.toString() != "") {
+                AlertDialog.Builder(activity)
+                    .setTitle("作品を投稿しますか？")
+                    .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+                        viewModel.registerCreation(
+                            binding.etCreationTitle.text.toString(),
+                            binding.etCreationDescription.text.toString(),
+                            1,
+                            binding.etGitHubLink.text.toString(),
+                            binding.etYoutubeLink.text.toString()
+                        )
+
+                        findNavController().navigate(R.id.action_CreationRegisterFragment_to_MainFragment)
+
+                    })
+                    .setNegativeButton("キャンセル", null)
+                    .show()
+
+            }else{
+                binding.otfTitle.isErrorEnabled = true
+                binding.otfTitle.error = getString(R.string.creation_error_title_null)
+            }
+        }
+    
         binding.btAddImage.setOnClickListener {
             image_launchar.launch(arrayOf("image/*"))
         }
