@@ -1,29 +1,26 @@
 package com.example.funcy_portfolio_android.ui.creationDetail.network
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Call
+import com.google.gson.GsonBuilder
+import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface CreationDetailService {
-    @GET("/work/{workID}")
+    //@Headers("token: Token1")
+    @GET("/{workID}")
     suspend fun getCreationDetail(
-        @Header("token") token:String,
-        @Path("workID") creationID:String
+        @Path("workID") creationID: String
     ): Creation
 }
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
+private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl("http://10.124.59.236:8080")
+    .baseUrl("http://10.0.2.2:3000")
+    .addConverterFactory(gson)
     .build()
 
 object CreationDetailNetwork{

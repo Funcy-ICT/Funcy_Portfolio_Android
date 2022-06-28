@@ -34,6 +34,7 @@ class CreationDetailFragment : Fragment() {
         binding = FragmentCreationDetailBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         return binding.root
 
@@ -60,6 +61,10 @@ class CreationDetailFragment : Fragment() {
 
         viewModel.tags.observe(viewLifecycleOwner, Observer {
             viewModel.setEachTag(binding.flexTag, requireContext())
+        })
+
+        viewModel.images.observe(viewLifecycleOwner, Observer {
+
         })
 
         viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->

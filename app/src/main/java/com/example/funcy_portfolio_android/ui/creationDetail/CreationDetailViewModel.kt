@@ -12,31 +12,39 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.ui.creationDetail.network.Creation
 import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDetailNetwork
+import com.example.funcy_portfolio_android.ui.creationDetail.network.Image
+import com.example.funcy_portfolio_android.ui.creationDetail.network.Tag
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.awaitResponse
 import java.io.IOException
 
 enum class CreationApiStatus{LOADING, ERROR, DONE}
 
 class CreationDetailViewModel: ViewModel() {
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> = _userName
+
+    //ここから作品詳細
     private val _creation = MutableLiveData<Creation>()
     val creation: LiveData<Creation> = _creation
 
     private val _creationDetailStatus = MutableLiveData<CreationApiStatus>()
     val creationDetailStatus: LiveData<CreationApiStatus> = _creationDetailStatus
 
-    private val _userName = MutableLiveData<String>()
-    val userName: LiveData<String> = _userName
-
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
+
+    private val _images = MutableLiveData<List<Image>>()
+    val images: LiveData<List<Image>> = _images
 
     private val _explanation = MutableLiveData<String>()
     val explanation: LiveData<String> = _explanation
 
-    private val _tags = MutableLiveData<List<String>>()
-    val tags: LiveData<List<String>> = _tags
+    private val _tags = MutableLiveData<List<Tag>>()
+    val tags: LiveData<List<Tag>> = _tags
 
     private val _youtubeUrl = MutableLiveData<String>()
     val youtubeUrl: LiveData<String> = _youtubeUrl
@@ -49,21 +57,23 @@ class CreationDetailViewModel: ViewModel() {
         _userName.value = "田中太郎"
         _title.value = "ブロック崩し"
         _explanation.value = "授業で作ったよ\nよくあるブロック崩しだよ\nほげほげ\nほーげほげ"
-        _tags.value = listOf("processing", "ブロック崩し", "情報処理演習","ほげほげ","ぴよぴよ")
         _youtubeUrl.value = "https://www.youtube.com/watch?v=IoIl_ZE_YPM"
         _githubUrl.value = "https://github.com/Funcy-ICT"
-        getCreationFromNetwork("Token1", "01G5YDNC8ZQQNJZ149SWS67VD1")
+        getCreationFromNetwork("01G6HW6ME5QK4XJH3FFHWKPBJ4")
     }
 
 
-    private fun getCreationFromNetwork(token: String, creationId: String) = viewModelScope.launch {
-        _creationDetailStatus.value = CreationApiStatus.LOADING
-        try {
-            _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(token, creationId)
-            _creationDetailStatus.value = CreationApiStatus.DONE
-        }catch (networkError: IOException){
-            Log.e("CreationDetail", "ネットワークエラー")
-            _creationDetailStatus.value = CreationApiStatus.ERROR
+    private fun getCreationFromNetwork(creationId: String) {
+        viewModelScope.launch {
+            _creationDetailStatus.value = CreationApiStatus.LOADING
+            try {
+                _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(creationId)
+                Log.e("CreationDetail", "アクセス成功")
+                _creationDetailStatus.value = CreationApiStatus.DONE
+            }catch (e: Exception){
+                Log.e("CreationDetail", "ネットワークエラー")
+                _creationDetailStatus.value = CreationApiStatus.ERROR
+            }
         }
     }
 
@@ -71,12 +81,19 @@ class CreationDetailViewModel: ViewModel() {
         chipGroup.removeAllViews()
         _tags.value?.forEach { tag ->
             val chip = Chip(context)
-            chip.text = tag
+            chip.text = tag.Tag
             chipGroup.addView(chip)
         }
     }
 
     fun setCreationDetail(){
+        val creationValue = _creation.value!!
+        _title.value = creationValue.title
+        _images.value = creationValue.images
+        _explanation.value = creationValue.description
+        _tags.value = creationValue.tags
+        _youtubeUrl.value = creationValue.movie_url
+        _githubUrl.value = creationValue.URL
     }
 
     //Web遷移系の処理//////////////////////////////////
