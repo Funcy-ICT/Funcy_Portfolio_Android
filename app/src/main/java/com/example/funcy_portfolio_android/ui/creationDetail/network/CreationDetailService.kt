@@ -9,8 +9,8 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface CreationDetailService {
-    //@Headers("token: Token1")
-    @GET("/{workID}")
+    @Headers("token: Token1")
+    @GET("work/{workID}")
     suspend fun getCreationDetail(
         @Path("workID") creationID: String
     ): Creation
@@ -19,7 +19,7 @@ interface CreationDetailService {
 private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
 
 private val retrofit = Retrofit.Builder()
-    .baseUrl("http://10.0.2.2:3000")
+    .baseUrl("http://10.124.58.142:8080/")
     .addConverterFactory(gson)
     .build()
 

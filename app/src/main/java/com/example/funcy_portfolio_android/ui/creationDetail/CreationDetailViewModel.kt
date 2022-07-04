@@ -16,12 +16,11 @@ import com.example.funcy_portfolio_android.ui.creationDetail.network.Image
 import com.example.funcy_portfolio_android.ui.creationDetail.network.Tag
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.awaitResponse
-import java.io.IOException
 
 enum class CreationApiStatus{LOADING, ERROR, DONE}
+
+private const val TAG = "CreationDetailViewModel"
 
 class CreationDetailViewModel: ViewModel() {
     private val _userName = MutableLiveData<String>()
@@ -55,11 +54,7 @@ class CreationDetailViewModel: ViewModel() {
     init{
         //仮置きのテキスト達
         _userName.value = "田中太郎"
-        _title.value = "ブロック崩し"
-        _explanation.value = "授業で作ったよ\nよくあるブロック崩しだよ\nほげほげ\nほーげほげ"
-        _youtubeUrl.value = "https://www.youtube.com/watch?v=IoIl_ZE_YPM"
-        _githubUrl.value = "https://github.com/Funcy-ICT"
-        getCreationFromNetwork("01G6HW6ME5QK4XJH3FFHWKPBJ4")
+        getCreationFromNetwork("w1")
     }
 
 
@@ -68,10 +63,10 @@ class CreationDetailViewModel: ViewModel() {
             _creationDetailStatus.value = CreationApiStatus.LOADING
             try {
                 _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(creationId)
-                Log.e("CreationDetail", "アクセス成功")
+                Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
             }catch (e: Exception){
-                Log.e("CreationDetail", "ネットワークエラー")
+                Log.e(TAG, "アクセス失敗　エラー：$e")
                 _creationDetailStatus.value = CreationApiStatus.ERROR
             }
         }
