@@ -5,6 +5,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Path
 
@@ -12,6 +13,7 @@ interface CreationDetailService {
     @Headers("token: Token1")
     @GET("work/{workID}")
     suspend fun getCreationDetail(
+        @Header("token") token: String,
         @Path("workID") creationID: String
     ): Creation
 }

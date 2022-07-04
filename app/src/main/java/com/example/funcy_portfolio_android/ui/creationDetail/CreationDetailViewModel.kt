@@ -54,15 +54,15 @@ class CreationDetailViewModel: ViewModel() {
     init{
         //仮置きのテキスト達
         _userName.value = "田中太郎"
-        getCreationFromNetwork("w1")
+        getCreationFromNetwork("Token1", "w1")
     }
 
 
-    private fun getCreationFromNetwork(creationId: String) {
+    private fun getCreationFromNetwork(token: String, creationId: String) {
         viewModelScope.launch {
             _creationDetailStatus.value = CreationApiStatus.LOADING
             try {
-                _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(creationId)
+                _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(token, creationId)
                 Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
             }catch (e: Exception){
