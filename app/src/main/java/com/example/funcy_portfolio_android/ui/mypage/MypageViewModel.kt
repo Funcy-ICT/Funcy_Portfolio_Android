@@ -16,6 +16,8 @@ class MypageViewModel:ViewModel() {
     private val _skillList = MutableLiveData<List<String>>()
     val skillList : LiveData<List<String>> = _skillList
 
+
+
     init {
         val profileHtmlText ="<html>情報システムコース（学部４年）<br><br>バナナが大好きな太郎君です．<br>どうぞフォローしてください^^ <br><br> <b>メールアドレス</b>  hoge@fun.ac.jp</html>"
         _userName.value = "テストネーム"

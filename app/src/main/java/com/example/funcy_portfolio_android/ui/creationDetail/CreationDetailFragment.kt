@@ -5,28 +5,29 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import com.google.android.material.chip.Chip
 
 
 class CreationDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCreationDetailBinding
-
-    //仮置きのテキスト達
-    val userName = "田中太郎"
-    val title = "ブロック崩し"
-    val explanation = "授業で作ったよ\nよくあるブロック崩しだよ\nほげほげ\nほーげほげ"
-    val tags = arrayListOf<String>("processing", "ブロック崩し", "情報処理演習","ほげほげ","ぴよぴよ")
-
+    private  val viewModel by viewModels<CreationDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,9 @@ class CreationDetailFragment : Fragment() {
     ): View? {
 
         binding = FragmentCreationDetailBinding.inflate(inflater, container, false)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         return binding.root
 
@@ -43,10 +47,10 @@ class CreationDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvVideoLink.setOnClickListener {
-            navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
+            viewModel.navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
         }
         binding.tvGithubLink.setOnClickListener {
-            navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
+            viewModel.navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
         }
         binding.btBack.setOnClickListener {
             findNavController().popBackStack()
@@ -57,35 +61,28 @@ class CreationDetailFragment : Fragment() {
         binding.btShare.setOnClickListener {
             //shareの処理
         }
-        tags.forEach{
-            val itemTagBinding = DataBindingUtil.inflate<ItemTagBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag, binding.flexTag, true)
-            itemTagBinding.chipTag.text = it
-        }
-        binding.tvName.text = userName
-        binding.tvTitle.text = title
-        binding.tvExplanation.text = explanation
-    }
 
-    /** YouTube */
-    private fun navigateToYouTube(url: String, context: Context) {
-        val uri = Uri.parse(url)
-        try {
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            context.startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            navigateToCustomTab(url, context)
-        }
-    }
+        viewModel.tags.observe(viewLifecycleOwner, Observer {
+            viewModel.setEachTag(binding.flexTag, requireContext())
+        })
 
-    /** GitHub用 CustomTab */
-    private fun navigateToCustomTab(url: String, context: Context) {
-        val uri = Uri.parse(url)
-        CustomTabsIntent.Builder().also { builder ->
-            builder.setShowTitle(true)
-            builder.build().also {
-                it.launchUrl(context, uri)
+        viewModel.images.observe(viewLifecycleOwner, Observer {
+            Glide.with(this).load(it[0].Image).error(R.drawable.img_creation_detail_thumbnail).into(binding.imgThumbnail)
+        })
+
+        viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->
+            when(status!!){
+                CreationApiStatus.LOADING ->{
+                    //ローディングアニメーション？？
+                }
+                CreationApiStatus.DONE ->{
+                    viewModel.setCreationDetail()
+                }
+                CreationApiStatus.ERROR ->{
+                    Toast.makeText(context, "作品が取得できませんでした", Toast.LENGTH_LONG).show()
+                }
             }
-        }
+        })
     }
 
 }

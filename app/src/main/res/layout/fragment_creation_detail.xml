@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.funcy_portfolio_android.ui.creationDetail.CreationDetailViewModel" />
     </data>
 
     <ScrollView
@@ -43,7 +45,7 @@
             android:layout_height="19dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="名前"
+            android:text="@{viewModel.userName}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imgAccount"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -66,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="タイトル"
+            android:text="@{viewModel.title}"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgThumbnail" />
@@ -77,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="説明文"
+            android:text="@{viewModel.explanation}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -91,7 +93,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flexTag" />
 
-        <com.google.android.flexbox.FlexboxLayout
+        <com.google.android.material.chip.ChipGroup
             android:id="@+id/flexTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,7 +102,9 @@
             app:flexWrap="wrap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvExplanation" />
+            app:layout_constraintTop_toBottomOf="@id/tvExplanation">
+
+        </com.google.android.material.chip.ChipGroup>
 
         <TextView
             android:id="@+id/tvVideo"
@@ -119,7 +123,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:clickable="true"
-            android:text="https://github.com/Funcy-ICT"
+            android:text="@{viewModel.githubUrl}"
             android:textColor="#004BB1"
             app:layout_constraintStart_toEndOf="@+id/tvGithub"
             app:layout_constraintTop_toBottomOf="@+id/flexTag" />
@@ -131,7 +135,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:clickable="true"
-            android:text="https://www.youtube.com/watch?v=IoIl_ZE_YPM"
+            android:text="@{viewModel.youtubeUrl}"
             android:textColor="#004BB1"
             app:layout_constraintStart_toEndOf="@+id/tvVideo"
             app:layout_constraintTop_toBottomOf="@+id/tvGithubLink" />
