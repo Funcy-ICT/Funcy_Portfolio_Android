@@ -10,7 +10,6 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface CreationDetailService {
-    @Headers("token: Token1")
     @GET("work/{workID}")
     suspend fun getCreationDetail(
         @Header("token") token: String,
