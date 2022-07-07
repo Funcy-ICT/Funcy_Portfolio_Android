@@ -52,7 +52,7 @@ class CreationDetailFragment : Fragment() {
             //shareの処理
         }
 
-        viewModel.tags.observe(viewLifecycleOwner, Observer {
+        viewModel.tagList.observe(viewLifecycleOwner, Observer {
             viewModel.setEachTag(binding.flexTag, requireContext())
         })
 

@@ -47,7 +47,7 @@ class CreationRegisterViewModel : ViewModel() {
         }
     }
 
-    fun resetTag(): List<TagData>{
+    fun resetTag(): List<String>{
         tags.clear()
         return tags.toList()
     }
@@ -74,10 +74,20 @@ class CreationRegisterViewModel : ViewModel() {
         youtube_url: String
     ): String? {
         viewModelScope.launch{
-            res = repository.registerCreation(CreationData( title,description, listOf(ImageData("")), work_url, youtube_url, tags,null,security))
+            val postTagList = stringTagListToTagList(tags)
+            res = repository.registerCreation(CreationData( title,description, listOf(ImageData("")), work_url, youtube_url, postTagList,null,security))
             Log.e("res",res!!)
         }
 
         return res
+    }
+
+    //tagsのList<String>をList<TagData>に変換する(一応プライベートにしました)
+    private fun stringTagListToTagList(stringList: List<String>): List<TagData>{
+        val tagsList = mutableListOf<TagData>()
+        stringList.forEach {
+            tagsList.add(TagData(it))
+        }
+        return tagsList
     }
 }
