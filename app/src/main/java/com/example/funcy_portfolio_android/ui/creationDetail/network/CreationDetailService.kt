@@ -1,12 +1,11 @@
 package com.example.funcy_portfolio_android.ui.creationDetail.network
 
+import com.example.funcy_portfolio_android.model.CreationData
 import com.google.gson.GsonBuilder
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface CreationDetailService {
@@ -14,7 +13,7 @@ interface CreationDetailService {
     suspend fun getCreationDetail(
         @Header("token") token: String,
         @Path("workID") creationID: String
-    ): Creation
+    ): CreationData
 }
 
 private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
