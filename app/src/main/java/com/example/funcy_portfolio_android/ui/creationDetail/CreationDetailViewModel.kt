@@ -13,7 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.CreationData
 import com.example.funcy_portfolio_android.model.ImageData
 import com.example.funcy_portfolio_android.model.TagData
-import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDetailNetwork
+import com.example.funcy_portfolio_android.network.CreationDetailNetwork
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
@@ -52,8 +52,9 @@ class CreationDetailViewModel: ViewModel() {
     val githubUrl: LiveData<String> = _githubUrl
 
     init{
-        //仮置きのテキスト達
+        //仮置きのテキスト
         _userName.value = "田中太郎"
+
         getCreationFromNetwork("Token1", "w1")
     }
 

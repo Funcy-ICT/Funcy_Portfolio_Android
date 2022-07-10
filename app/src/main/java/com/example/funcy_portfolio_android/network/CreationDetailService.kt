@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.creationDetail.network
+package com.example.funcy_portfolio_android.network
 
 import com.example.funcy_portfolio_android.model.CreationData
 import com.google.gson.GsonBuilder
