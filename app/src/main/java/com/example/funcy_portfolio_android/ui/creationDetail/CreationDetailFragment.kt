@@ -1,27 +1,17 @@
 package com.example.funcy_portfolio_android.ui.creationDetail
 
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.net.toUri
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
-import com.example.funcy_portfolio_android.databinding.ItemTagBinding
-import com.google.android.material.chip.Chip
 
 
 class CreationDetailFragment : Fragment() {
@@ -62,7 +52,7 @@ class CreationDetailFragment : Fragment() {
             //shareの処理
         }
 
-        viewModel.tags.observe(viewLifecycleOwner, Observer {
+        viewModel.tagList.observe(viewLifecycleOwner, Observer {
             viewModel.setEachTag(binding.flexTag, requireContext())
         })
 

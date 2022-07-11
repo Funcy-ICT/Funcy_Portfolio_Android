@@ -10,10 +10,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.ui.creationDetail.network.Creation
-import com.example.funcy_portfolio_android.ui.creationDetail.network.CreationDetailNetwork
-import com.example.funcy_portfolio_android.ui.creationDetail.network.Image
-import com.example.funcy_portfolio_android.ui.creationDetail.network.Tag
+import com.example.funcy_portfolio_android.model.*
+import com.example.funcy_portfolio_android.network.CreationDetailNetwork
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
@@ -27,8 +25,8 @@ class CreationDetailViewModel: ViewModel() {
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
-    private val _creation = MutableLiveData<Creation>()
-    val creation: LiveData<Creation> = _creation
+    private val _creation = MutableLiveData<CreationData>()
+    val creation: LiveData<CreationData> = _creation
 
     private val _creationDetailStatus = MutableLiveData<CreationApiStatus>()
     val creationDetailStatus: LiveData<CreationApiStatus> = _creationDetailStatus
@@ -36,14 +34,14 @@ class CreationDetailViewModel: ViewModel() {
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
 
-    private val _images = MutableLiveData<List<Image>>()
-    val images: LiveData<List<Image>> = _images
+    private val _images = MutableLiveData<List<ImageData>>()
+    val images: LiveData<List<ImageData>> = _images
 
     private val _explanation = MutableLiveData<String>()
     val explanation: LiveData<String> = _explanation
 
-    private val _tags = MutableLiveData<List<Tag>>()
-    val tags: LiveData<List<Tag>> = _tags
+    private val _tagList = MutableLiveData<List<TagData>>()
+    val tagList: LiveData<List<TagData>> = _tagList
 
     private val _youtubeUrl = MutableLiveData<String>()
     val youtubeUrl: LiveData<String> = _youtubeUrl
@@ -52,8 +50,9 @@ class CreationDetailViewModel: ViewModel() {
     val githubUrl: LiveData<String> = _githubUrl
 
     init{
-        //仮置きのテキスト達
+        //仮置きのテキスト
         _userName.value = "田中太郎"
+
         getCreationFromNetwork("Token1", "w1")
     }
 
@@ -74,7 +73,7 @@ class CreationDetailViewModel: ViewModel() {
 
     fun setEachTag(chipGroup: ChipGroup, context: Context){
         chipGroup.removeAllViews()
-        _tags.value?.forEach { tag ->
+        _tagList.value?.forEach { tag ->
             val chip = Chip(context)
             chip.text = tag.Tag
             chipGroup.addView(chip)
@@ -86,7 +85,7 @@ class CreationDetailViewModel: ViewModel() {
         _title.value = creationValue.title
         _images.value = creationValue.images
         _explanation.value = creationValue.description
-        _tags.value = creationValue.tags
+        _tagList.value = creationValue.tags
         _youtubeUrl.value = creationValue.movie_url
         _githubUrl.value = creationValue.URL
     }
