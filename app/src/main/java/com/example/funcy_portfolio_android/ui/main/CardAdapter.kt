@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.databinding.CreateCardBinding
 import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
 
-class CardAdapter:ListAdapter<ArticleData, CardAdapter.ArticleDataViewHolder>(DiffCallBack){
+class CardAdapter:ListAdapter<WorkData, CardAdapter.WorkDataViewHolder>(DiffCallBack){
 
-    class ArticleDataViewHolder(private var binding: CreateCardBinding):
+    class WorkDataViewHolder(private var binding: CreateCardBinding):
             RecyclerView.ViewHolder(binding.root){
-                fun bind(articleData: ArticleData){
-                    binding.article = articleData
+                fun bind(workData: WorkData){
+                    binding.work = workData
                     binding.executePendingBindings()
                 }
             }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<ArticleData>(){
-        override fun areItemsTheSame(oldItem: ArticleData, newItem: ArticleData): Boolean {
-            return oldItem.articleID == newItem.articleID
+    companion object DiffCallBack : DiffUtil.ItemCallback<WorkData>(){
+        override fun areItemsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
+            return oldItem.work_id == newItem.work_id
         }
 
-        override fun areContentsTheSame(oldItem: ArticleData, newItem: ArticleData): Boolean {
-            return oldItem.image == newItem.image
+        override fun areContentsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
+            return oldItem.images == newItem.images
         }
 
     }
@@ -32,15 +32,15 @@ class CardAdapter:ListAdapter<ArticleData, CardAdapter.ArticleDataViewHolder>(Di
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CardAdapter.ArticleDataViewHolder {
-        return ArticleDataViewHolder(
+    ): CardAdapter.WorkDataViewHolder {
+        return WorkDataViewHolder(
             CreateCardBinding.inflate(LayoutInflater.from(parent.context))
         )
     }
 
-    override fun onBindViewHolder(holder: CardAdapter.ArticleDataViewHolder, position: Int) {
-        val articleData = getItem(position)
-        holder.bind(articleData)
+    override fun onBindViewHolder(holder: CardAdapter.WorkDataViewHolder, position: Int) {
+        val workData = getItem(position)
+        holder.bind(workData)
     }
 }
 
