@@ -13,26 +13,26 @@ enum class FuncyApiStatus {LOADING, ERROR, DONE}
 class MainViewModel : ViewModel(){
 
     //作品一覧を収納するデータホルダーを定義
-    private val _articles = MutableLiveData<List<ArticleData>>()
-    val articles: LiveData<List<ArticleData>> = _articles
+    private val _works = MutableLiveData<List<WorkData>>()
+    val works: LiveData<List<WorkData>> = _works
 
     //Funcyサーバーとの接続状況を収納するホルダーを定義
     private val _status = MutableLiveData<FuncyApiStatus>()
     val status: LiveData<FuncyApiStatus> = _status
 
     init{
-        getArticles()
+        getWorks("Token1")
     }
 
-    private fun getArticles(){
+    private fun getWorks(token: String){
         viewModelScope.launch {
             _status.value = FuncyApiStatus.LOADING
             try{
-                _articles.value = FuncyApi.retrofitService.getArticles()
+                _works.value = FuncyApi.retrofitService.getWorks(token)
                 _status.value = FuncyApiStatus.DONE
             } catch (e: Exception){
                 _status.value = FuncyApiStatus.ERROR
-                _articles.value = listOf()
+                _works.value = listOf()
             }
 
         }
