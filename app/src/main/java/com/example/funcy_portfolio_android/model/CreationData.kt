@@ -4,17 +4,17 @@ data class CreationData(
     val title: String,
     val description: String,
     val images: List<ImageData>,
-    val work_url: String,
+    val URL: String,
     val movie_url: String,
     val tags: List<TagData>,
     val group: String?,
-    val security: Int
+    val security: Int,
 )
 
 data class ImageData(
-    val image: String
+    val Image: String
 )
 
 data class TagData(
-    val tag: String
+    val Tag: String
 )

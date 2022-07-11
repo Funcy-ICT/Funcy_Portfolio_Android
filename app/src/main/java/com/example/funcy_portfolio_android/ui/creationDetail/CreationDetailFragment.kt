@@ -57,7 +57,7 @@ class CreationDetailFragment : Fragment() {
         })
 
         viewModel.images.observe(viewLifecycleOwner, Observer {
-            Glide.with(this).load(it[0].image).error(R.drawable.img_creation_detail_thumbnail).into(binding.imgThumbnail)
+            Glide.with(this).load(it[0].Image).error(R.drawable.img_creation_detail_thumbnail).into(binding.imgThumbnail)
         })
 
         viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->

@@ -10,9 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.CreationData
-import com.example.funcy_portfolio_android.model.ImageData
-import com.example.funcy_portfolio_android.model.TagData
+import com.example.funcy_portfolio_android.model.*
 import com.example.funcy_portfolio_android.network.CreationDetailNetwork
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -77,7 +75,7 @@ class CreationDetailViewModel: ViewModel() {
         chipGroup.removeAllViews()
         _tagList.value?.forEach { tag ->
             val chip = Chip(context)
-            chip.text = tag.tag
+            chip.text = tag.Tag
             chipGroup.addView(chip)
         }
     }
@@ -89,7 +87,7 @@ class CreationDetailViewModel: ViewModel() {
         _explanation.value = creationValue.description
         _tagList.value = creationValue.tags
         _youtubeUrl.value = creationValue.movie_url
-        _githubUrl.value = creationValue.work_url
+        _githubUrl.value = creationValue.URL
     }
 
     //Web遷移系の処理//////////////////////////////////
