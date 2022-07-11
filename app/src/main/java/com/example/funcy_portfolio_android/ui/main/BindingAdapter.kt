@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<ArticleData>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<WorkData>?){
     val adapter = recyclerView.adapter as CardAdapter
     adapter.submitList(data)
 }
