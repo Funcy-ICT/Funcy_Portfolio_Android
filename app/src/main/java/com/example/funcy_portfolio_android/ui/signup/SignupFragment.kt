@@ -36,6 +36,9 @@ class SignupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSignup.setOnClickListener {
+            val grade = binding.spinnerGrade.selectedItem.toString()
+            val course = binding.spinnerCourse.selectedItem.toString()
+            viewModel.sendToServerSignupData("Token1", grade, course)
             findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
         }
 
