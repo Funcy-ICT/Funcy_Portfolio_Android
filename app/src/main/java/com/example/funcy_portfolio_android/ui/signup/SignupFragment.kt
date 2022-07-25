@@ -1,12 +1,13 @@
 package com.example.funcy_portfolio_android.ui.signup
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -38,8 +39,18 @@ class SignupFragment : Fragment() {
         binding.buttonSignup.setOnClickListener {
             val grade = binding.spinnerGrade.selectedItem.toString()
             val course = binding.spinnerCourse.selectedItem.toString()
-            viewModel.sendToServerSignupData("Token1", grade, course)
-            findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+            if(!setError()){
+                AlertDialog.Builder(activity)
+                    .setTitle("この内容で送信しますか？")
+                    .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+                        viewModel.sendToServerSignupData("Token1", grade, course)
+                        findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+                    })
+                    .setNegativeButton("キャンセル", null)
+                    .show()
+            }else{
+                Toast.makeText(context, "入力エラー", Toast.LENGTH_SHORT).show()
+            }
         }
 
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
@@ -49,5 +60,70 @@ class SignupFragment : Fragment() {
             val courses = resources.getStringArray(it)
             viewModel.setCourseSource(courses)
         })
+    }
+
+    private fun setError(): Boolean{
+        var errors = false
+
+        //空のチェック
+        if(binding.editDisplayName.text.isNullOrEmpty()){
+            binding.inputDisplayName.isErrorEnabled = true
+            binding.inputDisplayName.error = "表示名を入力してください"
+            errors = true
+        }else{
+            binding.inputDisplayName.isErrorEnabled = false
+        }
+
+        if(binding.editFamilyName.text.isNullOrEmpty()){
+            binding.inputFamilyName.isErrorEnabled = true
+            binding.inputFamilyName.error = "姓を入力してください"
+            errors = true
+        }else {
+            binding.inputFamilyName.isErrorEnabled = false
+        }
+
+        if(binding.editFirstName.text.isNullOrEmpty()){
+            binding.inputFirstName.isErrorEnabled = true
+            binding.inputFirstName.error = "名を入力してください"
+            errors = true
+        }else {
+            binding.inputFirstName.isErrorEnabled = false
+        }
+
+        if(binding.editPassword.text.isNullOrEmpty()){
+            binding.inputPassword.isErrorEnabled = true
+            binding.inputPassword.error = "パスワードを入力してください"
+            errors = true
+        }else {
+            binding.inputPassword.isErrorEnabled = false
+        }
+
+        if(binding.editMailAddress.text.isNullOrEmpty()){
+            binding.inputMailAddress.isErrorEnabled = true
+            binding.inputMailAddress.error = "学籍番号を入力してください"
+            errors = true
+        }else {
+            binding.inputMailAddress.isErrorEnabled = false
+        }
+
+        //パスワード比較
+        if(viewModel.comparePassword()){
+            binding.inputConfirmPassword.isErrorEnabled = true
+            binding.inputConfirmPassword.error = "パスワードが一致しません"
+            errors = true
+        } else {
+            binding.inputConfirmPassword.isErrorEnabled = false
+        }
+
+        //学籍正規表現チェック
+        if(viewModel.checkMail()){
+            binding.inputMailAddress.isErrorEnabled = true
+            binding.inputMailAddress.error = "入力した値が間違っています"
+            errors = true
+        }else {
+            binding.inputMailAddress.isErrorEnabled = false
+        }
+
+        return errors
     }
 }

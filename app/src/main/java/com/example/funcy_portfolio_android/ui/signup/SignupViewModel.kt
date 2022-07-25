@@ -30,6 +30,8 @@ class SignupViewModel: ViewModel() {
     val password = MutableLiveData<String>()
     val confirmPassword = MutableLiveData<String>()
 
+    private val checkMailPattern = Regex("^(b|g)([0-9]{7})")
+
     fun setCourseId(){
         Log.i("こんにちはスピナーです",selectedItem.value.toString())
         val item = selectedItem.value!!
@@ -58,5 +60,16 @@ class SignupViewModel: ViewModel() {
             }
 
         }
+    }
+
+    fun comparePassword(): Boolean{
+        if(password.value != confirmPassword.value){
+            return true
+        }
+        return false
+    }
+
+    fun checkMail():Boolean{
+        return !checkMailPattern.matches(mailAddress.value.toString())
     }
 }
