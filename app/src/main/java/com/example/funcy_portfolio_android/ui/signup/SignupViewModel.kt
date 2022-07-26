@@ -1,9 +1,6 @@
 package com.example.funcy_portfolio_android.ui.signup
 
-import android.app.Application
 import android.util.Log
-import android.widget.AdapterView
-import androidx.databinding.*
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +10,8 @@ import com.example.funcy_portfolio_android.model.SignupData
 import com.example.funcy_portfolio_android.model.apiService
 import kotlinx.coroutines.launch
 
+
+enum class SignupApiStatus{LOADING, ERROR, DONE}
 
 class SignupViewModel: ViewModel() {
     val selectedItem = MutableLiveData<Int>()
@@ -32,6 +31,9 @@ class SignupViewModel: ViewModel() {
 
     private val checkMailPattern = Regex("^(b|g)([0-9]{7})")
 
+    private val _signupStatus = MutableLiveData<SignupApiStatus>()
+    val signupStatus: LiveData<SignupApiStatus> = _signupStatus
+
     fun setCourseId(){
         Log.i("こんにちはスピナーです",selectedItem.value.toString())
         val item = selectedItem.value!!
@@ -48,6 +50,7 @@ class SignupViewModel: ViewModel() {
 
     fun sendToServerSignupData(token: String, grade:String, course: String){
         val sendMailAddress = mailAddress.value + "@fun.ac.jp"
+        _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
                 apiService.service.sendUserRegistration(
@@ -55,10 +58,11 @@ class SignupViewModel: ViewModel() {
                     SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon",sendMailAddress,password.value!!)
                 )
                 Log.d("SignUp", "送信成功")
+                _signupStatus.value = SignupApiStatus.DONE
             }catch (e: Exception){
                 Log.d("SignUp", "エラー$e")
+                _signupStatus.value = SignupApiStatus.ERROR
             }
-
         }
     }
 

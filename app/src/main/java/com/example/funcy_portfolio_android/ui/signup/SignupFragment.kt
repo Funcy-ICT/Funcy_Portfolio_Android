@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -43,8 +44,8 @@ class SignupFragment : Fragment() {
                 AlertDialog.Builder(activity)
                     .setTitle("この内容で送信しますか？")
                     .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+                        //post
                         viewModel.sendToServerSignupData("Token1", grade, course)
-                        findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
                     })
                     .setNegativeButton("キャンセル", null)
                     .show()
@@ -59,6 +60,14 @@ class SignupFragment : Fragment() {
         viewModel.courseId.observe(viewLifecycleOwner, Observer {
             val courses = resources.getStringArray(it)
             viewModel.setCourseSource(courses)
+        })
+
+        viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
+            when(status){
+                SignupApiStatus.LOADING -> {}
+                SignupApiStatus.DONE -> {findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)}
+                SignupApiStatus.ERROR -> {Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()}
+            }
         })
     }
 
