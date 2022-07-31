@@ -2,6 +2,7 @@ package com.example.funcy_portfolio_android.ui.signup
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -64,9 +65,20 @@ class SignupFragment : Fragment() {
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status){
-                SignupApiStatus.LOADING -> {}
-                SignupApiStatus.DONE -> {findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)}
-                SignupApiStatus.ERROR -> {Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()}
+                SignupApiStatus.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.buttonSignup.visibility = View.GONE
+                }
+                SignupApiStatus.DONE -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.buttonSignup.visibility = View.VISIBLE
+                    findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+                }
+                SignupApiStatus.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.buttonSignup.visibility = View.VISIBLE
+                    Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
