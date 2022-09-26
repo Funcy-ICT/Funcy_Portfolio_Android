@@ -19,7 +19,7 @@ interface CreationDetailService {
 private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
 
 private val retrofit = Retrofit.Builder()
-    .baseUrl("http://10.124.58.83:8080/")
+    .baseUrl("http://10.124.58.15:8080/")
     .addConverterFactory(gson)
     .build()
 

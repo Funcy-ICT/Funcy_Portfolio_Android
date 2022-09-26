@@ -2,6 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.funcy_portfolio_android.ui.MainActivity">
+
+    <item android:id="@+id/search"
+        android:title="@string/main_toolbar_title"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
