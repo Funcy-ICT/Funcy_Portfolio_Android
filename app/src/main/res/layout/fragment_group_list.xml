@@ -7,7 +7,7 @@
     tools:background="@color/white">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rvGroup"
         android:layout_width="805dp"
         android:layout_height="883dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,21 +16,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvAddGroup"
         android:layout_width="wrap_content"
         android:layout_height="78dp"
         android:layout_marginTop="32dp"
         android:clickable="true"
-        android:onClick="onClickAddNewGroup"
+        android:onClick="onClickAddGroup"
         android:text="新しくグループを登録する"
         android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/hairline" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/hairline"
         android:layout_width="600dp"
         android:layout_height="1dp"
         android:layout_marginTop="32dp"
@@ -38,6 +38,6 @@
         android:backgroundTint="#ff808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/rvGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
