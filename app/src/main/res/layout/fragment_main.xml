@@ -29,6 +29,8 @@
                     android:iconifiedByDefault="false"
                     app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
                     app:searchHintIcon="@null"
+                    android:showAsAction="collapseActionView|ifRoom"
+                    android:actionViewClass="android.widget.SearchView"
                     >
                 </androidx.appcompat.widget.SearchView>
             </androidx.appcompat.widget.Toolbar>

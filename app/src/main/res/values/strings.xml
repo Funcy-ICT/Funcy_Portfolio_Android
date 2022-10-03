@@ -45,7 +45,7 @@
     <string name="detail_youtube">動画</string>
 
     <!--  MainFragment  -->
-    <string name ="main_toolbar_search_hint">Search</string>
+    <string name ="main_search_hint">Search</string>
 
     <!--  PersonalFragment  -->
     <string name ="personal_username">名前</string>
