@@ -17,7 +17,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/toolbar_color">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -48,27 +49,28 @@
                         app:layout_constraintStart_toEndOf="@+id/btBack"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/btRegister"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:contentDescription="@string/toolbar_register"
-                        android:src="@drawable/bt_register_toolbar"
+                        android:text="@string/toolbar_register"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/primary_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/btDraft"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
-                        android:contentDescription="@string/toolbar_draft"
-                        android:src="@drawable/bt_draft_toolbar"
+                        android:text="@string/toolbar_draft"
+                        android:textColor="@color/primary_color"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btRegister"
+                        app:layout_constraintEnd_toStartOf="@id/btRegister"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -195,6 +197,7 @@
                         android:layout_marginTop="8dp"
                         android:checked="true"
                         android:text="@string/creation_public"
+                        style="@style/ThemeOverlay.App.Switch"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
 

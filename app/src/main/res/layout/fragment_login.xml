@@ -60,6 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="ログインする"
+            app:backgroundTint="@null"
+            android:background="@drawable/primary_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvExplain" />
