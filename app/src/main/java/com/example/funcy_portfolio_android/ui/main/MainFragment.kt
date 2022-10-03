@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,17 @@ class MainFragment : Fragment() {
         binding.fabRegister.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
         }
+
+        binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String): Boolean {
+                // text changed
+                return false
+            }
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // submit button pressed
+                return false
+            }
+        })
 
         val Worklist = listOf<WorkData>(
             WorkData(R.drawable.garden_strand, "garden_strand", "ネックレス"),
