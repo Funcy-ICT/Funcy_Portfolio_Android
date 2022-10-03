@@ -1,20 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.setting.SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Setting Fragmentだよ～！" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:id="@+id/changePass"
+        android:layout_width="250dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="200dp"
+        android:text="パスワードを変更する"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/editTextConfirmNewPass"
+        android:layout_width="313dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/changePass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <EditText
+        android:id="@+id/editTextNewPass"
+        android:layout_width="313dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editTextConfirmNewPass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <EditText
+        android:id="@+id/editTextPresentPass"
+        android:layout_width="313dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/textViewConfirmNewPass"
+        android:layout_width="329dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginBottom="8dp"
+        android:text="確認用のパスワード"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextConfirmNewPass"
+        app:layout_constraintEnd_toEndOf="@id/editTextConfirmNewPass"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewNewPass"
+        android:layout_width="329dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="8dp"
+        android:text="新しいパスワード"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNewPass"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextNewPass"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewPresentPass"
+        android:layout_width="329dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginBottom="8dp"
+        android:text="現在のパスワード"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPresentPass"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPresentPass"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="@+id/editTextPresentPass"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
