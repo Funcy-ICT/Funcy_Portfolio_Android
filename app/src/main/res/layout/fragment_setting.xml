@@ -10,51 +10,50 @@
 
     <Button
         android:id="@+id/changePass"
-        android:layout_width="250dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="200dp"
+        android:layout_width="248dp"
+        android:layout_height="60dp"
         android:text="パスワードを変更する"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNewPass" />
 
     <EditText
         android:id="@+id/editTextConfirmNewPass"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/changePass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNewPass"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextNewPass"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="496dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextConfirmNewPass"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextPresentPass"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
@@ -62,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textViewConfirmNewPass"
@@ -75,9 +74,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextConfirmNewPass"
         app:layout_constraintEnd_toEndOf="@id/editTextConfirmNewPass"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass" />
 
     <TextView
         android:id="@+id/textViewNewPass"
@@ -89,9 +86,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
         app:layout_constraintEnd_toEndOf="@+id/editTextNewPass"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextNewPass"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/editTextNewPass" />
 
     <TextView
         android:id="@+id/textViewPresentPass"
@@ -104,8 +99,6 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextPresentPass"
         app:layout_constraintEnd_toEndOf="@+id/editTextPresentPass"
         app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="@+id/editTextPresentPass"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/editTextPresentPass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
