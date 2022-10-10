@@ -66,6 +66,7 @@ class SignupViewModel: ViewModel() {
         }
     }
 
+
     fun comparePassword(): Boolean{
         if(password.value != confirmPassword.value){
             return true
@@ -73,7 +74,7 @@ class SignupViewModel: ViewModel() {
         return false
     }
 
-    fun checkMail():Boolean{
+    fun checkMail(): Boolean{
         return !checkMailPattern.matches(mailAddress.value.toString())
     }
 }
