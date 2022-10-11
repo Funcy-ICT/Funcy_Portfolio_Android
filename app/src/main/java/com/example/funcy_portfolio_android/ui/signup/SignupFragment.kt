@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,35 +90,57 @@ class SignupFragment : Fragment() {
         })
     }
 
-    private fun setError(): Boolean{
-        var errors: Boolean
+    private fun setError(): Boolean {
+        var emptyError = false
+        var mailError = false
+        var passError = false
+        //未入力エラーハンドリング
+        emptyError = (
+                viewModel.errorIsNullOrEmpty(
+                    viewModel.displayName.value,
+                    binding.inputDisplayName,
+                    "表示名"
+                ) or
+                        viewModel.errorIsNullOrEmpty(
+                            viewModel.familyName.value,
+                            binding.inputFamilyName,
+                            "姓"
+                        ) or
+                        viewModel.errorIsNullOrEmpty(
+                            viewModel.firstName.value,
+                            binding.inputFirstName,
+                            "名"
+                        ) or
+                        viewModel.errorIsNullOrEmpty(
+                            viewModel.password.value,
+                            binding.inputPassword,
+                            "パスワード"
+                        ) or
+                        viewModel.errorIsNullOrEmpty(
+                            viewModel.mailAddress.value,
+                            binding.inputMailAddress,
+                            "学籍番号"
+                        )
+                )
 
         //パスワード比較
-        if(viewModel.comparePassword()){
+        if (viewModel.comparePassword()) {
             binding.inputConfirmPassword.isErrorEnabled = true
             binding.inputConfirmPassword.error = "パスワードが一致しません"
-            errors = true
+            passError = true
         } else {
             binding.inputConfirmPassword.isErrorEnabled = false
         }
 
         //学籍正規表現チェック
-        if(viewModel.checkMail()){
+        if (viewModel.checkMail()) {
             binding.inputMailAddress.isErrorEnabled = true
             binding.inputMailAddress.error = "入力した値が間違っています"
-            errors = true
-        }else {
+            mailError = true
+        } else {
             binding.inputMailAddress.isErrorEnabled = false
         }
-
-        //未入力エラーハンドリング
-        errors = (
-                        viewModel.errorIsNullOrEmpty(viewModel.displayName.value, binding.inputDisplayName, "表示名") xor
-                        viewModel.errorIsNullOrEmpty(viewModel.familyName.value, binding.inputFamilyName, "姓") xor
-                        viewModel.errorIsNullOrEmpty(viewModel.firstName.value, binding.inputFirstName, "名") xor
-                        viewModel.errorIsNullOrEmpty(viewModel.password.value, binding.inputPassword, "パスワード") xor
-                        viewModel.errorIsNullOrEmpty(viewModel.mailAddress.value, binding.inputMailAddress, "学籍番号")
-                )
-        return errors
+        Log.d("Error", (emptyError or mailError or passError).toString())
+        return emptyError or mailError or passError
     }
 }
