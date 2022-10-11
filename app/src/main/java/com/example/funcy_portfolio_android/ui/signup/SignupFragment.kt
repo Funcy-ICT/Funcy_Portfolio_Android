@@ -1,11 +1,14 @@
 package com.example.funcy_portfolio_android.ui.signup
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -52,6 +55,10 @@ class SignupFragment : Fragment() {
             }else{
                 Toast.makeText(context, "入力エラー", Toast.LENGTH_SHORT).show()
             }
+
+            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
         }
 
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
@@ -81,11 +88,6 @@ class SignupFragment : Fragment() {
                 }
             }
         })
-
-        viewModel.displayName.observe(viewLifecycleOwner, Observer {
-
-        })
-
     }
 
     private fun errorIsNullOrEmpty(editText: String?, textLayout: TextInputLayout, errorItem: String): Boolean{
