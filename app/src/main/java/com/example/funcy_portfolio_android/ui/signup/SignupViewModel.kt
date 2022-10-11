@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.model.SignupData
 import com.example.funcy_portfolio_android.model.apiService
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 
 
@@ -76,5 +77,20 @@ class SignupViewModel: ViewModel() {
 
     fun checkMail(): Boolean{
         return !checkMailPattern.matches(mailAddress.value.toString())
+    }
+
+    fun errorIsNullOrEmpty(editText: String?, textLayout: TextInputLayout, errorItem: String): Boolean{
+        val isError: Boolean
+
+        if(editText.isNullOrEmpty()){
+            textLayout.isErrorEnabled = true
+            textLayout.error = errorItem + "を入力してください"
+            isError = true
+        }else{
+            textLayout.isErrorEnabled = false
+            isError = false
+        }
+
+        return isError
     }
 }

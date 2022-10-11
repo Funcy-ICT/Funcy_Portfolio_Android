@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
-import com.google.android.material.textfield.TextInputLayout
 
 
 class SignupFragment : Fragment() {
@@ -90,31 +89,9 @@ class SignupFragment : Fragment() {
         })
     }
 
-    private fun errorIsNullOrEmpty(editText: String?, textLayout: TextInputLayout, errorItem: String): Boolean{
-        val isError: Boolean
-
-        if(editText.isNullOrEmpty()){
-            textLayout.isErrorEnabled = true
-            textLayout.error = errorItem + "を入力してください"
-            isError = true
-        }else{
-            textLayout.isErrorEnabled = false
-            isError = false
-        }
-
-        return isError
-    }
-
     private fun setError(): Boolean{
         var errors: Boolean
 
-        errors = (
-                errorIsNullOrEmpty(viewModel.displayName.value, binding.inputDisplayName, "表示名") xor
-                        errorIsNullOrEmpty(viewModel.familyName.value, binding.inputFamilyName, "姓") xor
-                        errorIsNullOrEmpty(viewModel.firstName.value, binding.inputFirstName, "名") xor
-                        errorIsNullOrEmpty(viewModel.password.value, binding.inputPassword, "パスワード") xor
-                        errorIsNullOrEmpty(viewModel.mailAddress.value, binding.inputMailAddress, "学籍番号")
-                )
         //パスワード比較
         if(viewModel.comparePassword()){
             binding.inputConfirmPassword.isErrorEnabled = true
@@ -133,6 +110,14 @@ class SignupFragment : Fragment() {
             binding.inputMailAddress.isErrorEnabled = false
         }
 
+        //未入力エラーハンドリング
+        errors = (
+                        viewModel.errorIsNullOrEmpty(viewModel.displayName.value, binding.inputDisplayName, "表示名") xor
+                        viewModel.errorIsNullOrEmpty(viewModel.familyName.value, binding.inputFamilyName, "姓") xor
+                        viewModel.errorIsNullOrEmpty(viewModel.firstName.value, binding.inputFirstName, "名") xor
+                        viewModel.errorIsNullOrEmpty(viewModel.password.value, binding.inputPassword, "パスワード") xor
+                        viewModel.errorIsNullOrEmpty(viewModel.mailAddress.value, binding.inputMailAddress, "学籍番号")
+                )
         return errors
     }
 }
