@@ -1,10 +1,15 @@
 package com.example.funcy_portfolio_android.ui.main
 
+import android.app.SearchManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,10 +27,8 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
-
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
 
@@ -39,6 +42,7 @@ class MainFragment : Fragment() {
         binding.fabRegister.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
         }
+
 
         binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {

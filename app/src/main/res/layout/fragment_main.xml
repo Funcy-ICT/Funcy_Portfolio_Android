@@ -29,6 +29,7 @@
                     android:iconifiedByDefault="false"
                     app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
                     app:searchHintIcon="@null"
+                    android:queryHint="@string/main_search_hint"
                     android:showAsAction="collapseActionView|ifRoom"
                     android:actionViewClass="android.widget.SearchView"
                     >
