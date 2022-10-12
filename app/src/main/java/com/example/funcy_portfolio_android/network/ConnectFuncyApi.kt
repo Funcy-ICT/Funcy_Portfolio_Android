@@ -1,5 +1,5 @@
 
-import com.example.funcy_portfolio_android.ui.main.WorkData
+import com.example.funcy_portfolio_android.model.WorkData
 
 
 import com.squareup.moshi.Moshi
@@ -8,7 +8,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Query
 
 //FuncyAPIサーバーの作品一覧取得URL
 private const val SERVER_URL = "http://192.168.50.252:8080/"

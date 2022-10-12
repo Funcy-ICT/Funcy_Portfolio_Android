@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.databinding.CreateCardBinding
-import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
+import com.example.funcy_portfolio_android.model.WorkData
 
 class CardAdapter:ListAdapter<WorkData, CardAdapter.WorkDataViewHolder>(DiffCallBack){
 

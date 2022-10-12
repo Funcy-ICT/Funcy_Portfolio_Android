@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMypageBinding
 import com.example.funcy_portfolio_android.ui.main.CardAdapter
-import com.example.funcy_portfolio_android.ui.main.WorkData
+import com.example.funcy_portfolio_android.model.WorkData
 
 class MypageFragment : Fragment() {
 

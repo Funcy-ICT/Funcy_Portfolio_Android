@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.main
+package com.example.funcy_portfolio_android.model
 
 import android.accounts.AuthenticatorDescription
 

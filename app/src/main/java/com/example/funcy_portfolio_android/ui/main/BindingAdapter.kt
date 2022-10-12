@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.funcy_portfolio_android.model.WorkData
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<WorkData>?){
