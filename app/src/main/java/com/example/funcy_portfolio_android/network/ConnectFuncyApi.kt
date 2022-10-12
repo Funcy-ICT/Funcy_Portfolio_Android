@@ -1,25 +1,24 @@
 
 import com.example.funcy_portfolio_android.model.WorkData
+import com.google.gson.GsonBuilder
 
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
 
 //FuncyAPIサーバーの作品一覧取得URL
 private const val SERVER_URL = "http://192.168.50.252:8080/"
 
-//Moshiオブジェクトの作成
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
+//gsonオブジェクトの作成
+private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
 
 //Retrofitオブジェクトの作成
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addConverterFactory(gson)
     .baseUrl(SERVER_URL)
     .build()
 
