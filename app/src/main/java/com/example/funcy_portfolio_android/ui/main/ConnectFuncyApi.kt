@@ -11,7 +11,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 //FuncyAPIサーバーの作品一覧取得URL
-private const val SERVER_URL = "http://10.124.58.83:8080/"
+private const val SERVER_URL = "http://192.168.50.252:8080/"
 
 //Moshiオブジェクトの作成
 private val moshi = Moshi.Builder()

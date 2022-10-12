@@ -1,9 +1,11 @@
 package com.example.funcy_portfolio_android.ui.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.funcy_portfolio_android.ui.creationRegister.CreationRegisterBottomSheet.Companion.TAG
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -30,9 +32,11 @@ class MainViewModel : ViewModel(){
             try{
                 _works.value = FuncyApi.retrofitService.getWorks(token)
                 _status.value = FuncyApiStatus.DONE
+                Log.d(TAG, "通信出来たよ")
             } catch (e: Exception){
                 _status.value = FuncyApiStatus.ERROR
                 _works.value = listOf()
+                Log.e(TAG, e.message.toString())
             }
 
         }
