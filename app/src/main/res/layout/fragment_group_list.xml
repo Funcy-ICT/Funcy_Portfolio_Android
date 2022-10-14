@@ -20,7 +20,7 @@
         android:id="@+id/tvAddGroup"
         android:layout_width="wrap_content"
         android:layout_height="78dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="128dp"
         android:clickable="true"
         android:onClick="onClickAddGroup"
         android:text="新しくグループを登録する"
