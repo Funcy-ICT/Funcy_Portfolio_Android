@@ -135,4 +135,7 @@
         <item>複雑系情報科学領域</item>
         <item>知能情報科学領域</item>
     </string-array>
+
+    <!---Signup Fragment-->
+    <string name="comp_registration_message">登録が完了しました</string>
 </resources>

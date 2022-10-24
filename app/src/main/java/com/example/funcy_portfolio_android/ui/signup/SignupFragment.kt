@@ -4,12 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -43,6 +44,7 @@ class SignupFragment : Fragment() {
         binding.buttonSignup.setOnClickListener {
             val grade = binding.spinnerGrade.selectedItem.toString()
             val course = binding.spinnerCourse.selectedItem.toString()
+
             if(!setError()){
                 AlertDialog.Builder(activity)
                     .setTitle("この内容で送信しますか？")
@@ -56,9 +58,9 @@ class SignupFragment : Fragment() {
                 Toast.makeText(context, "入力エラー", Toast.LENGTH_SHORT).show()
             }
 
+            //キーボードの格納
             val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-            binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
         }
 
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
@@ -72,16 +74,27 @@ class SignupFragment : Fragment() {
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status){
                 SignupApiStatus.LOADING -> {
+                    binding.imageDone.visibility = View.GONE
+                    binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
                 SignupApiStatus.DONE -> {
-                    binding.progressDialog.visibility = View.GONE
-                    binding.buttonSignup.visibility = View.VISIBLE
-                    binding.textDialog.text = "完了"
-                    findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+                    binding.textDialog.text = resources.getString(R.string.comp_registration_message)
+                    binding.progressBar.visibility = View.GONE
+                    binding.imageDone.visibility = View.VISIBLE
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            binding.background.visibility = View.GONE
+                            binding.progressDialog.visibility = View.GONE
+                            binding.buttonSignup.visibility = View.VISIBLE
+                            findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+                        }
+                        ,2000
+                    )
                 }
                 SignupApiStatus.ERROR -> {
+                    binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
                     Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()
@@ -91,11 +104,11 @@ class SignupFragment : Fragment() {
     }
 
     private fun setError(): Boolean {
-        var emptyError = false
         var mailError = false
         var passError = false
-        //未入力エラーハンドリング
-        emptyError = (
+
+        //未入力エラーハンドリング，どれか一つでもエラーならエラーに
+        val emptyError = (
                 viewModel.errorIsNullOrEmpty(
                     viewModel.displayName.value,
                     binding.inputDisplayName,
@@ -140,6 +153,8 @@ class SignupFragment : Fragment() {
         } else {
             binding.inputMailAddress.isErrorEnabled = false
         }
+
+
         Log.d("Error", (emptyError or mailError or passError).toString())
         return emptyError or mailError or passError
     }
