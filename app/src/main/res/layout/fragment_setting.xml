@@ -12,7 +12,7 @@
         android:id="@+id/changePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="パスワードを変更する"
+        android:text="@string/set_button"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -59,10 +60,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" >
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,10 +82,11 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" >
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -92,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-24dp"
         android:layout_marginTop="64dp"
-        android:text="確認用のパスワード"
+        android:text="@string/set_confirm_password"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass"
         app:layout_constraintTop_toBottomOf="@+id/editTextNewPass" />
@@ -103,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-24dp"
         android:layout_marginBottom="8dp"
-        android:text="新しいパスワード"
+        android:text="@string/set_new_password"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
         app:layout_constraintStart_toStartOf="@+id/editTextNewPass" />
@@ -114,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-24dp"
         android:layout_marginBottom="8dp"
-        android:text="現在のパスワード"
+        android:text="@string/set_password"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextPresentPass"
         app:layout_constraintStart_toStartOf="@+id/editTextPresentPass" />
