@@ -17,4 +17,5 @@
     <color name="subtext_color">#707F89</color>
     <color name="button_color">#E5E5E5</color>
     <color name="toolbar_color">#F0ECED</color>
+    <color name="nav_bottom_color">#F1ECEE</color>
 </resources>
