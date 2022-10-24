@@ -76,6 +76,7 @@
     <string name ="group_intro">グループ紹介</string>
     <string name ="group_mail_address">代表者のメールアドレス</string>
     <string name ="group_member">メンバー一覧</string>
+    <string name ="group_relatedmember">関わったメンバー</string>
 
     <!--  GroupEditFragment  -->
     <string name ="edit_group_button">保存</string>
