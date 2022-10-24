@@ -24,19 +24,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <!--    TODO:仮置き（戻るボタンを追加する）    -->
                     <ImageButton
                         android:id="@+id/btBack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:contentDescription="@string/toolbar_back"
-                        android:src="@android:drawable/arrow_up_float"
+                        android:src="@drawable/bt_back"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--    TODO:仮置き（アイコンを追加する）    -->
+                    <!--    TODO:仮置き（ユーザーアイコンを追加する）    -->
                     <ImageButton
                         android:id="@+id/btIcon"
                         android:layout_width="wrap_content"
@@ -77,20 +76,18 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".ui.creationRegister.CreationRegisterFragment">
 
             <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/btAddImage"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context=".ui.creationRegister.CreationRegisterFragment">
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -100,28 +97,27 @@
                         android:id="@+id/btAddTag"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/bt_tag_circle"
                         android:contentDescription="@string/creation_add_tag"
                         android:src="@drawable/bt_add_24dp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/flexTag"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
-                    <com.google.android.flexbox.FlexboxLayout
+                    <com.google.android.material.chip.ChipGroup
                         android:id="@+id/flexTag"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        app:singleSelection="true"
                         android:layout_margin="12dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
                         android:layout_marginEnd="8dp"
-                        app:flexWrap="wrap"
+                        android:layout_marginBottom="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btAddTag"
+                        app:layout_constraintStart_toEndOf="@id/tvTag"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
-
-
 
                     <TextView
                         android:id="@+id/tvPublicSetting"
@@ -216,8 +212,11 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvCreationTitle">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCreationTitle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -235,6 +234,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvCreationDesc">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCreationDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -252,8 +252,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etGitHubLink"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -269,25 +271,44 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etYoutubeLink"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:id="@+id/tvAddImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        android:text="@string/creation_add_img"
+                        app:layout_constraintStart_toStartOf="@+id/tvTag"
+                        app:layout_constraintTop_toBottomOf="@id/flexTag" />
+
+                    <ImageButton
+                        android:id="@+id/btAddImage"
+                        android:layout_width="50dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@null"
+                        android:paddingBottom="40dp"
+                        android:src="@drawable/bt_image_24dp"
+                        app:layout_constraintStart_toStartOf="@+id/btAddTag"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rlThumbnail"
+                        android:layout_width="312dp"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btAddImage"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddImage" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
-
-            <ImageButton
-                android:id="@+id/btAddImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:paddingTop="16dp"
-                android:src="@drawable/bt_image_24dp"
-                android:background="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
