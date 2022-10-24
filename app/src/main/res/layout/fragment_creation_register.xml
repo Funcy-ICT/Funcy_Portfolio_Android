@@ -197,7 +197,7 @@
                         android:layout_marginTop="8dp"
                         android:checked="true"
                         android:text="@string/creation_public"
-                        style="@style/ThemeOverlay.App.Switch"
+                        style="@style/SwitchMaterialStyle"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
 

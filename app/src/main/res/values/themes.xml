@@ -20,10 +20,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="ThemeOverlay.App.Switch" parent="">
-        <item name="colorOnSurface">@color/primary_color</item>
-        <item name="colorSurface">@color/sub_color</item>
-        <item name="colorSecondary">@color/toolbar_color</item>
+    <style name="SwitchMaterialStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="useMaterialThemeColors">false</item>
+        <item name="thumbTint">@drawable/switch_thumb_selector</item>
+        <item name="trackTint">@drawable/switch_track_selector</item>
     </style>
 
     <style name="Theme.Funcy_Portfolio_Android.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
