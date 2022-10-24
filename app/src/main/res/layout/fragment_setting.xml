@@ -10,35 +10,47 @@
 
     <Button
         android:id="@+id/changePass"
-        android:layout_width="248dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="パスワードを変更する"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNewPass" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmNewPass" />
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextConfirmNewPass"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/changePass"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNewPass"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmNewPass"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextNewPass"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="496dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,59 +58,65 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextPresentPass"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="64dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNewPass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewConfirmNewPass"
-        android:layout_width="329dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="-18dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-24dp"
+        android:layout_marginTop="64dp"
         android:text="確認用のパスワード"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextConfirmNewPass"
-        app:layout_constraintEnd_toEndOf="@id/editTextConfirmNewPass"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/editTextConfirmNewPass"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNewPass" />
 
     <TextView
         android:id="@+id/textViewNewPass"
-        android:layout_width="329dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-24dp"
         android:layout_marginBottom="8dp"
         android:text="新しいパスワード"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNewPass"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNewPass"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextNewPass" />
 
     <TextView
         android:id="@+id/textViewPresentPass"
-        android:layout_width="329dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="-18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-24dp"
         android:layout_marginBottom="8dp"
         android:text="現在のパスワード"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextPresentPass"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPresentPass"
-        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="@+id/editTextPresentPass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
