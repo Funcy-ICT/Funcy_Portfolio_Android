@@ -10,10 +10,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--color palette pink ver-->
+    <color name="primary_color">#FF90B3</color>
     <color name="sub_color">#FDB3CA</color>
     <color name="secondary_color">#A9DFE2</color>
     <color name="text_color">#3B4043</color>
     <color name="subtext_color">#707F89</color>
     <color name="button_color">#E5E5E5</color>
-
+    <color name="toolbar_color">#F0ECED</color>
+    <color name="nav_bottom_color">#F1ECEE</color>
 </resources>

@@ -22,7 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_baseline_search_24"
-                app:title="Search" />
+                app:title="Search"
+                app:titleTextColor="@color/text_color"
+                android:background="@color/toolbar_color"/>
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -39,18 +41,19 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_detail"
+            android:id="@+id/fab_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:src = "@drawable/ic_baseline_add_24"
+            app:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_register"
+            android:id="@+id/fab_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
