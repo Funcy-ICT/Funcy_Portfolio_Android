@@ -93,12 +93,20 @@
         android:id="@+id/GroupRegisterFragment"
         android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupRegisterFragment"
         android:label="Group Register Fragment"
-        tools:layout="@layout/fragment_group_register" />
+        tools:layout="@layout/fragment_group_register" >
+        <action
+            android:id="@+id/action_GroupRegisterFragment_to_groupCreationRegisterFragment"
+            app:destination="@id/groupCreationRegisterFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/SettingFragment"
         android:name="com.example.funcy_portfolio_android.ui.setting.SettingFragment"
         android:label="Setting Fragment"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/groupCreationRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupCreationRegisterFragment"
+        android:label="GroupCreationRegisterFragment" />
 
 </navigation>

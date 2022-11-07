@@ -11,7 +11,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.*
-import com.example.funcy_portfolio_android.network.CreationDetailNetwork
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
@@ -61,7 +60,7 @@ class CreationDetailViewModel: ViewModel() {
         viewModelScope.launch {
             _creationDetailStatus.value = CreationApiStatus.LOADING
             try {
-                _creation.value = CreationDetailNetwork.creationDetail.getCreationDetail(token, creationId)
+                _creation.value = apiService.service.getCreationDetail(token, creationId)
                 Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
             }catch (e: Exception){

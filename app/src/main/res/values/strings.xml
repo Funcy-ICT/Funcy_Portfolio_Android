@@ -28,13 +28,10 @@
     <string name="creation_error_title_null">タイトルが入力されていません</string>
     <string name="creation_add_img">画像の追加</string>
 
-
     <string name="toolbar_back">戻る</string>
     <string name="toolbar_icon">アイコン</string>
     <string name="toolbar_register">投稿</string>
     <string name="toolbar_draft">下書き</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
 
     <!--  CreationDetailFragment  -->
     <string name="detail_user_name">名前</string>
@@ -76,6 +73,7 @@
     <string name ="group_intro">グループ紹介</string>
     <string name ="group_mail_address">代表者のメールアドレス</string>
     <string name ="group_member">メンバー一覧</string>
+    <string name ="group_relatedmember">関わったメンバー</string>
 
     <!--  GroupEditFragment  -->
     <string name ="edit_group_button">保存</string>
@@ -87,9 +85,10 @@
     <!--  LoginFragment  -->
     <string name ="login_mail_address">メールアドレス</string>
     <string name ="login_password">パスワード</string>
-    <string name ="login_setting">メールアドレス、パスワードを忘れた方はこちら</string>
+    <string name ="login_setting">▶ メールアドレス、パスワードを忘れた方はこちら</string>
     <string name ="login_button">ログイン</string>
     <string name ="login_registration">新規会員登録</string>
+    <string name="login_input">入力してください</string>
 
     <!--  NewRegistrationFragment  -->
     <string name ="registration_public_name">表示名</string>
@@ -135,4 +134,7 @@
         <item>複雑系情報科学領域</item>
         <item>知能情報科学領域</item>
     </string-array>
+
+    <!---Signup Fragment-->
+    <string name="comp_registration_message">登録が完了しました</string>
 </resources>
