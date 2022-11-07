@@ -25,5 +25,8 @@ class GroupRegisterFragment : Fragment() {
         binding.btRegisterGroupCreation.setOnClickListener {
             findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupCreationRegisterFragment)
         }
+        binding.btGroupMypage.setOnClickListener {
+            findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupMypageFragment)
+        }
     }
 }
