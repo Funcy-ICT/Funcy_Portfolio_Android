@@ -7,5 +7,4 @@ data class WorkData(
     val title: String,
     val images: String,
     val icon: String,
-    // val description: String,
 )
