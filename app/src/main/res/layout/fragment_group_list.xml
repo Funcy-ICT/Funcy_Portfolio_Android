@@ -43,14 +43,13 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:background="#CDD6DD"
             android:backgroundTint="#CDD6DD"
             app:layout_constraintBottom_toTopOf="@+id/tvAddGroup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvGroup" />
 
