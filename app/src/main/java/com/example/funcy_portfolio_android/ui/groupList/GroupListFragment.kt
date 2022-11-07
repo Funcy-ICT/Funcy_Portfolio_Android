@@ -25,11 +25,14 @@ class GroupListFragment : Fragment() {
     }
 
     private val groupNames : ArrayList<String> = arrayListOf(
-        "Group Name", "Group Name", "Group Name", "Group Name"
+        "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name",
+        "Group Name", "Group Name"
     )
 
     private val groupIcons : ArrayList<Int> = arrayListOf(
-        R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color
+        R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color,
+        R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color,
+        R.drawable.primary_color, R.drawable.primary_color
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
