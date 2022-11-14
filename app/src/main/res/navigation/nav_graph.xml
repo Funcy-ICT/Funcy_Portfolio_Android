@@ -87,6 +87,9 @@
         <action
             android:id="@+id/action_GroupFragment_to_GroupRegisterFragment"
             app:destination="@id/GroupRegisterFragment" />
+        <action
+            android:id="@+id/action_GroupFragment_to_GroupListFragment"
+            app:destination="@+id/GroupListFragment"/>
     </fragment>
 
     <fragment
@@ -116,5 +119,11 @@
         android:name="com.example.funcy_portfolio_android.ui.mypage.GroupMypageFragment"
         android:label="GroupMypageFragment"
         tools:layout="@layout/fragment_group_mypage"/>
+
+    <fragment
+        android:id="@+id/GroupListFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupList.GroupListFragment"
+        android:label="Group List Fragment"
+        tools:layout="@layout/fragment_group_list"/>
 
 </navigation>

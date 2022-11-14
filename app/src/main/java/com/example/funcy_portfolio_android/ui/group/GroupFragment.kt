@@ -27,5 +27,8 @@ class GroupFragment : Fragment() {
             findNavController().navigate(R.id.action_GroupFragment_to_GroupRegisterFragment)
         }
 
+        binding.button4.setOnClickListener {
+            findNavController().navigate(R.id.action_GroupFragment_to_GroupListFragment)
+        }
     }
 }
