@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentGroupBinding
 import com.example.funcy_portfolio_android.databinding.FragmentGroupRegisterBinding
 
 class GroupRegisterFragment : Fragment() {

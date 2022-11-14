@@ -11,7 +11,7 @@
         android:icon="@drawable/bt_person_bottom"
         android:title="マイページ" />
     <item
-        android:id="@+id/GroupFragment"
+        android:id="@+id/GroupListFragment"
         android:icon="@drawable/bt_group_bottom"
         android:title="グループ" />
     <item

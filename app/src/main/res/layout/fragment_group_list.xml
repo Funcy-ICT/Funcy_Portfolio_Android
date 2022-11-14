@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.funcy_portfolio_android.ui.groupList.GroupListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,16 +24,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvAddGroup"
+        <Button
+            android:id="@+id/btAddGroup"
             android:layout_width="wrap_content"
             android:layout_height="78dp"
             android:layout_marginBottom="128dp"
-            android:clickable="true"
-            android:onClick="onClickAddGroup"
             android:text="@string/group_list_new"
             android:textColor="@color/blue"
-            android:textSize="24sp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
