@@ -45,8 +45,11 @@
     <string name="detail_youtube">動画</string>
 
     <!--  MainFragment  -->
-    <string name="main_toolbar_title">Search</string>
-    <string name ="main_search_hint">Search</string>
+    <string name ="main_search">Search</string>
+    <string name ="main_tab_work">作品</string>
+    <string name ="main_tab_user">ユーザー</string>
+    <string name ="main_tab_group">グループ</string>
+    <string name ="main_result_title">検索結果：</string>
 
     <!--  PersonalFragment  -->
     <string name="personal_username">名前</string>

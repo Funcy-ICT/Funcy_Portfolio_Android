@@ -4,9 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable
+        <!--<variable
             name="mypageViewModel"
             type="com.example.funcy_portfolio_android.ui.mypage.MypageViewModel" />
+            -->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

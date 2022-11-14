@@ -38,17 +38,12 @@ class MainViewModel : ViewModel(){
                 _status.value = FuncyApiStatus.ERROR
                 _works.value = listOf()
                 Log.e(TAG, e.message.toString())
+                Log.d(TAG, "通信できなかったよ")
             }
 
         }
     }
 
-package com.example.funcy_portfolio_android.ui.main
-
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
-class MainViewModel : ViewModel() {
 
     val searchData: MutableLiveData<String> = MutableLiveData()
 
