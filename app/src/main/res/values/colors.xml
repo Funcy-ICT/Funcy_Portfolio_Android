@@ -8,6 +8,8 @@
     <color name="red">#D80404</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0B6ADA</color>
+    <color name="gray">#CDD6DD</color>
 
     <!--color palette pink ver-->
     <color name="sub_color">#FDB3CA</color>
