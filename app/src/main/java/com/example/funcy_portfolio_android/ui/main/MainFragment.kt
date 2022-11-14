@@ -1,6 +1,7 @@
 package com.example.funcy_portfolio_android.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
-
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainFragment : Fragment() {
 
@@ -26,7 +28,6 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.worksGrid.adapter = CardAdapter()
-
         return binding.root
     }
 
@@ -41,16 +42,33 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
         }
 
-
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {
-                // text changed
+                //テキスト変更時
                 return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                // submit button pressed
+                //検索ボタンクリック時
                 return false
+            }
+        })
+
+        /** 検索結果 **/
+        binding.tabIndicator.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                // タブが選択された際に呼ばれる
+                when(tab.position) {
+                    0 -> {Log.i("hoge","作品")}
+                    1 -> {Log.i("hoge","ユーザー")}
+                    2 -> {Log.i("hoge","グループ")}
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                // タブが未選択になった際に呼ばれる
+            }
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                // 同じタブが選択された際に呼ばれる
             }
         })
     }
