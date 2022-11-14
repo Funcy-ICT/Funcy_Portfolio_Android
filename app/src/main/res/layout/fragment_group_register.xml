@@ -184,10 +184,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="直で作品を投稿"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btGroupRegister" />
+
+            <Button
+                android:id="@+id/btGroupMypage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="グループ作品一覧へ"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btRegisterGroupCreation" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
