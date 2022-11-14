@@ -110,6 +110,21 @@
     <string name="set_confirm_password">確認用のパスワード</string>
     <string name="set_button">パスワードを変更する</string>
 
+    <!-- GroupListFragment -->
+    <string name="group_list_new">新しくグループを登録する</string>
+    <string-array name="array_group_list_names">
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+        <item>group Name</item>
+    </string-array>
+
     <string-array name="array_grades">
         <item>B1</item>
         <item>B2</item>
