@@ -6,7 +6,7 @@
     <data>
         <variable
             name="mypageViewModel"
-            type="com.example.funcy_portfolio_android.ui.mypage.MypageViewModel" />
+            type="com.example.funcy_portfolio_android.ui.groupMypage.GroupMypageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

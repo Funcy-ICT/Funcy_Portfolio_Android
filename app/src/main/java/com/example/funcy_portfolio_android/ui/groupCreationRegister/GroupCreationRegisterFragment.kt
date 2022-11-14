@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.groupRegister
+package com.example.funcy_portfolio_android.ui.groupCreationRegister
 
 import android.os.Bundle
 import android.view.LayoutInflater

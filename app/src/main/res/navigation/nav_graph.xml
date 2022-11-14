@@ -80,9 +80,9 @@
 
     <fragment
         android:id="@+id/GroupFragment"
-        android:name="com.example.funcy_portfolio_android.ui.group.GroupFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupList.GroupListFragment"
         android:label="Group Fragment"
-        tools:layout="@layout/fragment_group" >
+        tools:layout="@layout/fragment_group_list" >
 
         <action
             android:id="@+id/action_GroupFragment_to_GroupRegisterFragment"
@@ -109,11 +109,11 @@
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/groupCreationRegisterFragment"
-        android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupCreationRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupCreationRegister.GroupCreationRegisterFragment"
         android:label="GroupCreationRegisterFragment" />
     <fragment
         android:id="@+id/groupMypageFragment"
-        android:name="com.example.funcy_portfolio_android.ui.mypage.GroupMypageFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupMypage.GroupMypageFragment"
         android:label="GroupMypageFragment"
         tools:layout="@layout/fragment_group_mypage"/>
 

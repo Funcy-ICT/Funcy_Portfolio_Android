@@ -5,13 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.funcy_portfolio_android.ui.groupList.GroupListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.group.GroupFragment">
+        tools:context=".ui.groupList.GroupListFragment">
 
         <TextView
             android:id="@+id/textView3"
