@@ -7,7 +7,6 @@
         <variable
             name="viewModel"
             type="com.example.funcy_portfolio_android.ui.main.MainViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +15,6 @@
         tools:context="com.example.funcy_portfolio_android.ui.MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,12 +22,24 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/search_bar"
+                android:id="@+id/toolbar"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_baseline_search_24"
-                app:title="Search" />
+                android:layout_height="?attr/actionBarSize">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:iconifiedByDefault="false"
+                    app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
+                    app:searchHintIcon="@null"
+                    android:queryHint="@string/main_search_hint"
+                    android:showAsAction="collapseActionView|ifRoom"
+                    android:actionViewClass="android.widget.SearchView"
+                    >
+                </androidx.appcompat.widget.SearchView>
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -47,6 +57,16 @@
             app:spanCount="2"
             tools:itemCount="16"
             tools:listitem="@layout/create_card" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="56dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
 
         <ImageView
             android:id="@+id/status_image"
@@ -80,6 +100,7 @@
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
+
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
