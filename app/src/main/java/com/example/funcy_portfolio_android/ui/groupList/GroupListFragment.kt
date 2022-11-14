@@ -24,10 +24,7 @@ class GroupListFragment : Fragment() {
         return binding.root
     }
 
-    private val groupNames : ArrayList<String> = arrayListOf(
-        "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name", "Group Name",
-        "Group Name", "Group Name"
-    )
+    private val groupNames = arrayListOf(*resources.getStringArray(R.array.array_group_list_names))
 
     private val groupIcons : ArrayList<Int> = arrayListOf(
         R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color, R.drawable.primary_color,
