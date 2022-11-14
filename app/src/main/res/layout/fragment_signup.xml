@@ -76,7 +76,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageAccount"
             android:layout_width="0dp"
             android:layout_height="64dp"
