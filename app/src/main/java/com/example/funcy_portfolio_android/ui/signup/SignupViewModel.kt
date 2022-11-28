@@ -1,6 +1,7 @@
 package com.example.funcy_portfolio_android.ui.signup
 
 import android.app.Application
+import android.net.Uri
 import android.util.Log
 import android.widget.AdapterView
 import androidx.databinding.*
@@ -19,6 +20,10 @@ class SignupViewModel: ViewModel() {
     private var _courseResource = MutableLiveData<Array<String>>()
     val courseResource: LiveData<Array<String>> = _courseResource
 
+    private var _icon = MutableLiveData<Uri>()
+    val icon: LiveData<Uri>
+        get() = _icon
+
     fun setCourseId(){
         Log.i("こんにちはスピナーです",selectedItem.value.toString())
         val item = selectedItem.value!!
@@ -31,5 +36,9 @@ class SignupViewModel: ViewModel() {
 
     fun setCourseSource(courses: Array<String>){
         _courseResource.value = courses
+    }
+
+    fun saveImage(icon: Uri) {
+        _icon.value = icon
     }
 }

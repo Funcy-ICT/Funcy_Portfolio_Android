@@ -80,6 +80,8 @@
             android:id="@+id/imageAccount"
             android:layout_width="0dp"
             android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:background="#0000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="1"
