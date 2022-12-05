@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val URL = "http://10.124.58.211:8080/"
+val URL = "http://192.168.3.17:9000/"
 
 val gson = GsonBuilder()
     .serializeNulls()
