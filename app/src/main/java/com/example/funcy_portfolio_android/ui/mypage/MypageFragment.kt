@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMypageBinding
 import com.example.funcy_portfolio_android.ui.main.CardAdapter
 import com.example.funcy_portfolio_android.ui.main.WorkData
+import com.google.android.material.tabs.TabLayout
 
 class MypageFragment : Fragment() {
 
@@ -35,27 +37,25 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonOpenProfile.setOnClickListener{
-            val expandableLayout = binding.expandableProfile
-            expandableLayout.expand()
-            it.visibility = View.GONE
-        }
-        binding.buttonCloseProfile.setOnClickListener {
-            val expandableLayout = binding.expandableProfile
-            expandableLayout.collapse()
-            binding.buttonOpenProfile.visibility = View.VISIBLE
-        }
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                if (tab.text == "プロフィール") {
 
-        binding.buttonOpenSkill.setOnClickListener{
-            val expandableLayout = binding.expandableSkill
-            expandableLayout.expand()
-            it.visibility = View.GONE
-        }
-        binding.buttonCloseSkill.setOnClickListener {
-            val expandableLayout = binding.expandableSkill
-            expandableLayout.collapse()
-            binding.buttonOpenSkill.visibility = View.VISIBLE
-        }
+                } else if (tab.text == "スキル") {
+
+                } else {
+
+                }
+            }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+        })
 
         binding.fabDetail.setOnClickListener {
             findNavController().navigate(R.id.action_MypageFragment_to_CreationRegisterFragment)

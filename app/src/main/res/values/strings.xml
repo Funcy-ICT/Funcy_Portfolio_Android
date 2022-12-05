@@ -52,12 +52,12 @@
     <string name ="personal_profile">プロフィール</string>
     <string name ="personal_skill">スキル</string>
     <string name ="personal_mail_address">メールアドレス</string>
+    <string name="personal_work">作品一覧</string>
 
     <!--  PersonalEditFragment  -->
     <string name ="edit_personal_public_name">表示名</string>
     <string name ="edit_personal_profile">プロフィール</string>
     <string name ="edit_personal_skill">スキル</string>
-
 
     <!--  NewGroupFragment  -->
     <string name ="new_group_status">あなたはグループに所属していません</string>
