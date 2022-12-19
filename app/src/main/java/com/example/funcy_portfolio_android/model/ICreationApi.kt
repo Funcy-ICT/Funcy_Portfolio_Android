@@ -26,9 +26,7 @@ interface ICreationApi {
     //作品検索結果取得
     @GET("search/{word}")
     suspend fun getSearchResult(
-        @Header("token") token: String,
-        @Path("word") searchWord: String,
-        @Query("query") searchScope: String
+        @Header("token") token: String
     ): List<WorkData>
 
 }

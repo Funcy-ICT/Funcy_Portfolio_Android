@@ -6,9 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.WorkData
-import com.example.funcy_portfolio_android.model.apiService
-import com.example.funcy_portfolio_android.ui.creationRegister.CreationRegisterBottomSheet.Companion.TAG
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 /*FUNCYサーバーとの接続を確認するステータスを定義*/
@@ -32,6 +33,10 @@ class MainViewModel : ViewModel(){
     private val _query = MutableLiveData<String>()
     val query: LiveData<String> = _query
 
+    //検索アラート用
+    private val _searchFlag = MutableLiveData<Boolean>()
+    val searchFlag: LiveData<Boolean> = _searchFlag
+
     init{
         getWorks("Token1")
         getTags("Token1")
@@ -44,7 +49,6 @@ class MainViewModel : ViewModel(){
                 _works.value = FuncyApi.retrofitService.getWorks(token)
                 _status.value = FuncyApiStatus.DONE
                 Log.d(TAG, "通信出来たよ")
-               // _works.value = addArray(_works.value!![0])  // 仮置き
             } catch (e: Exception){
                 _status.value = FuncyApiStatus.ERROR
                 _works.value = listOf()
@@ -59,24 +63,24 @@ class MainViewModel : ViewModel(){
         _tags.value = listOf("C", "Java", "COBOL", "Swift", "Kotlin", "bar", "foo","hoge", "piyo")
     }
 
-    val searchData: MutableLiveData<String> = MutableLiveData()
+
     // 虫眼鏡タップ時BindingAdapter内でコールされる
-    fun search(word: String) {
-        // バリデートされた文字列をMainActivityにPostする
-        //searchData.postValue(query)
+    fun search(word: String, page: Int) {
         _query.value = word
-        try{
-            //_works.value = apiService.service.getSearchResult(_query.value!!)
-            Log.d(TAG, "検索出来たよ")
-        } catch (e: Exception){
-            _status.value = FuncyApiStatus.ERROR
-            Log.e(TAG, e.message.toString())
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                /*ToDo: モックでき次第いい感じにする*/
+//                _works.value = apiService.service.getSearchResult(_query.value!!)
+                _searchFlag.postValue(true)
+            }
+            if(_works.value == null || _works.value!!.isEmpty()) {
+                _searchFlag.postValue(false)
+            }
         }
+
     }
 
-
-    /**仮配列の作成 */
-    private fun addArray(work: WorkData): List<WorkData> {
-        return listOf<WorkData>(work, work, work, work)
+    companion object {
+        const val TAG = "Main"
     }
 }

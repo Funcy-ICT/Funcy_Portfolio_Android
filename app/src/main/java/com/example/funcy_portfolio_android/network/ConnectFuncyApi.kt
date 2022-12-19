@@ -1,6 +1,7 @@
 
 import com.example.funcy_portfolio_android.model.WorkData
 import com.google.gson.GsonBuilder
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -23,7 +24,7 @@ interface ConnectFuncyApi{
     @GET("works/10") // 取得する作品数
     suspend fun getWorks(
         @Header("token") token:String
-    ):List<WorkData>
+    ): List<WorkData>
 }
 
 object FuncyApi{
