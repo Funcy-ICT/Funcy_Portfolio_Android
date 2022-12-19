@@ -9,7 +9,7 @@ import java.io.IOException
 
 class Repository{
     /* （本物のサーバができるまで）自分のPCのローカルipアドレスにする */
-    val URL = "http://10.124.56.135:8080/"
+    val URL = "http://10.124.58.146:8003/"
 
     val gson = GsonBuilder()
         .serializeNulls()

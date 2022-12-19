@@ -3,7 +3,6 @@ package com.example.funcy_portfolio_android.model
 import retrofit2.Call
 import retrofit2.http.*
 
-
 interface ICreationApi {
     /* 作品の投稿（個人） */
     @Headers("token:Token1")
@@ -23,4 +22,13 @@ interface ICreationApi {
         @Header("token") token: String,
         @Body signupData : SignupData
     ): SignupData
+
+    //作品検索結果取得
+    @GET("search/{word}")
+    suspend fun getSearchResult(
+        @Header("token") token: String,
+        @Path("word") searchWord: String,
+        @Query("query") searchScope: String
+    ): List<WorkData>
+
 }

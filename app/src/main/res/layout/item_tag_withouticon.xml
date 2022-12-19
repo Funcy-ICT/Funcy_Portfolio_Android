@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTag"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:textColor="@color/black"
+            android:checkable="false"
+            android:clickable="true"
+            app:closeIconEnabled="false"
+            app:chipIconEnabled="false"
+            app:rippleColor="@android:color/transparent"
+            app:chipStrokeColor = "#8E8E8E"
+            app:chipStrokeWidth = "1dp"
+            app:chipBackgroundColor = "@color/white"
+            app:closeIconTint = "#707F89"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-8dp"/>
+
+    </LinearLayout>
+
+</layout>

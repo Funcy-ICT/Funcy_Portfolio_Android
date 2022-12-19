@@ -31,13 +31,19 @@
                     android:id="@+id/searchBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:iconifiedByDefault="false"
-                    app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
+                    android:background="@drawable/search_view_background"
+                    app:iconifiedByDefault="false"
+                    app:closeIcon="@drawable/ic_baseline_cancel_24"
                     app:searchHintIcon="@null"
-                    android:queryHint="@string/main_search"
+                    app:searchIcon="@drawable/ic_baseline_search_24"
+                    app:queryHint="@string/main_search"
                     android:showAsAction="collapseActionView|ifRoom"
                     android:actionViewClass="android.widget.SearchView"
+
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
                     >
                 </androidx.appcompat.widget.SearchView>
             </androidx.appcompat.widget.Toolbar>
@@ -52,11 +58,23 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:text="@string/main_result_title"
-            android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-            <com.google.android.material.tabs.TabLayout
+        <TextView
+            android:id="@+id/tvSearchWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@{viewModel.query}"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/tvResultTitle"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabIndicator"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -81,6 +99,19 @@
                     android:text="@string/main_tab_group" />
             </com.google.android.material.tabs.TabLayout>
 
+            <HorizontalScrollView
+                android:id="@+id/scrollTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tabIndicator"
+                android:scrollbars="none">
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true" />
+            </HorizontalScrollView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/works_grid"
                 android:layout_width="0dp"
@@ -91,7 +122,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabIndicator"
+                app:layout_constraintTop_toBottomOf="@+id/scrollTag"
                 app:listData="@{viewModel.works}"
                 app:spanCount="2"
                 tools:itemCount="16"

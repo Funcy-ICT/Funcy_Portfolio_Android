@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMainBinding
+import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import com.example.funcy_portfolio_android.databinding.ItemTagWithouticonBinding
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class MainFragment : Fragment() {
 
@@ -50,18 +52,40 @@ class MainFragment : Fragment() {
 
             override fun onQueryTextSubmit(query: String): Boolean {
                 //検索ボタンクリック時
+                viewModel.search(query)
+                binding.tvResultTitle.visibility = View.VISIBLE
+                binding.tvSearchWord.visibility = View.VISIBLE
                 return false
             }
         })
 
+
         /** 検索結果 **/
+//        val itemTagBinding = DataBindingUtil.inflate<ItemTagWithouticonBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag_withouticon, binding.chipTag, true)
+//        viewModel.setTags(itemTagBinding)
+
+        //10件chipを作成
+        for (i in if(viewModel.tags.value!!.size<9){viewModel.tags.value!!.indices}else{0..7}) {
+            val tagBinding = DataBindingUtil.inflate<ItemTagWithouticonBinding>(LayoutInflater.from(requireContext()), R.layout.item_tag_withouticon, binding.chipTag, true)
+            tagBinding.chipTag.text = viewModel.tags.value!![i]
+            tagBinding.chipTag.setOnClickListener {
+                /** クリック時の検索処理 **/
+            }
+        }
+
         binding.tabIndicator.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 // タブが選択された際に呼ばれる
                 when(tab.position) {
-                    0 -> {Log.i("hoge","作品")}
-                    1 -> {Log.i("hoge","ユーザー")}
-                    2 -> {Log.i("hoge","グループ")}
+                    0 -> {
+                        Log.i("hoge","作品")
+                    }
+                    1 -> {
+                        Log.i("hoge","ユーザー")
+                    }
+                    2 -> {
+                        Log.i("hoge","グループ")
+                    }
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -73,69 +97,3 @@ class MainFragment : Fragment() {
         })
     }
 }
-
-
-    /*
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        // Menuの設定
-        inflater.inflate(R.menu.search, menu)
-
-        // app:actionViewClass="android.support.v7.widget.SearchView"のItemの取得
-        val menuItem: MenuItem = menu.findItem(R.id.search_menu_search_view)
-        /**
-         * API level 11以上の場合はこっちを使う
-         *
-         * this.searchView = (SearchView)menuItem.getActionView();
-         */
-
-        // ActionViewの取得
-        this.searchView = MenuItemCompat.getActionView(menuItem) as SearchView
-
-        // 虫眼鏡アイコンを最初表示するかの設定
-        this.searchView.setIconifiedByDefault(true)
-
-        // Submitボタンを表示するかどうか
-        this.searchView.setSubmitButtonEnabled(false)
-        if (!this.searchWord.equals("")) {
-            // TextView.setTextみたいなもの
-            this.searchView.setQuery(this.searchWord, false)
-        } else {
-            val queryHint: String =
-                self.getResources().getString(R.string.search_menu_query_hint_text)
-            // placeholderみたいなもの
-            this.searchView.setQueryHint(queryHint)
-        }
-        this.searchView.setOnQueryTextListener(self.onQueryTextListener)
-    }
-
-    private val onQueryTextListener: SearchView.OnQueryTextListener =
-        object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(searchWord: String): Boolean {
-                // SubmitボタンorEnterKeyを押されたら呼び出されるメソッド
-                return self.setSearchWord(searchWord)
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                // 入力される度に呼び出される
-                return false
-            }
-        }
-
-    private fun setSearchWord(searchWord: String?): Boolean {
-        val actionBar: ActionBar = (this.activity as ActionBarActivity?).getSupportActionBar()
-        actionBar.setTitle(searchWord)
-        actionBar.setDisplayShowTitleEnabled(true)
-        if (searchWord != null && searchWord != "") {
-            // searchWordがあることを確認
-            searchWord = searchWord
-        }
-        // 虫眼鏡アイコンを隠す
-        this.searchView.setIconified(false)
-        // SearchViewを隠す
-        this.searchView.onActionViewCollapsed()
-        // Focusを外す
-        this.searchView.clearFocus()
-        return false
-    }
-*/
