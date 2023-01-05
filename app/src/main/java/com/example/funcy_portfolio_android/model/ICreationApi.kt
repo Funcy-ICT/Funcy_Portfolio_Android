@@ -1,6 +1,7 @@
 package com.example.funcy_portfolio_android.model
 
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -22,5 +23,5 @@ interface ICreationApi {
     suspend fun sendUserRegistration(
         @Header("token") token: String,
         @Body signupData : SignupData
-    ): SignupData
+    ): Response<SignupData>
 }
