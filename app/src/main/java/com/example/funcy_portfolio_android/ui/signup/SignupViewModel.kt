@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 
 
-enum class SignupApiStatus{LOADING, ERROR, DONE}
+enum class SignupApiStatus{ LOADING, ERROR, DONE, INIT }
 
 class SignupViewModel: ViewModel() {
     val selectedItem = MutableLiveData<Int>()
@@ -32,7 +32,7 @@ class SignupViewModel: ViewModel() {
 
     private val checkMailPattern = Regex("^(b|g)([0-9]{7})")
 
-    private val _signupStatus = MutableLiveData<SignupApiStatus>()
+    private val _signupStatus = MutableLiveData<SignupApiStatus>(SignupApiStatus.INIT)
     val signupStatus: LiveData<SignupApiStatus> = _signupStatus
 
     fun setCourseId(){
@@ -54,11 +54,11 @@ class SignupViewModel: ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                apiService.service.sendUserRegistration(
+                val data = apiService.service.sendUserRegistration(
                     token,
-                    SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon",sendMailAddress,password.value!!)
+                    SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon", sendMailAddress, password.value!!)
                 )
-                Log.d("SignUp", "送信成功")
+                Log.d("SignUp", "送信成功 : ${data}")
                 _signupStatus.value = SignupApiStatus.DONE
             }catch (e: Exception){
                 Log.d("SignUp", "エラー$e")
