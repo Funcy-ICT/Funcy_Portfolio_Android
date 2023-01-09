@@ -33,6 +33,9 @@ class AuthenticationFragment: Fragment() {
 
         binding.buttonUserID.setOnClickListener {
             val userId = userIdPref.readPrefUserId()
+            if (userId != null) {
+                viewModel.sendAuthCode(userId)
+            }
             Toast.makeText(context, userId, Toast.LENGTH_LONG).show()
         }
     }
