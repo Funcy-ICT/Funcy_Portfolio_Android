@@ -10,6 +10,7 @@ import com.example.funcy_portfolio_android.model.SignupData
 import com.example.funcy_portfolio_android.model.apiService
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 
 enum class SignupApiStatus{ LOADING, ERROR, DONE, INIT }
@@ -62,7 +63,7 @@ class SignupViewModel: ViewModel() {
                 ).body()?.userID
                 Log.d("SignUp", "送信成功 : ${_userId.value}")
                 _signupStatus.value = SignupApiStatus.DONE
-            }catch (e: Exception){
+            }catch (e: HttpException){
                 Log.d("SignUp", "エラー$e")
                 _signupStatus.value = SignupApiStatus.ERROR
             }
