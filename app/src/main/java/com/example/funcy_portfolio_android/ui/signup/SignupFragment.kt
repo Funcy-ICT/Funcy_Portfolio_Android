@@ -27,6 +27,8 @@ class SignupFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
     private val viewModel by viewModels<SignupViewModel>()
 
+    private val USER_ID = "userID"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -91,7 +93,7 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            userIdPref.savePrefUserId(viewModel.userId.value.toString())
+                            userIdPref.savePrefUserId(USER_ID, viewModel.userId.value.toString())
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
                         }
                         ,2000
