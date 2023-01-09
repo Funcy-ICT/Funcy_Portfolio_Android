@@ -13,17 +13,17 @@ class UserIdSavePref(
 
     private lateinit var sharedPreferences: SharedPreferences
 
-    fun savePrefUserId(userId: String){
+    fun savePrefUserId(key: String, value: String){
         sharedPreferences = context.getSharedPreferences(KEY_USER_DATA, Context.MODE_PRIVATE)
         val prefEditor = sharedPreferences.edit().apply {
-            putString("userId", userId)
+            putString(key, value)
             apply()
         }
     }
 
-    fun readPrefUserId() : String? {
+    fun readPrefUserId(key: String) : String? {
         val defValue: String? = null
         sharedPreferences = context.getSharedPreferences(KEY_USER_DATA, Context.MODE_PRIVATE)
-        return sharedPreferences.getString("userId", defValue)
+        return sharedPreferences.getString(key, defValue)
     }
 }
