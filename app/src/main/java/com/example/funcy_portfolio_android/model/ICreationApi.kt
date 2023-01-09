@@ -21,7 +21,11 @@ interface ICreationApi {
     //登録データ送信
     @POST("sign/up")
     suspend fun sendUserRegistration(
-        @Header("token") token: String,
-        @Body signupData : SignupData
-    ): Response<SignupData>
+        @Body signupData : SignupData,
+    ): Response<UserIdData>
+
+    @POST("auth/code")
+    suspend fun sendAuthCode(
+        @Body authData: AuthData
+    ): Response<Void>
 }
