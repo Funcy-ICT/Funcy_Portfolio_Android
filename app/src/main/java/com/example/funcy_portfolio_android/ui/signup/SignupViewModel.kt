@@ -23,6 +23,9 @@ class SignupViewModel: ViewModel() {
     private var _courseResource = MutableLiveData<Array<String>>()
     val courseResource: LiveData<Array<String>> = _courseResource
 
+    private var _userId = MutableLiveData<String>("userId")
+    val userId: LiveData<String> = _userId
+
     val displayName = MutableLiveData<String>()
     val familyName = MutableLiveData<String>()
     val firstName = MutableLiveData<String>()
@@ -54,11 +57,10 @@ class SignupViewModel: ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                val data = apiService.service.sendUserRegistration(
-                    token,
+                _userId.value = apiService.service.sendUserRegistration(
                     SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon", sendMailAddress, password.value!!)
-                )
-                Log.d("SignUp", "送信成功 : ${data}")
+                ).body()?.userID
+                Log.d("SignUp", "送信成功 : ${_userId.value}")
                 _signupStatus.value = SignupApiStatus.DONE
             }catch (e: Exception){
                 Log.d("SignUp", "エラー$e")

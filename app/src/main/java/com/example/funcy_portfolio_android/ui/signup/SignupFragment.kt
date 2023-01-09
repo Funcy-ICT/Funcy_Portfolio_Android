@@ -91,7 +91,7 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            userIdPref.savePrefUserId("userIDです")
+                            userIdPref.savePrefUserId(viewModel.userId.value.toString())
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
                         }
                         ,2000
