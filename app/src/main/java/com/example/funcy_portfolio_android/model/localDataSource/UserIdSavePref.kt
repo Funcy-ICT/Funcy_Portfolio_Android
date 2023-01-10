@@ -3,6 +3,10 @@ package com.example.funcy_portfolio_android.model.localDataSource
 import android.content.Context
 import android.content.SharedPreferences
 
+enum class Keys {
+    USERID,
+}
+
 class UserIdSavePref(
     private val context: Context
 ) {
