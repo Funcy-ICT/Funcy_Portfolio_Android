@@ -19,6 +19,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
+import com.example.funcy_portfolio_android.model.localDataSource.Keys
 import com.example.funcy_portfolio_android.model.localDataSource.UserIdSavePref
 
 
@@ -26,8 +27,6 @@ class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
     private val viewModel by viewModels<SignupViewModel>()
-
-    private val USER_ID = "userID"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,7 +92,7 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            userIdPref.savePrefUserId(USER_ID, viewModel.userId.value.toString())
+                            userIdPref.savePrefUserId(Keys.USERID.name, viewModel.userId.value.toString())
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
                         }
                         ,2000
