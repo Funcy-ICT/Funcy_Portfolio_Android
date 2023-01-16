@@ -42,6 +42,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
             <!--    TODO:テキストの文字をstrings.xmlに追加    -->
@@ -69,8 +71,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupName">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -105,6 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupDesc">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupDiscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -141,8 +146,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupLeaderAddress">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupMailAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView

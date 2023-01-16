@@ -11,11 +11,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="8dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         tools:context=".ui.signup.SignupFragment">
 
 
@@ -71,8 +76,10 @@
             app:layout_constraintTop_toTopOf="@id/textPublicName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPublicName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,8 +124,10 @@
             app:layout_constraintTop_toBottomOf="@id/inputPublicName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFamilyName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,8 +160,10 @@
             app:layout_constraintTop_toBottomOf="@id/inputFamilyName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,6 +190,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="b10xxxxxx"
@@ -208,9 +220,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -236,6 +249,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />

@@ -8,8 +8,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".ui.login.LoginFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -32,9 +35,9 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
-            android:hint="入力してください"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:hint="入力してください"
             app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +46,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +103,8 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:focusable="true"
-                android:focusableInTouchMode="true"/>
+                android:focusableInTouchMode="true"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

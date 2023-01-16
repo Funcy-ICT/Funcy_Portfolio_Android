@@ -1,12 +1,16 @@
 package com.example.funcy_portfolio_android.ui.creationRegister
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -118,5 +122,52 @@ class CreationRegisterFragment : Fragment() {
         binding.btAddImage.setOnClickListener {
             image_launchar.launch(arrayOf("image/*"))
         }
+
+        //フォーカスが外れたとき→別の場所おしたときキーボード隠す
+        binding.etCreationTitle.setOnFocusChangeListener { _, hasFocus ->
+            if(!hasFocus)showoffKeyboard()
+        }
+        binding.etCreationDescription.setOnFocusChangeListener { _, hasFocus ->
+            if(!hasFocus)showoffKeyboard()
+        }
+        binding.etGitHubLink.setOnFocusChangeListener { _, hasFocus ->
+            if(!hasFocus)showoffKeyboard()
+        }
+        binding.etYoutubeLink.setOnFocusChangeListener { _, hasFocus ->
+            if(!hasFocus)showoffKeyboard()
+        }
+
+        //Enterキー押したときキーボード隠す
+        binding.etCreationTitle.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i,keyEvent)
+        }
+        binding.etGitHubLink.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i,keyEvent)
+        }
+        binding.etYoutubeLink.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i,keyEvent)
+        }
+    }
+
+    private fun getActions(i:Int,keyEvent: KeyEvent?):Boolean{
+        if( i== EditorInfo.IME_ACTION_SEARCH||
+            i== EditorInfo.IME_ACTION_DONE||
+            keyEvent!=null&&
+            keyEvent.action == KeyEvent.ACTION_DOWN&&
+            keyEvent.keyCode== KeyEvent.KEYCODE_ENTER){
+            if(keyEvent==null||!keyEvent.isShiftPressed){
+                binding.root.requestFocus()
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }
+
+    private fun showoffKeyboard(){
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

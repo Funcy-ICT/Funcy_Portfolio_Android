@@ -110,7 +110,8 @@
     <fragment
         android:id="@+id/groupCreationRegisterFragment"
         android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupCreationRegisterFragment"
-        android:label="GroupCreationRegisterFragment" />
+        android:label="GroupCreationRegisterFragment"
+        tools:layout="@layout/fragment_group_creation_register"/>
     <fragment
         android:id="@+id/groupMypageFragment"
         android:name="com.example.funcy_portfolio_android.ui.mypage.GroupMypageFragment"
