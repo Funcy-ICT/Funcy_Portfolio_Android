@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.AuthData
 import com.example.funcy_portfolio_android.model.apiService
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class AuthenticationViewModel: ViewModel() {
     val inputCode = MutableLiveData<String>()
@@ -17,15 +18,24 @@ class AuthenticationViewModel: ViewModel() {
 
     fun sendAuthCode(userId: String){
         viewModelScope.launch {
-            val response = apiService.service.sendAuthCode(
-                AuthData(inputCode.value!!, userId)
-            )
-            if(response.isSuccessful){
-                Log.d("Authentication", "認証が完了しました")
-                _authStatus.value = AuthApiStatus.SUCCESS
+            try{
+                val response = apiService.service.sendAuthCode(
+                    AuthData(inputCode.value!!, userId)
+                )
+                if(response.isSuccessful){
+                    Log.i("Authentication", "認証が完了しました${response.message()}")
+                    _authStatus.value = AuthApiStatus.SUCCESS
 
-            }else {
-                Log.d("Authentication", "認証エラー$response")
+                }else {
+                    Log.i("Authentication", "認証エラー${response.message()}")
+                    _authStatus.value = AuthApiStatus.FAILURE
+                }
+            }catch (e: HttpException){
+                Log.i("Authentication", "通信エラー$e")
+                _authStatus.value = AuthApiStatus.FAILURE
+
+            }catch (e: Throwable){
+                Log.i("Authentication", "エラー$e")
                 _authStatus.value = AuthApiStatus.FAILURE
             }
         }
