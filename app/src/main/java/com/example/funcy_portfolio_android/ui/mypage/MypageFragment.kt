@@ -37,26 +37,6 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                if (tab.text == "プロフィール") {
-
-                } else if (tab.text == "スキル") {
-
-                } else {
-
-                }
-            }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
-        })
-
         binding.fabDetail.setOnClickListener {
             findNavController().navigate(R.id.action_MypageFragment_to_CreationRegisterFragment)
         }
