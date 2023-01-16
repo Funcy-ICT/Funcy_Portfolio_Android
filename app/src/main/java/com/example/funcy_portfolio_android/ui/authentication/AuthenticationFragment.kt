@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentAuthenticationBinding
 import com.example.funcy_portfolio_android.model.localDataSource.Keys
-import com.example.funcy_portfolio_android.model.localDataSource.UserIdSavePref
+import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
 
 enum class AuthApiStatus{ INIT, LOADING, SUCCESS, FAILURE}
 
@@ -33,7 +33,7 @@ class AuthenticationFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val userIdPref = UserIdSavePref(requireActivity())
+        val sharedPref = SharedPref(requireActivity())
 
         viewModel.authStatus.observe(viewLifecycleOwner) { status ->
             when (status) {
@@ -48,7 +48,7 @@ class AuthenticationFragment: Fragment() {
         }
 
         binding.buttonUserID.setOnClickListener {
-            val userId = userIdPref.readPrefUserId(Keys.USERID.name)
+            val userId = sharedPref.readSharedPref(Keys.USERID.name)
             if (userId != null) {
                 viewModel.sendAuthCode(userId)
             }

@@ -20,7 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
 import com.example.funcy_portfolio_android.model.localDataSource.Keys
-import com.example.funcy_portfolio_android.model.localDataSource.UserIdSavePref
+import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
 
 
 class SignupFragment : Fragment() {
@@ -75,7 +75,7 @@ class SignupFragment : Fragment() {
         })
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
-            val userIdPref = UserIdSavePref(requireActivity())
+            val sharedPref = SharedPref(requireActivity())
             when(status){
                 SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
@@ -92,7 +92,7 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            userIdPref.savePrefUserId(Keys.USERID.name, viewModel.userId.value.toString())
+                            sharedPref.saveSharedPrefString(Keys.USERID.name, viewModel.userId.value.toString())
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
                         }
                         ,2000

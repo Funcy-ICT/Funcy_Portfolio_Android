@@ -7,7 +7,7 @@ enum class Keys {
     USERID,
 }
 
-class UserIdSavePref(
+class SharedPref(
     private val context: Context
 ) {
 
@@ -17,7 +17,7 @@ class UserIdSavePref(
 
     private lateinit var sharedPreferences: SharedPreferences
 
-    fun savePrefUserId(key: String, value: String){
+    fun saveSharedPrefString(key: String, value: String){
         sharedPreferences = context.getSharedPreferences(KEY_USER_DATA, Context.MODE_PRIVATE)
         val prefEditor = sharedPreferences.edit().apply {
             putString(key, value)
@@ -25,7 +25,7 @@ class UserIdSavePref(
         }
     }
 
-    fun readPrefUserId(key: String) : String? {
+    fun readSharedPref(key: String) : String? {
         val defValue: String? = null
         sharedPreferences = context.getSharedPreferences(KEY_USER_DATA, Context.MODE_PRIVATE)
         return sharedPreferences.getString(key, defValue)
