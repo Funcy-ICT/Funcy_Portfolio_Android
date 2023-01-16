@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 
-enum class SignupApiStatus{ LOADING, ERROR, DONE, INIT }
+enum class SignupApiStatus{ LOADING, FAILURE, SUCCESS, INIT }
 
 class SignupViewModel: ViewModel() {
     val selectedItem = MutableLiveData<Int>()
@@ -58,14 +58,23 @@ class SignupViewModel: ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                _userId.value = apiService.service.sendUserRegistration(
+                val res = apiService.service.sendUserRegistration(
                     SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon", sendMailAddress, password.value!!)
-                ).body()?.userID
-                Log.d("SignUp", "送信成功 : ${_userId.value}")
-                _signupStatus.value = SignupApiStatus.DONE
+                )
+                if(res.isSuccessful){
+                    _userId.value = res.body()?.userID
+                    Log.d("SignUp", "送信成功 : ${res.message()}")
+                    _signupStatus.value = SignupApiStatus.SUCCESS
+                }else{
+                    Log.d("SignUp", "エラー: ${res.message()}")
+                    _signupStatus.value = SignupApiStatus.FAILURE
+                }
             }catch (e: HttpException){
+                Log.d("SignUp", "通信エラー$e")
+                _signupStatus.value = SignupApiStatus.FAILURE
+            }catch (e: Throwable){
                 Log.d("SignUp", "エラー$e")
-                _signupStatus.value = SignupApiStatus.ERROR
+                _signupStatus.value = SignupApiStatus.FAILURE
             }
         }
     }

@@ -83,7 +83,7 @@ class SignupFragment : Fragment() {
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
-                SignupApiStatus.DONE -> {
+                SignupApiStatus.SUCCESS -> {
                     binding.textDialog.text = resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
@@ -98,11 +98,11 @@ class SignupFragment : Fragment() {
                         ,2000
                     )
                 }
-                SignupApiStatus.ERROR -> {
+                SignupApiStatus.FAILURE -> {
                     binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
-                    Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"エラー", Toast.LENGTH_SHORT).show()
                 }
             }
         })
