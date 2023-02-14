@@ -45,22 +45,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topConstraint">
 
+            <ImageView
+                android:id="@+id/imageMail"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_marginTop="48dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_mail_outline" />
+
             <TextView
                 android:id="@+id/text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:text="認証コードを入力してください"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/message_send_mail"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/imageMail" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputDisplayName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:ems="10"
+                android:hint="@string/input_code"
                 android:paddingVertical="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,20 +88,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:inputType="number"
-                    android:text="@={viewModel.inputCode}" />
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textNotReceive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/message_not_receive"
+                app:layout_constraintEnd_toEndOf="@+id/inputDisplayName"
+                app:layout_constraintStart_toStartOf="@+id/inputDisplayName"
+                app:layout_constraintTop_toBottomOf="@id/inputDisplayName" />
 
             <Button
                 android:id="@+id/buttonUserID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="7dp"
-                android:text="UERIDREAD"
+                android:layout_marginTop="24dp"
+                android:text="@string/button_send_code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputDisplayName" />
+                app:layout_constraintTop_toBottomOf="@+id/textNotReceive" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
