@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TableLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -59,7 +60,7 @@ class MypageFragment : Fragment() {
         recyclerView.adapter = CardAdapter(Worklist)
         recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
 
-
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
     }
 
 }
