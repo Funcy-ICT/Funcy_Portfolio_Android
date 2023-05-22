@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.groupRegister
+package com.example.funcy_portfolio_android.ui.groupCreationRegister
 
 import android.content.Context
 import android.os.Bundle

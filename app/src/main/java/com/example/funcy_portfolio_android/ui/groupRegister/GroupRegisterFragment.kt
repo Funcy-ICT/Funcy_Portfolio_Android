@@ -11,7 +11,6 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentGroupBinding
 import com.example.funcy_portfolio_android.databinding.FragmentGroupRegisterBinding
 
 class GroupRegisterFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.mypage
+package com.example.funcy_portfolio_android.ui.groupMypage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentGroupMypageBinding
-import com.example.funcy_portfolio_android.ui.main.CardAdapter
-import com.example.funcy_portfolio_android.ui.main.WorkData
+import com.example.funcy_portfolio_android.model.WorkData
 
 class GroupMypageFragment : Fragment() {
 
@@ -45,7 +44,7 @@ class GroupMypageFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvGroupCreationList)
 
-        recyclerView.adapter = CardAdapter(Worklist)
+        recyclerView.adapter = CardAdapterBefore(Worklist)
         recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
     }
 }
