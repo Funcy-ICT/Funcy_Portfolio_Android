@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class AuthenticationViewModel: ViewModel() {
-    val inputCode = MutableLiveData<String>()
+    val inputCode = MutableLiveData<String>("")
 
     private val _authStatus = MutableLiveData<AuthApiStatus>(AuthApiStatus.INIT)
     val authStatus: LiveData<AuthApiStatus> = _authStatus
