@@ -16,6 +16,8 @@ class AuthenticationViewModel: ViewModel() {
     private val _authStatus = MutableLiveData<AuthApiStatus>(AuthApiStatus.INIT)
     val authStatus: LiveData<AuthApiStatus> = _authStatus
 
+    val text = MutableLiveData<String>("")
+
     fun sendAuthCode(userId: String){
         viewModelScope.launch {
             try{
@@ -23,7 +25,7 @@ class AuthenticationViewModel: ViewModel() {
                     AuthData(inputCode.value!!, userId)
                 )
                 if(response.isSuccessful){
-                    Log.i("Authentication", "認証が完了しました${response.message()}")
+                    Log.i("Authentication", "認証が完了しました${response.body()}")
                     _authStatus.value = AuthApiStatus.SUCCESS
 
                 }else {

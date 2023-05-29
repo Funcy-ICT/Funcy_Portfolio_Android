@@ -104,6 +104,8 @@ class SignupFragment : Fragment() {
                     binding.buttonSignup.visibility = View.VISIBLE
                     Toast.makeText(context,"エラー", Toast.LENGTH_SHORT).show()
                 }
+                SignupApiStatus.INIT -> {}
+                else -> {}
             }
         })
     }

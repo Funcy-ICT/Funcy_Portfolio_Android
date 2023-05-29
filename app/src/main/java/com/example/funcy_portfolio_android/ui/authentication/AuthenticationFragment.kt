@@ -1,6 +1,8 @@
 package com.example.funcy_portfolio_android.ui.authentication
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,16 +40,33 @@ class AuthenticationFragment: Fragment() {
         viewModel.authStatus.observe(viewLifecycleOwner) { status ->
             when (status) {
                 AuthApiStatus.SUCCESS -> {
-                    findNavController().navigate(R.id.action_authenticationFragment_to_MainFragment)
+                    viewModel.text.value = getString(R.string.comp_registration_message)
+                    binding.buttonSendAuthCode.visibility = View.GONE
+                    binding.textNotReceive.visibility = View.GONE
+                    binding.inputDisplayName.visibility = View.GONE
+
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            findNavController().navigate(R.id.action_authenticationFragment_to_MainFragment)
+                        }
+                        ,2000
+                    )
                 }
                 AuthApiStatus.FAILURE -> {
                     Toast.makeText(context, "コードが間違っています", Toast.LENGTH_LONG).show()
                 }
                 AuthApiStatus.LOADING -> {}
+                AuthApiStatus.INIT -> {
+                    viewModel.text.value = getString(R.string.message_send_mail)
+                    binding.buttonSendAuthCode.visibility = View.VISIBLE
+                    binding.textNotReceive.visibility = View.VISIBLE
+                    binding.inputDisplayName.visibility = View.VISIBLE
+                }
+                else -> {}
             }
         }
 
-        binding.buttonUserID.setOnClickListener {
+        binding.buttonSendAuthCode.setOnClickListener {
             val userId = sharedPref.readSharedPref(Keys.USERID.name)
             if (userId != null) {
                 viewModel.sendAuthCode(userId)
