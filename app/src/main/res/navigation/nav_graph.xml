@@ -24,10 +24,9 @@
         android:name="com.example.funcy_portfolio_android.ui.signup.SignupFragment"
         android:label="Signup Fragment"
         tools:layout="@layout/fragment_signup">
-
         <action
-            android:id="@+id/action_SignupFragment_to_MainFragment"
-            app:destination="@id/MainFragment" />
+            android:id="@+id/action_SignupFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
     </fragment>
 
     <fragment
@@ -116,6 +115,14 @@
         android:name="com.example.funcy_portfolio_android.ui.groupMypage.GroupMypageFragment"
         android:label="GroupMypageFragment"
         tools:layout="@layout/fragment_group_mypage"/>
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.example.funcy_portfolio_android.ui.authentication.AuthenticationFragment"
+        android:label="AuthenticationFragment" >
+        <action
+            android:id="@+id/action_authenticationFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
 
 
 </navigation>

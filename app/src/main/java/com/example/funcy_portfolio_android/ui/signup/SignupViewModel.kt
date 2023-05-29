@@ -10,9 +10,10 @@ import com.example.funcy_portfolio_android.model.SignupData
 import com.example.funcy_portfolio_android.model.apiService
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 
-enum class SignupApiStatus{LOADING, ERROR, DONE}
+enum class SignupApiStatus{ LOADING, FAILURE, SUCCESS, INIT }
 
 class SignupViewModel: ViewModel() {
     val selectedItem = MutableLiveData<Int>()
@@ -23,6 +24,9 @@ class SignupViewModel: ViewModel() {
     private var _courseResource = MutableLiveData<Array<String>>()
     val courseResource: LiveData<Array<String>> = _courseResource
 
+    private var _userId = MutableLiveData<String>("userId")
+    val userId: LiveData<String> = _userId
+
     val displayName = MutableLiveData<String>()
     val familyName = MutableLiveData<String>()
     val firstName = MutableLiveData<String>()
@@ -32,7 +36,7 @@ class SignupViewModel: ViewModel() {
 
     private val checkMailPattern = Regex("^(b|g)([0-9]{7})")
 
-    private val _signupStatus = MutableLiveData<SignupApiStatus>()
+    private val _signupStatus = MutableLiveData<SignupApiStatus>(SignupApiStatus.INIT)
     val signupStatus: LiveData<SignupApiStatus> = _signupStatus
 
     fun setCourseId(){
@@ -54,15 +58,23 @@ class SignupViewModel: ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                apiService.service.sendUserRegistration(
-                    token,
-                    SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon",sendMailAddress,password.value!!)
+                val res = apiService.service.sendUserRegistration(
+                    SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon", sendMailAddress, password.value!!)
                 )
-                Log.d("SignUp", "送信成功")
-                _signupStatus.value = SignupApiStatus.DONE
-            }catch (e: Exception){
+                if(res.isSuccessful){
+                    _userId.value = res.body()?.userID
+                    Log.d("SignUp", "送信成功 : ${res.message()}")
+                    _signupStatus.value = SignupApiStatus.SUCCESS
+                }else{
+                    Log.d("SignUp", "エラー: ${res.message()}")
+                    _signupStatus.value = SignupApiStatus.FAILURE
+                }
+            }catch (e: HttpException){
+                Log.d("SignUp", "通信エラー$e")
+                _signupStatus.value = SignupApiStatus.FAILURE
+            }catch (e: Throwable){
                 Log.d("SignUp", "エラー$e")
-                _signupStatus.value = SignupApiStatus.ERROR
+                _signupStatus.value = SignupApiStatus.FAILURE
             }
         }
     }

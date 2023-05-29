@@ -19,6 +19,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
+import com.example.funcy_portfolio_android.model.localDataSource.Keys
+import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
 
 
 class SignupFragment : Fragment() {
@@ -40,6 +42,7 @@ class SignupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.buttonSignup.setOnClickListener {
             val grade = binding.spinnerGrade.selectedItem.toString()
@@ -72,6 +75,7 @@ class SignupFragment : Fragment() {
         })
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
+            val sharedPref = SharedPref(requireActivity())
             when(status){
                 SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
@@ -79,7 +83,7 @@ class SignupFragment : Fragment() {
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
-                SignupApiStatus.DONE -> {
+                SignupApiStatus.SUCCESS -> {
                     binding.textDialog.text = resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
@@ -88,17 +92,20 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            findNavController().navigate(R.id.action_SignupFragment_to_MainFragment)
+                            sharedPref.saveSharedPrefString(Keys.USERID.name, viewModel.userId.value.toString())
+                            findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
                         }
                         ,2000
                     )
                 }
-                SignupApiStatus.ERROR -> {
+                SignupApiStatus.FAILURE -> {
                     binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
-                    Toast.makeText(context,"通信エラー", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"エラー", Toast.LENGTH_SHORT).show()
                 }
+                SignupApiStatus.INIT -> {}
+                else -> {}
             }
         })
     }

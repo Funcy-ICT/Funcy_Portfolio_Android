@@ -154,4 +154,10 @@
 
     <!---Signup Fragment-->
     <string name="comp_registration_message">登録が完了しました</string>
+
+    <!---Authentication Fragment-->
+    <string name="message_send_mail">入力したメールアドレスに\n確認コードを送信しました</string>
+    <string name="input_code">確認コードを入力してください</string>
+    <string name="button_send_code">送信</string>
+    <string name="message_not_receive">確認コードが届かない場合</string>
 </resources>
