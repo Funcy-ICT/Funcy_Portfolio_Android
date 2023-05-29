@@ -5,7 +5,7 @@
     <data>
         <variable
             name="work"
-            type="com.example.funcy_portfolio_android.model.WorkData"/>
+            type="com.example.funcy_portfolio_android.model.data.WorkData"/>
     </data>
 
     <androidx.cardview.widget.CardView

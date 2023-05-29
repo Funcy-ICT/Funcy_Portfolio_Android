@@ -7,8 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.model.WorkData
-import com.example.funcy_portfolio_android.ui.main.CardAdapter
+import com.example.funcy_portfolio_android.model.data.WorkData
 
 class CardAdapterBefore (private val worklist: List<WorkData>) : RecyclerView.Adapter<CardAdapterBefore.ViewHolder>(){
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){

@@ -1,23 +1,21 @@
 package com.example.funcy_portfolio_android.ui.mypage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMypageBinding
-import com.example.funcy_portfolio_android.ui.main.CardAdapter
-import com.example.funcy_portfolio_android.model.WorkData
 
 class MypageFragment : Fragment() {
 
-    private lateinit var binding:FragmentMypageBinding
+    private lateinit var binding: FragmentMypageBinding
     private val viewModel: MypageViewModel by viewModels()
 
     override fun onCreateView(
@@ -35,7 +33,7 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonOpenProfile.setOnClickListener{
+        binding.buttonOpenProfile.setOnClickListener {
             val expandableLayout = binding.expandableProfile
             expandableLayout.expand()
             it.visibility = View.GONE
@@ -46,7 +44,7 @@ class MypageFragment : Fragment() {
             binding.buttonOpenProfile.visibility = View.VISIBLE
         }
 
-        binding.buttonOpenSkill.setOnClickListener{
+        binding.buttonOpenSkill.setOnClickListener {
             val expandableLayout = binding.expandableSkill
             expandableLayout.expand()
             it.visibility = View.GONE

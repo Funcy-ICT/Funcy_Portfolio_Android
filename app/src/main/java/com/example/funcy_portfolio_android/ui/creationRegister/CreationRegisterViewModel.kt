@@ -6,18 +6,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.CreationData
-import com.example.funcy_portfolio_android.model.ImageData
-import com.example.funcy_portfolio_android.model.Repository
-import com.example.funcy_portfolio_android.model.TagData
+import com.example.funcy_portfolio_android.model.data.CreationData
+import com.example.funcy_portfolio_android.model.data.ImageData
+import com.example.funcy_portfolio_android.model.data.TagData
+import com.example.funcy_portfolio_android.model.repository.Repository
 import kotlinx.coroutines.launch
 
 class CreationRegisterViewModel : ViewModel() {
 
     private val repository = Repository()
-    
+
     var res: String? = ""
-  
+
     private val _tagList: MutableLiveData<List<String>> = MutableLiveData(listOf())
     val tagList: LiveData<List<String>> = _tagList
     val tags = mutableListOf<String>()
@@ -25,11 +25,12 @@ class CreationRegisterViewModel : ViewModel() {
     private var _thumbnail = MutableLiveData<MutableList<Uri>>()
     val thumbnail: LiveData<MutableList<Uri>>
         get() = _thumbnail
-    private var tagFlag:Int
+    private var tagFlag: Int
 
-    init{
+    init {
         //サムネイルの初期値として[no_image]の画像を設定
-        _thumbnail.value = mutableListOf<Uri>(Uri.parse("android.resource://com.example.funcy_portfolio_android/drawable/img_no_image"))
+        _thumbnail.value =
+            mutableListOf<Uri>(Uri.parse("android.resource://com.example.funcy_portfolio_android/drawable/img_no_image"))
         tagFlag = -1
     }
 
@@ -37,22 +38,22 @@ class CreationRegisterViewModel : ViewModel() {
         return tags.toList()
     }
 
-    fun setTag(tag: String): Boolean{
-        return if(!tags.contains(tag)){
+    fun setTag(tag: String): Boolean {
+        return if (!tags.contains(tag)) {
             tags.add(tag)
             _tagList.value = tags
             true
-        }else{
+        } else {
             false
         }
     }
 
-    fun resetTag(): List<String>{
+    fun resetTag(): List<String> {
         tags.clear()
         return tags.toList()
     }
 
-    fun removeTag(tag: String){
+    fun removeTag(tag: String) {
         tags -= tag
         _tagList.value = tags
     }
@@ -62,10 +63,18 @@ class CreationRegisterViewModel : ViewModel() {
         _thumbnail.value = thumbnails.toMutableList()
     }
 
-    fun addTagFlag(){tagFlag = 1}
-    fun delTagFlag(){tagFlag = -1}
-    fun getTagFlag():Boolean{return (tagFlag>0)}
-    
+    fun addTagFlag() {
+        tagFlag = 1
+    }
+
+    fun delTagFlag() {
+        tagFlag = -1
+    }
+
+    fun getTagFlag(): Boolean {
+        return (tagFlag > 0)
+    }
+
     fun registerCreation(
         title: String,
         description: String,
@@ -73,17 +82,28 @@ class CreationRegisterViewModel : ViewModel() {
         work_url: String,
         youtube_url: String
     ): String? {
-        viewModelScope.launch{
+        viewModelScope.launch {
             val postTagList = stringTagListToTagList(tags)
-            res = repository.registerCreation(CreationData( title,description, listOf(ImageData("")), work_url, youtube_url, postTagList,null,security))
-            Log.e("res",res!!)
+            res = repository.registerCreation(
+                CreationData(
+                    title,
+                    description,
+                    listOf(ImageData("")),
+                    work_url,
+                    youtube_url,
+                    postTagList,
+                    null,
+                    security
+                )
+            )
+            Log.e("res", res!!)
         }
 
         return res
     }
 
     //tagsのList<String>をList<TagData>に変換する(一応プライベートにしました)
-    private fun stringTagListToTagList(stringList: List<String>): List<TagData>{
+    private fun stringTagListToTagList(stringList: List<String>): List<TagData> {
         val tagsList = mutableListOf<TagData>()
         stringList.forEach {
             tagsList.add(TagData(it))

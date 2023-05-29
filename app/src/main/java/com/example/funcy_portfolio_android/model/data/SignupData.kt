@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.model
+package com.example.funcy_portfolio_android.model.data
 
 data class SignupData(
     val familyName: String,
