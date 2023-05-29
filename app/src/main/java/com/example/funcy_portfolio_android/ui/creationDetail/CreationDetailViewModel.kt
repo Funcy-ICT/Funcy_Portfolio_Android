@@ -13,7 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.network.apiService
+import com.example.funcy_portfolio_android.network.ApiService
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
@@ -63,7 +63,7 @@ class CreationDetailViewModel : ViewModel() {
         viewModelScope.launch {
             _creationDetailStatus.value = CreationApiStatus.LOADING
             try {
-                _creation.value = apiService.service.getCreationDetail(token, creationId)
+                _creation.value = ApiService.service.getCreationDetail(token, creationId)
                 Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
             } catch (e: Exception) {

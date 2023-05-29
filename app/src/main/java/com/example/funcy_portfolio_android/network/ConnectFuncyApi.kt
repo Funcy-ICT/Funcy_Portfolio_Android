@@ -15,8 +15,8 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create(gson))
     .build()
 
-object apiService {
-    val service: ICreationApi by lazy {
-        retrofit.create(ICreationApi::class.java)
+object ApiService {
+    val service: FuncyApi by lazy {
+        retrofit.create(FuncyApi::class.java)
     }
 }

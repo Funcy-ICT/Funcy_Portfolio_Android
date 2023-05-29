@@ -10,7 +10,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
-interface ICreationApi {
+interface FuncyApi {
     /* 作品の投稿（個人） */
     @Headers("token:Token1")
     @POST("work")
