@@ -1,5 +1,6 @@
-package com.example.funcy_portfolio_android.model
+package com.example.funcy_portfolio_android.model.repository
 
+import com.example.funcy_portfolio_android.model.ICreationApi
 import com.example.funcy_portfolio_android.model.data.CreationData
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers.IO
@@ -8,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class Repository{
+class Repository {
     /* （本物のサーバができるまで）自分のPCのローカルipアドレスにする */
     val URL = "http://192.168.3.17:9000/"
 
