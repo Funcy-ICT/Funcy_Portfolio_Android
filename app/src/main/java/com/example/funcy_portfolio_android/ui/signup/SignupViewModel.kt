@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.model.apiService
 import com.example.funcy_portfolio_android.model.data.SignupData
+import com.example.funcy_portfolio_android.network.apiService
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

@@ -1,9 +1,10 @@
-package com.example.funcy_portfolio_android.model
+package com.example.funcy_portfolio_android.network
 
 import com.example.funcy_portfolio_android.model.data.AuthData
 import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.SignupData
 import com.example.funcy_portfolio_android.model.data.UserIdData
+import com.example.funcy_portfolio_android.model.data.WorkData
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -32,4 +33,9 @@ interface ICreationApi {
     suspend fun sendAuthCode(
         @Body authData: AuthData
     ): Response<Void>
+
+    @GET("works/10") // 取得する作品数
+    suspend fun getWorks(
+        @Header("token") token: String
+    ): List<WorkData>
 }

@@ -1,7 +1,7 @@
 package com.example.funcy_portfolio_android.model.repository
 
-import com.example.funcy_portfolio_android.model.ICreationApi
 import com.example.funcy_portfolio_android.model.data.CreationData
+import com.example.funcy_portfolio_android.network.ICreationApi
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext

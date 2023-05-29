@@ -10,19 +10,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.*
 import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
+import com.example.funcy_portfolio_android.network.apiService
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 
-enum class CreationApiStatus{LOADING, ERROR, DONE}
+enum class CreationApiStatus { LOADING, ERROR, DONE }
 
 private const val TAG = "CreationDetailViewModel"
 
-class CreationDetailViewModel: ViewModel() {
+class CreationDetailViewModel : ViewModel() {
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
@@ -51,7 +51,7 @@ class CreationDetailViewModel: ViewModel() {
     private val _githubUrl = MutableLiveData<String>()
     val githubUrl: LiveData<String> = _githubUrl
 
-    init{
+    init {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
@@ -66,14 +66,14 @@ class CreationDetailViewModel: ViewModel() {
                 _creation.value = apiService.service.getCreationDetail(token, creationId)
                 Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.e(TAG, "アクセス失敗　エラー：$e")
                 _creationDetailStatus.value = CreationApiStatus.ERROR
             }
         }
     }
 
-    fun setEachTag(chipGroup: ChipGroup, context: Context){
+    fun setEachTag(chipGroup: ChipGroup, context: Context) {
         chipGroup.removeAllViews()
         _tagList.value?.forEach { tag ->
             val chip = Chip(context)
@@ -82,7 +82,7 @@ class CreationDetailViewModel: ViewModel() {
         }
     }
 
-    fun setCreationDetail(){
+    fun setCreationDetail() {
         val creationValue = _creation.value!!
         _title.value = creationValue.title
         _images.value = creationValue.images
