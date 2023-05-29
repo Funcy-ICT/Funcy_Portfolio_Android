@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.ui.creationRegister.CreationRegisterBottomSheet.Companion.TAG
 import kotlinx.coroutines.launch
 import java.lang.Exception

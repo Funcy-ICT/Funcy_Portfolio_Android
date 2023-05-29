@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentGroupMypageBinding
-import com.example.funcy_portfolio_android.model.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkData
 
 class GroupMypageFragment : Fragment() {
 

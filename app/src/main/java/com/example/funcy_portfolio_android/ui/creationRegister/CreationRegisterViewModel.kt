@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.CreationData
-import com.example.funcy_portfolio_android.model.ImageData
+import com.example.funcy_portfolio_android.model.data.CreationData
+import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.Repository
-import com.example.funcy_portfolio_android.model.TagData
+import com.example.funcy_portfolio_android.model.data.TagData
 import kotlinx.coroutines.launch
 
 class CreationRegisterViewModel : ViewModel() {

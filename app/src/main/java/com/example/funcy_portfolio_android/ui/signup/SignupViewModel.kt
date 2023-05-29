@@ -6,16 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.model.SignupData
 import com.example.funcy_portfolio_android.model.apiService
+import com.example.funcy_portfolio_android.model.data.SignupData
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 
-enum class SignupApiStatus{ LOADING, FAILURE, SUCCESS, INIT }
+enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
 
-class SignupViewModel: ViewModel() {
+class SignupViewModel : ViewModel() {
     val selectedItem = MutableLiveData<Int>()
 
     private var _courseId = MutableLiveData<Int>()
@@ -39,40 +39,49 @@ class SignupViewModel: ViewModel() {
     private val _signupStatus = MutableLiveData<SignupApiStatus>(SignupApiStatus.INIT)
     val signupStatus: LiveData<SignupApiStatus> = _signupStatus
 
-    fun setCourseId(){
-        Log.i("こんにちはスピナーです",selectedItem.value.toString())
+    fun setCourseId() {
+        Log.i("こんにちはスピナーです", selectedItem.value.toString())
         val item = selectedItem.value!!
-        if(item > 3){
+        if (item > 3) {
             _courseId.value = R.array.array_doctor_courses
-        }else{
+        } else {
             _courseId.value = R.array.array_bachelor_courses
         }
     }
 
-    fun setCourseSource(courses: Array<String>){
+    fun setCourseSource(courses: Array<String>) {
         _courseResource.value = courses
     }
 
-    fun sendToServerSignupData(token: String, grade:String, course: String){
+    fun sendToServerSignupData(token: String, grade: String, course: String) {
         val sendMailAddress = mailAddress.value + "@fun.ac.jp"
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
                 val res = apiService.service.sendUserRegistration(
-                    SignupData(familyName.value!!, course, displayName.value!!, firstName.value!!, grade, "noIcon", sendMailAddress, password.value!!)
+                    SignupData(
+                        familyName.value!!,
+                        course,
+                        displayName.value!!,
+                        firstName.value!!,
+                        grade,
+                        "noIcon",
+                        sendMailAddress,
+                        password.value!!
+                    )
                 )
-                if(res.isSuccessful){
+                if (res.isSuccessful) {
                     _userId.value = res.body()?.userID
                     Log.d("SignUp", "送信成功 : ${res.message()}")
                     _signupStatus.value = SignupApiStatus.SUCCESS
-                }else{
+                } else {
                     Log.d("SignUp", "エラー: ${res.message()}")
                     _signupStatus.value = SignupApiStatus.FAILURE
                 }
-            }catch (e: HttpException){
+            } catch (e: HttpException) {
                 Log.d("SignUp", "通信エラー$e")
                 _signupStatus.value = SignupApiStatus.FAILURE
-            }catch (e: Throwable){
+            } catch (e: Throwable) {
                 Log.d("SignUp", "エラー$e")
                 _signupStatus.value = SignupApiStatus.FAILURE
             }
@@ -80,25 +89,29 @@ class SignupViewModel: ViewModel() {
     }
 
 
-    fun comparePassword(): Boolean{
-        if(password.value != confirmPassword.value){
+    fun comparePassword(): Boolean {
+        if (password.value != confirmPassword.value) {
             return true
         }
         return false
     }
 
-    fun checkMail(): Boolean{
+    fun checkMail(): Boolean {
         return !checkMailPattern.matches(mailAddress.value.toString())
     }
 
-    fun errorIsNullOrEmpty(editText: String?, textLayout: TextInputLayout, errorItem: String): Boolean{
+    fun errorIsNullOrEmpty(
+        editText: String?,
+        textLayout: TextInputLayout,
+        errorItem: String
+    ): Boolean {
         val isError: Boolean
 
-        if(editText.isNullOrEmpty()){
+        if (editText.isNullOrEmpty()) {
             textLayout.isErrorEnabled = true
             textLayout.error = errorItem + "を入力してください"
             isError = true
-        }else{
+        } else {
             textLayout.isErrorEnabled = false
             isError = false
         }

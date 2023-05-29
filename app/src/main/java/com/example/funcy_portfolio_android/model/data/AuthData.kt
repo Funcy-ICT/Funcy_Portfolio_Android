@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.model
+package com.example.funcy_portfolio_android.model.data
 
 data class AuthData(
     val code: String,
@@ -6,5 +6,5 @@ data class AuthData(
 )
 
 data class UserIdData(
-    val userID : String,
+    val userID: String,
 )

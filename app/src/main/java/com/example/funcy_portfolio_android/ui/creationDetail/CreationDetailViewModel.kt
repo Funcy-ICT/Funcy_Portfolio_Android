@@ -11,6 +11,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.*
+import com.example.funcy_portfolio_android.model.data.CreationData
+import com.example.funcy_portfolio_android.model.data.ImageData
+import com.example.funcy_portfolio_android.model.data.TagData
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch

@@ -1,5 +1,6 @@
 package com.example.funcy_portfolio_android.model
 
+import com.example.funcy_portfolio_android.model.data.CreationData
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
