@@ -40,7 +40,6 @@ class MainViewModel : ViewModel(){
                 _status.value = FuncyApiStatus.ERROR
                 _works.value = listOf()
                 Log.e(TAG, e.message.toString())
-                Log.e(TAG, "キャスト失敗したお")
             }
 
         }
