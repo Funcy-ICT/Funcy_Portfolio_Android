@@ -5,8 +5,6 @@ import retrofit2.http.*
 
 
 interface ICreationApi {
-    /***/
-
     /* 作品の投稿（個人） */
     @Headers("token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmI4ZDgwMWQtZDE1My00MzQyLThlYzEtZDdhOTRiMGRhMzNiIiwiaWF0IjoxNjg2NTUzMzMzfQ.8qdMdDwu_irdE4xvXZOWH5U4GLrE7rWvbj0zZTiqjSc")
     @POST("work")
