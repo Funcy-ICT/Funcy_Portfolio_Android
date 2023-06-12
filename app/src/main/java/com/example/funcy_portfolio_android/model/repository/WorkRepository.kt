@@ -25,4 +25,8 @@ class WorkRepository() {
         }
         return res
     }
+
+    suspend fun getWorkDetail(token: String, workId:String) = service.getWorkDetail(token = token, workId =  workId)
+
+    suspend fun getWork(token: String) = service.getWorks(token = token)
 }
