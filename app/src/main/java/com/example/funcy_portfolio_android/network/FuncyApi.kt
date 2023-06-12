@@ -14,7 +14,7 @@ interface FuncyApi {
     /* 作品の投稿（個人） */
     @Headers("token:Token1")
     @POST("work")
-    fun registerWorkData(@Body creation: WorkData): Call<WorkData>
+    fun registerWorkData(@Body work: WorkData): Call<WorkData>
 
     //作品詳細取得
     @GET("work/{workID}")

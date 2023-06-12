@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.groupCreationRegister
+package com.example.funcy_portfolio_android.ui.groupWorkRegister
 
 import android.content.Context
 import android.os.Bundle
@@ -11,17 +11,17 @@ import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentGroupCreationRegisterBinding
+import com.example.funcy_portfolio_android.databinding.FragmentGroupWorkRegisterBinding
 
-class GroupCreationRegisterFragment : Fragment(){
+class GroupWorkRegisterFragment : Fragment(){
 
-    private lateinit var binding:FragmentGroupCreationRegisterBinding
+    private lateinit var binding:FragmentGroupWorkRegisterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_creation_register, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_work_register, container, false)
 
         return binding.root
     }
@@ -29,10 +29,10 @@ class GroupCreationRegisterFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etGroupCreationTitle.setOnFocusChangeListener { _, hasFocus ->
+        binding.etGroupWorkTitle.setOnFocusChangeListener { _, hasFocus ->
             if(!hasFocus)showoffKeyboard()
         }
-        binding.etGroupCreationDescription.setOnFocusChangeListener { _, hasFocus ->
+        binding.etGroupWorkDescription.setOnFocusChangeListener { _, hasFocus ->
             if(!hasFocus)showoffKeyboard()
         }
         binding.etGroupGitHubLink.setOnFocusChangeListener { _, hasFocus ->
@@ -42,7 +42,7 @@ class GroupCreationRegisterFragment : Fragment(){
             if(!hasFocus)showoffKeyboard()
         }
 
-        binding.etGroupCreationTitle.setOnEditorActionListener { _, i, keyEvent ->
+        binding.etGroupWorkTitle.setOnEditorActionListener { _, i, keyEvent ->
             return@setOnEditorActionListener getActions(i,keyEvent)
         }
         binding.etGroupGitHubLink.setOnEditorActionListener { _, i, keyEvent ->

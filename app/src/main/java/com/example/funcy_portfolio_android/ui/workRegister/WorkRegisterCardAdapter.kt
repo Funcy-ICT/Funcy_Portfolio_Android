@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.creationRegister
+package com.example.funcy_portfolio_android.ui.workRegister
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.ItemAddimageCardBinding
 
-class CreationRegisterCardAdapter (private val initList: List<Uri>) : RecyclerView.Adapter<CreationRegisterCardAdapter.ViewHolder>(){
+class WorkRegisterCardAdapter (private val initList: List<Uri>) : RecyclerView.Adapter<WorkRegisterCardAdapter.ViewHolder>(){
 
     private var itemList: MutableList<Uri> = initList.toMutableList()
 

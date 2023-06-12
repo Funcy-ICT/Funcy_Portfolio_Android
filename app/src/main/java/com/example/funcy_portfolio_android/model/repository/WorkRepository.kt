@@ -9,8 +9,8 @@ import java.io.IOException
 class WorkRepository() {
     private val service = ApiService.service
 
-    suspend fun registerCreation(creation: WorkData): String? {
-        val data = creation
+    suspend fun registerWork(work: WorkData): String? {
+        val data = work
         var res = ""
 
         withContext(IO) {

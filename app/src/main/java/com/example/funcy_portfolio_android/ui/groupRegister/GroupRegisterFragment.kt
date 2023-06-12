@@ -25,8 +25,8 @@ class GroupRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btRegisterGroupCreation.setOnClickListener {
-            findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupCreationRegisterFragment)
+        binding.btRegisterGroupWork.setOnClickListener {
+            findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupWorkRegisterFragment)
         }
         binding.btGroupMypage.setOnClickListener {
             findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupMypageFragment)

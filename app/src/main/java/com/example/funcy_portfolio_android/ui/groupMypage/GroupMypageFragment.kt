@@ -42,7 +42,7 @@ class GroupMypageFragment : Fragment() {
             WorkDataList(R.drawable.shrug_bag, "whitey_belt","バッグ")
         )
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rvGroupCreationList)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rvGroupWorkList)
 
         recyclerView.adapter = CardAdapterBefore(Worklist)
         recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
