@@ -12,11 +12,9 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-
-enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
-
 class SignupViewModel : ViewModel() {
     private val userRepository = UserRepository()
+    enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
 
     val selectedItem = MutableLiveData<Int>()
 
