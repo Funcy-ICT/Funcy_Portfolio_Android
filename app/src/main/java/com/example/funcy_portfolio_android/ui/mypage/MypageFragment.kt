@@ -33,27 +33,27 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.buttonOpenProfile.setOnClickListener {
-//            val expandableLayout = binding.expandableProfile
-//            expandableLayout.expand()
-//            it.visibility = View.GONE
-//        }
-//        binding.buttonCloseProfile.setOnClickListener {
-//            val expandableLayout = binding.expandableProfile
-//            expandableLayout.collapse()
-//            binding.buttonOpenProfile.visibility = View.VISIBLE
-//        }
-//
-//        binding.buttonOpenSkill.setOnClickListener {
-//            val expandableLayout = binding.expandableSkill
-//            expandableLayout.expand()
-//            it.visibility = View.GONE
-//        }
-//        binding.buttonCloseSkill.setOnClickListener {
-//            val expandableLayout = binding.expandableSkill
-//            expandableLayout.collapse()
-//            binding.buttonOpenSkill.visibility = View.VISIBLE
-//        }
+        binding.buttonOpenProfile.setOnClickListener {
+            val expandableLayout = binding.expandableProfile
+            expandableLayout.expand()
+            it.visibility = View.GONE
+        }
+        binding.buttonCloseProfile.setOnClickListener {
+            val expandableLayout = binding.expandableProfile
+            expandableLayout.collapse()
+            binding.buttonOpenProfile.visibility = View.VISIBLE
+        }
+
+        binding.buttonOpenSkill.setOnClickListener {
+            val expandableLayout = binding.expandableSkill
+            expandableLayout.expand()
+            it.visibility = View.GONE
+        }
+        binding.buttonCloseSkill.setOnClickListener {
+            val expandableLayout = binding.expandableSkill
+            expandableLayout.collapse()
+            binding.buttonOpenSkill.visibility = View.VISIBLE
+        }
 
         binding.fabDetail.setOnClickListener {
             findNavController().navigate(R.id.action_MypageFragment_to_CreationRegisterFragment)

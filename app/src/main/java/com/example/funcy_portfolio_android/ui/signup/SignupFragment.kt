@@ -62,7 +62,7 @@ class SignupFragment : Fragment() {
             )
 
             val coursesKey = mapOf(
-                "未所属" to "no_course",
+                "コース割当なし" to "no_course",
                 "情報システムコース" to "information_systems_course",
                 "高度ICTコース" to "advanced_ict_course",
                 "情報デザインコース" to "information_design_course",
