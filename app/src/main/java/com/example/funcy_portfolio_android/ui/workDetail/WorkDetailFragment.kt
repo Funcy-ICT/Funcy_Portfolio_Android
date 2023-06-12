@@ -62,13 +62,13 @@ class WorkDetailFragment : Fragment() {
 
         viewModel.workDetailStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status!!){
-                WorkApiStatus.LOADING ->{
+                WorkDetailViewModel.WorkApiStatus.LOADING ->{
                     //ローディングアニメーション？？
                 }
-                WorkApiStatus.DONE ->{
+                WorkDetailViewModel.WorkApiStatus.DONE ->{
                     viewModel.setWorkDetail()
                 }
-                WorkApiStatus.ERROR ->{
+                WorkDetailViewModel.WorkApiStatus.ERROR ->{
                     Toast.makeText(context, "作品が取得できませんでした", Toast.LENGTH_LONG).show()
                 }
             }

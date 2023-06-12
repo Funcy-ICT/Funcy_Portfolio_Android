@@ -13,16 +13,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
-import com.example.funcy_portfolio_android.network.ApiService
+import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 
-enum class WorkApiStatus { LOADING, ERROR, DONE }
-
-private const val TAG = "WorkDetailViewModel"
-
 class WorkDetailViewModel : ViewModel() {
+    private val TAG = "WorkDetailViewModel"
+
+    private val workRepository = WorkRepository()
+
+    enum class WorkApiStatus { LOADING, ERROR, DONE }
+
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
@@ -63,7 +65,7 @@ class WorkDetailViewModel : ViewModel() {
         viewModelScope.launch {
             _workDetailStatus.value = WorkApiStatus.LOADING
             try {
-                _work.value = ApiService.service.getWorkDetail(token, workId)
+                _work.value = workRepository.getWorkDetail(token, workId)
                 Log.e(TAG, "アクセス成功")
                 _workDetailStatus.value = WorkApiStatus.DONE
             } catch (e: Exception) {
