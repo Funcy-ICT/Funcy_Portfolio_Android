@@ -47,7 +47,6 @@
             android:layout_marginBottom="32dp"
             android:background="@color/gray"
             android:backgroundTint="@color/gray"
-            app:layout_constraintBottom_toTopOf="@+id/btAddGroup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

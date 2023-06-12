@@ -8,8 +8,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".ui.login.LoginFragment">
 
         <TextView
@@ -30,6 +33,8 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="@string/login_input"
             app:boxStrokeColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +42,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tvMailLabel">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,11 +98,15 @@
             app:layout_constraintTop_toBottomOf="@+id/tvPasswordLabel">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp" />
+                android:layout_marginEnd="0dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
