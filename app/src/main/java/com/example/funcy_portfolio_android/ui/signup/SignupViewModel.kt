@@ -42,10 +42,12 @@ class SignupViewModel : ViewModel() {
     fun setCourseId() {
         Log.i("こんにちはスピナーです", selectedItem.value.toString())
         val item = selectedItem.value!!
-        if (item > 3) {
-            _courseId.value = R.array.array_doctor_courses
-        } else {
-            _courseId.value = R.array.array_bachelor_courses
+        when (item) {
+            0 -> _courseId.value = R.array.array_bachelor1st_courses
+            1 -> _courseId.value = R.array.array_bachelor2nd_courses
+            2, 3 -> _courseId.value = R.array.array_bachelor_courses
+            9 -> _courseId.value = R.array.array_teacher_courses
+            else -> _courseId.value = R.array.array_doctor_courses
         }
     }
 

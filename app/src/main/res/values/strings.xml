@@ -50,6 +50,7 @@
     <string name="personal_profile">プロフィール</string>
     <string name="personal_skill">スキル</string>
     <string name="personal_mail_address">メールアドレス</string>
+    <string name="personal_work">作品一覧</string>
 
     <!--  PersonalEditFragment  -->
     <string name="edit_personal_public_name">表示名</string>
@@ -126,18 +127,27 @@
     </string-array>
 
     <string-array name="array_grades">
-        <item>B1</item>
-        <item>B2</item>
-        <item>B3</item>
-        <item>B4</item>
-        <item>M1</item>
-        <item>M2</item>
-        <item>D1</item>
-        <item>D2</item>
-        <item>D3</item>
+        <item>学部1年</item>
+        <item>学部2年</item>
+        <item>学部3年</item>
+        <item>学部4年</item>
+        <item>修士1年</item>
+        <item>修士2年</item>
+        <item>博士1年</item>
+        <item>博士2年</item>
+        <item>博士3年</item>
+        <item>教員</item>
+    </string-array>
+    <string-array name="array_bachelor1st_courses">
+        <item>未所属</item>
+    </string-array>
+    <string-array name="array_bachelor2nd_courses">
+        <item>情報システムコース</item>
+        <item>情報デザインコース</item>
+        <item>複雑系コース</item>
+        <item>知能システムコース</item>
     </string-array>
     <string-array name="array_bachelor_courses">
-        <item>コース割当なし</item>
         <item>情報システムコース</item>
         <item>高度ICTコース</item>
         <item>情報デザインコース</item>
@@ -150,6 +160,9 @@
         <item>メディアデザイン領域</item>
         <item>複雑系情報科学領域</item>
         <item>知能情報科学領域</item>
+    </string-array>
+    <string-array name="array_teacher_courses">
+        <item>教員</item>
     </string-array>
 
     <!---Signup Fragment-->
