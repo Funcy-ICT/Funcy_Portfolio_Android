@@ -6,15 +6,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.model.repository.Repository
+import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import kotlinx.coroutines.launch
 
 class CreationRegisterViewModel : ViewModel() {
 
-    private val repository = Repository()
+    private val workRepository = WorkRepository()
 
     var res: String? = ""
 
@@ -84,8 +84,8 @@ class CreationRegisterViewModel : ViewModel() {
     ): String? {
         viewModelScope.launch {
             val postTagList = stringTagListToTagList(tags)
-            res = repository.registerCreation(
-                CreationData(
+            res = workRepository.registerCreation(
+                WorkData(
                     title,
                     description,
                     listOf(ImageData("")),

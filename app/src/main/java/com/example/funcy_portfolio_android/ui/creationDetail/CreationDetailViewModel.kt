@@ -10,9 +10,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
+import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.network.ApiService
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -27,8 +27,8 @@ class CreationDetailViewModel : ViewModel() {
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
-    private val _creation = MutableLiveData<CreationData>()
-    val creation: LiveData<CreationData> = _creation
+    private val _creation = MutableLiveData<WorkData>()
+    val creation: LiveData<WorkData> = _creation
 
     private val _creationDetailStatus = MutableLiveData<CreationApiStatus>()
     val creationDetailStatus: LiveData<CreationApiStatus> = _creationDetailStatus
@@ -63,7 +63,7 @@ class CreationDetailViewModel : ViewModel() {
         viewModelScope.launch {
             _creationDetailStatus.value = CreationApiStatus.LOADING
             try {
-                _creation.value = ApiService.service.getCreationDetail(token, creationId)
+                _creation.value = ApiService.service.getWorkDetail(token, creationId)
                 Log.e(TAG, "アクセス成功")
                 _creationDetailStatus.value = CreationApiStatus.DONE
             } catch (e: Exception) {
