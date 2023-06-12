@@ -5,8 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/LoginFragment">
 
-<!--  TODO:上２つと下４つString.xmlに保存する  -->
-
     <fragment
         android:id="@+id/LoginFragment"
         android:name="com.example.funcy_portfolio_android.ui.login.LoginFragment"
@@ -26,10 +24,9 @@
         android:name="com.example.funcy_portfolio_android.ui.signup.SignupFragment"
         android:label="Signup Fragment"
         tools:layout="@layout/fragment_signup">
-
         <action
-            android:id="@+id/action_SignupFragment_to_MainFragment"
-            app:destination="@id/MainFragment" />
+            android:id="@+id/action_SignupFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
     </fragment>
 
     <fragment
@@ -79,24 +76,28 @@
     </fragment>
 
     <fragment
-        android:id="@+id/GroupFragment"
-        android:name="com.example.funcy_portfolio_android.ui.group.GroupFragment"
-        android:label="Group Fragment"
-        tools:layout="@layout/fragment_group" >
+        android:id="@+id/GroupListFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupList.GroupListFragment"
+        android:label="GroupList Fragment"
+        tools:layout="@layout/fragment_group_list" >
 
         <action
-            android:id="@+id/action_GroupFragment_to_GroupRegisterFragment"
+            android:id="@+id/action_GroupListFragment_to_GroupRegisterFragment"
             app:destination="@id/GroupRegisterFragment" />
-        <action
-            android:id="@+id/action_GroupFragment_to_GroupListFragment"
-            app:destination="@+id/GroupListFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/GroupRegisterFragment"
         android:name="com.example.funcy_portfolio_android.ui.groupRegister.GroupRegisterFragment"
         android:label="Group Register Fragment"
-        tools:layout="@layout/fragment_group_register" />
+        tools:layout="@layout/fragment_group_register" >
+        <action
+            android:id="@+id/action_GroupRegisterFragment_to_groupCreationRegisterFragment"
+            app:destination="@id/groupCreationRegisterFragment" />
+        <action
+            android:id="@+id/action_GroupRegisterFragment_to_groupMypageFragment"
+            app:destination="@id/groupMypageFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/SettingFragment"
@@ -105,9 +106,23 @@
         tools:layout="@layout/fragment_setting" />
 
     <fragment
-        android:id="@+id/GroupListFragment"
-        android:name="com.example.funcy_portfolio_android.ui.groupList.GroupListFragment"
-        android:label="Group List Fragment"
-        tools:layout="@layout/fragment_group_list"/>
+        android:id="@+id/groupCreationRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupCreationRegister.GroupCreationRegisterFragment"
+        android:label="GroupCreationRegisterFragment" />
+
+    <fragment
+        android:id="@+id/groupMypageFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupMypage.GroupMypageFragment"
+        android:label="GroupMypageFragment"
+        tools:layout="@layout/fragment_group_mypage"/>
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.example.funcy_portfolio_android.ui.authentication.AuthenticationFragment"
+        android:label="AuthenticationFragment" >
+        <action
+            android:id="@+id/action_authenticationFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
+
 
 </navigation>

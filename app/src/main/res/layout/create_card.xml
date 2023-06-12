@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+
+<layout>
+
+    <data>
+        <variable
+            name="work"
+            type="com.example.funcy_portfolio_android.model.data.WorkData"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -17,25 +26,20 @@
             android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="105dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            app:imageUrl = "@{work.images}"/>
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text_color"
             android:background="@color/white"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:paddingStart="5dp"/>
-
-        <TextView
-            android:id="@+id/name_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:background="@color/white"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:paddingStart="5dp"/>
+            android:autoSizeTextType="uniform"
+            android:paddingStart="5dp"
+            android:text="@{work.title}"/>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
+

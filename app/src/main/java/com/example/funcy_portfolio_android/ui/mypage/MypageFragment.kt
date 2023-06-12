@@ -1,26 +1,21 @@
 package com.example.funcy_portfolio_android.ui.mypage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableLayout
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentMypageBinding
-import com.example.funcy_portfolio_android.ui.main.CardAdapter
-import com.example.funcy_portfolio_android.ui.main.WorkData
-import com.google.android.material.tabs.TabLayout
 
 class MypageFragment : Fragment() {
 
-    private lateinit var binding:FragmentMypageBinding
+    private lateinit var binding: FragmentMypageBinding
     private val viewModel: MypageViewModel by viewModels()
 
     override fun onCreateView(
@@ -38,29 +33,51 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.buttonOpenProfile.setOnClickListener {
+            val expandableLayout = binding.expandableProfile
+            expandableLayout.expand()
+            it.visibility = View.GONE
+        }
+        binding.buttonCloseProfile.setOnClickListener {
+            val expandableLayout = binding.expandableProfile
+            expandableLayout.collapse()
+            binding.buttonOpenProfile.visibility = View.VISIBLE
+        }
+
+        binding.buttonOpenSkill.setOnClickListener {
+            val expandableLayout = binding.expandableSkill
+            expandableLayout.expand()
+            it.visibility = View.GONE
+        }
+        binding.buttonCloseSkill.setOnClickListener {
+            val expandableLayout = binding.expandableSkill
+            expandableLayout.collapse()
+            binding.buttonOpenSkill.visibility = View.VISIBLE
+        }
+
         binding.fabDetail.setOnClickListener {
             findNavController().navigate(R.id.action_MypageFragment_to_CreationRegisterFragment)
         }
 
-        val Worklist = listOf<WorkData>(
-            WorkData(R.drawable.garden_strand, "garden_strand", "ネックレス"),
-            WorkData(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
-            WorkData(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
-            WorkData(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
-            WorkData(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
-            WorkData(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
-            WorkData(R.drawable.whitey_belt, "whitey_belt","ベルト"),
-            WorkData(R.drawable.copper_wire_rack, "whitey_belt","ラック"),
-            WorkData(R.drawable.gilt_desk_trio, "whitey_belt","小物入れ"),
-            WorkData(R.drawable.shrug_bag, "whitey_belt","バッグ")
-        )
+//        val Worklist = listOf<WorkData>(
+//            WorkData(R.drawable.garden_strand, "garden_strand", "ネックレス"),
+//            WorkData(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
+//            WorkData(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
+//            WorkData(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
+//            WorkData(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
+//            WorkData(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
+//            WorkData(R.drawable.whitey_belt, "whitey_belt","ベルト"),
+//            WorkData(R.drawable.copper_wire_rack, "whitey_belt","ラック"),
+//            WorkData(R.drawable.gilt_desk_trio, "whitey_belt","小物入れ"),
+//            WorkData(R.drawable.shrug_bag, "whitey_belt","バッグ")
+//        )
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
 
-        recyclerView.adapter = CardAdapter(Worklist)
+//        recyclerView.adapter = CardAdapter(Worklist)
         recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
 
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
+
     }
 
 }
