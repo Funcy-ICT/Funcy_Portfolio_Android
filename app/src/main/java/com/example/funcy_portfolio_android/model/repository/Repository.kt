@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 
 class Repository() {
-    private val service = ApiService.service
+    val service = ApiService.service
     suspend fun registerCreation(creation: CreationData): String? {
         val data = creation
         var res = ""
