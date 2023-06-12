@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 
 //FuncyAPIサーバーの作品一覧取得URL
-private const val SERVER_URL = "http://192.168.50.252:8080/"
+private const val SERVER_URL = "http://10.124.56.217:9000/"
 
 //gsonオブジェクトの作成
 private val gson = GsonConverterFactory.create(GsonBuilder().serializeNulls().create())

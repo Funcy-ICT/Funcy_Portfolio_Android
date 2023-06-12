@@ -24,7 +24,7 @@ class MainViewModel : ViewModel(){
     val status: LiveData<FuncyApiStatus> = _status
 
     init{
-        getWorks("Token1")
+        getWorks("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmI4ZDgwMWQtZDE1My00MzQyLThlYzEtZDdhOTRiMGRhMzNiIiwiaWF0IjoxNjg2NTUzMzMzfQ.8qdMdDwu_irdE4xvXZOWH5U4GLrE7rWvbj0zZTiqjSc")
     }
 
     private fun getWorks(token: String){

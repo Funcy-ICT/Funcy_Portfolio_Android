@@ -52,7 +52,7 @@ class CreationDetailViewModel: ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        getCreationFromNetwork("Token1", "w1")
+        getCreationFromNetwork("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmI4ZDgwMWQtZDE1My00MzQyLThlYzEtZDdhOTRiMGRhMzNiIiwiaWF0IjoxNjg2NTUzMzMzfQ.8qdMdDwu_irdE4xvXZOWH5U4GLrE7rWvbj0zZTiqjSc", "3f02695e-a7a0-4260-9aea-f5e0b86e2afb")
     }
 
 
