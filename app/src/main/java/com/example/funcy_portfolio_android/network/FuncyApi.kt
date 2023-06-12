@@ -5,6 +5,7 @@ import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.SignupData
 import com.example.funcy_portfolio_android.model.data.UserIdData
 import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorksData
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -37,5 +38,5 @@ interface FuncyApi {
     @GET("works/10") // 取得する作品数
     suspend fun getWorks(
         @Header("token") token: String
-    ): List<WorkData>
+    ): WorksData
 }
