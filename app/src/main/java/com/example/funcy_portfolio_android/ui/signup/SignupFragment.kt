@@ -60,7 +60,7 @@ class SignupFragment : Fragment() {
                 "博士1年" to "d1",
                 "博士2年" to "d2",
                 "博士3年" to "d3",
-                "教員" to "teacher"
+                "教員" to "t1"
             )
 
             val coursesKey = mapOf(
