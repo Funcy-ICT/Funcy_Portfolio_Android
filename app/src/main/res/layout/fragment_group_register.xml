@@ -42,6 +42,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
             <!--    TODO:テキストの文字をstrings.xmlに追加    -->
@@ -69,8 +71,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupName">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -87,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/creation_necessary"
+                android:text="@string/work_necessary"
                 android:textColor="@color/red"
                 app:layout_constraintStart_toEndOf="@+id/tvGroupName"
                 app:layout_constraintTop_toTopOf="@+id/tvGroupName" />
@@ -105,6 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupDesc">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupDiscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/creation_necessary"
+                android:text="@string/work_necessary"
                 android:textColor="@color/red"
                 app:layout_constraintStart_toEndOf="@+id/tvGroupLeaderAddress"
                 app:layout_constraintTop_toTopOf="@+id/tvGroupLeaderAddress" />
@@ -141,8 +146,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupLeaderAddress">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupMailAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -180,7 +187,7 @@
                 android:background="@null"/>
 
             <Button
-                android:id="@+id/btRegisterGroupCreation"
+                android:id="@+id/btRegisterGroupWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="直で作品を投稿"
@@ -195,7 +202,7 @@
                 android:text="グループ作品一覧へ"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btRegisterGroupCreation" />
+                app:layout_constraintTop_toBottomOf="@+id/btRegisterGroupWork" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

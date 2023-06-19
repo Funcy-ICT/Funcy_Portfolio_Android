@@ -86,12 +86,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:context=".ui.creationRegister.CreationRegisterFragment">
+                tools:context=".ui.workRegister.WorkRegisterFragment">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true">
 
                     <ImageButton
                         android:id="@+id/btAddTag"
@@ -100,7 +102,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/bt_tag_circle"
-                        android:contentDescription="@string/creation_add_tag"
+                        android:contentDescription="@string/work_add_tag"
                         android:src="@drawable/bt_add_24dp"
                         app:layout_constraintEnd_toStartOf="@id/flexTag"
                         app:layout_constraintTop_toBottomOf="@+id/tvTag" />
@@ -125,16 +127,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="@string/creation_public_setting"
+                        android:text="@string/work_public_setting"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvCreationTitle"
+                        android:id="@+id/tvWorkTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/creation_title"
+                        android:text="@string/work_title"
                         app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
                         app:layout_constraintTop_toBottomOf="@+id/swPublic" />
 
@@ -143,18 +145,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/creation_necessary"
+                        android:text="@string/work_necessary"
                         android:textColor="@color/red"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvCreationTitle"
-                        app:layout_constraintStart_toEndOf="@+id/tvCreationTitle"
-                        app:layout_constraintTop_toTopOf="@+id/tvCreationTitle" />
+                        app:layout_constraintBottom_toBottomOf="@+id/tvWorkTitle"
+                        app:layout_constraintStart_toEndOf="@+id/tvWorkTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tvWorkTitle" />
 
                     <TextView
-                        android:id="@+id/tvCreationDesc"
+                        android:id="@+id/tvWorkDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/creation_desc"
+                        android:text="@string/work_desc"
                         app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
                         app:layout_constraintTop_toBottomOf="@+id/otfTitle" />
 
@@ -163,8 +165,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/creation_github_link"
-                        app:layout_constraintStart_toStartOf="@+id/tvCreationDesc"
+                        android:text="@string/work_github_link"
+                        app:layout_constraintStart_toStartOf="@+id/tvWorkDesc"
                         app:layout_constraintTop_toBottomOf="@+id/otfDescription" />
 
                     <TextView
@@ -172,7 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/creation_youtube_link"
+                        android:text="@string/work_youtube_link"
                         app:layout_constraintStart_toStartOf="@+id/tvGitHubLink"
                         app:layout_constraintTop_toBottomOf="@+id/otfGitHubLink" />
 
@@ -181,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/creation_tag"
+                        android:text="@string/work_tag"
                         app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
                         app:layout_constraintTop_toBottomOf="@+id/otfYouTubeLink" />
 
@@ -192,7 +194,7 @@
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="8dp"
                         android:checked="true"
-                        android:text="@string/creation_public"
+                        android:text="@string/work_public"
                         style="@style/SwitchMaterialStyle"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
@@ -209,10 +211,10 @@
                         app:counterMaxLength="60"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCreationTitle">
+                        app:layout_constraintTop_toBottomOf="@+id/tvWorkTitle">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCreationTitle"
+                            android:id="@+id/etWorkTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -231,10 +233,10 @@
                         app:counterMaxLength="2000"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCreationDesc">
+                        app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCreationDescription"
+                            android:id="@+id/etWorkDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -282,7 +284,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="60dp"
-                        android:text="@string/creation_add_img"
+                        android:text="@string/work_add_img"
                         app:layout_constraintStart_toStartOf="@+id/tvTag"
                         app:layout_constraintTop_toBottomOf="@id/flexTag" />
 

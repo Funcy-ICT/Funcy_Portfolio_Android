@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.model.data.SignupData
-import com.example.funcy_portfolio_android.network.ApiService
+import com.example.funcy_portfolio_android.model.repository.UserRepository
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-
-enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
-
 class SignupViewModel : ViewModel() {
+    private val userRepository = UserRepository()
+    enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
+
     val selectedItem = MutableLiveData<Int>()
 
     private var _courseId = MutableLiveData<Int>()
@@ -60,7 +60,7 @@ class SignupViewModel : ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                val res = ApiService.service.sendUserRegistration(
+                val res =userRepository.userRegistration(
                     SignupData(
                         familyName.value!!,
                         course,

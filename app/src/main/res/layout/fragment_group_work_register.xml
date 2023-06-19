@@ -93,13 +93,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".ui.creationRegister.CreationRegisterFragment"
+            tools:context=".ui.workRegister.WorkRegisterFragment"
             tools:ignore="SpeakableTextPresentCheck">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <TextView
                     android:id="@+id/tvGroupPublicSetting"
@@ -107,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/creation_public_setting"
+                    android:text="@string/work_public_setting"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,16 +120,16 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:checked="true"
-                    android:text="@string/creation_public"
+                    android:text="@string/work_public"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvGroupPublicSetting" />
 
                 <TextView
-                    android:id="@+id/tvGroupCreationTitle"
+                    android:id="@+id/tvGroupWorkTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_title"
+                    android:text="@string/work_title"
                     app:layout_constraintStart_toStartOf="@+id/tvGroupPublicSetting"
                     app:layout_constraintTop_toBottomOf="@+id/swGroupPublic" />
 
@@ -136,11 +138,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/creation_necessary"
+                    android:text="@string/work_necessary"
                     android:textColor="@color/red"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvGroupCreationTitle"
-                    app:layout_constraintStart_toEndOf="@+id/tvGroupCreationTitle"
-                    app:layout_constraintTop_toTopOf="@+id/tvGroupCreationTitle" />
+                    app:layout_constraintBottom_toBottomOf="@+id/tvGroupWorkTitle"
+                    app:layout_constraintStart_toEndOf="@+id/tvGroupWorkTitle"
+                    app:layout_constraintTop_toTopOf="@+id/tvGroupWorkTitle" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/otfGroupTitle"
@@ -154,10 +156,10 @@
                     app:counterMaxLength="60"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGroupCreationTitle">
+                    app:layout_constraintTop_toBottomOf="@+id/tvGroupWorkTitle">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etGroupCreationTitle"
+                        android:id="@+id/etGroupWorkTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -165,11 +167,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tvGroupCreationDesc"
+                    android:id="@+id/tvGroupWorkDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_desc"
+                    android:text="@string/work_desc"
                     app:layout_constraintStart_toStartOf="@+id/tvGroupPublicSetting"
                     app:layout_constraintTop_toBottomOf="@+id/otfGroupTitle" />
 
@@ -185,10 +187,10 @@
                     app:counterMaxLength="2000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGroupCreationDesc">
+                    app:layout_constraintTop_toBottomOf="@+id/tvGroupWorkDesc">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etGroupCreationDescription"
+                        android:id="@+id/etGroupWorkDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -199,8 +201,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_github_link"
-                    app:layout_constraintStart_toStartOf="@+id/tvGroupCreationDesc"
+                    android:text="@string/work_github_link"
+                    app:layout_constraintStart_toStartOf="@+id/tvGroupWorkDesc"
                     app:layout_constraintTop_toBottomOf="@+id/otfGroupDescription" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -228,7 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_youtube_link"
+                    android:text="@string/work_youtube_link"
                     app:layout_constraintStart_toStartOf="@+id/tvGroupGitHubLink"
                     app:layout_constraintTop_toBottomOf="@+id/otfGroupGitHubLink" />
 
@@ -257,7 +259,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_tag"
+                    android:text="@string/work_tag"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
                     app:layout_constraintTop_toBottomOf="@+id/otfGroupYouTubeLink" />
@@ -268,7 +270,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bt_tag_circle"
-                    android:contentDescription="@string/creation_add_tag"
+                    android:contentDescription="@string/work_add_tag"
                     android:src="@drawable/bt_add_24dp"
                     app:layout_constraintStart_toStartOf="@+id/otfGroupYouTubeLink"
                     app:layout_constraintTop_toBottomOf="@+id/tvTag" />
@@ -321,7 +323,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/creation_add_img"
+                    android:text="@string/work_add_img"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/spSelectGroupMembers" />
 

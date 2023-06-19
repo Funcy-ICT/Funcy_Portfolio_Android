@@ -1,51 +1,54 @@
-package com.example.funcy_portfolio_android.ui.groupRegister
+package com.example.funcy_portfolio_android.ui.groupWorkRegister
 
 import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.navigation.fragment.findNavController
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentGroupRegisterBinding
+import com.example.funcy_portfolio_android.databinding.FragmentGroupWorkRegisterBinding
 
-class GroupRegisterFragment : Fragment() {
-    private lateinit var binding : FragmentGroupRegisterBinding
+class GroupWorkRegisterFragment : Fragment(){
+
+    private lateinit var binding:FragmentGroupWorkRegisterBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGroupRegisterBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_group_work_register, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btRegisterGroupWork.setOnClickListener {
-            findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupWorkRegisterFragment)
-        }
-        binding.btGroupMypage.setOnClickListener {
-            findNavController().navigate(R.id.action_GroupRegisterFragment_to_groupMypageFragment)
-        }
 
-        binding.etGroupName.setOnFocusChangeListener { _, hasFocus ->
+        binding.etGroupWorkTitle.setOnFocusChangeListener { _, hasFocus ->
             if(!hasFocus)showoffKeyboard()
         }
-        binding.etGroupDiscription.setOnFocusChangeListener { _, hasFocus ->
+        binding.etGroupWorkDescription.setOnFocusChangeListener { _, hasFocus ->
             if(!hasFocus)showoffKeyboard()
         }
-        binding.etGroupMailAddress.setOnFocusChangeListener { _, hasFocus ->
+        binding.etGroupGitHubLink.setOnFocusChangeListener { _, hasFocus ->
+            if(!hasFocus)showoffKeyboard()
+        }
+        binding.etGroupYoutubeLink.setOnFocusChangeListener { _, hasFocus ->
             if(!hasFocus)showoffKeyboard()
         }
 
-        binding.etGroupName.setOnEditorActionListener { _, i, keyEvent ->
+        binding.etGroupWorkTitle.setOnEditorActionListener { _, i, keyEvent ->
             return@setOnEditorActionListener getActions(i,keyEvent)
         }
-        binding.etGroupMailAddress.setOnEditorActionListener { _, i, keyEvent ->
+        binding.etGroupGitHubLink.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i,keyEvent)
+        }
+        binding.etGroupYoutubeLink.setOnEditorActionListener { _, i, keyEvent ->
             return@setOnEditorActionListener getActions(i,keyEvent)
         }
     }

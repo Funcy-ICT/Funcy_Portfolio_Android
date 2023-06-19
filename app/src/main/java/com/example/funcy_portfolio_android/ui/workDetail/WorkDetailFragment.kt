@@ -1,30 +1,30 @@
-package com.example.funcy_portfolio_android.ui.creationDetail
+package com.example.funcy_portfolio_android.ui.workDetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
-import com.example.funcy_portfolio_android.databinding.FragmentCreationDetailBinding
+import com.example.funcy_portfolio_android.databinding.FragmentWorkDetailBinding
 
 
-class CreationDetailFragment : Fragment() {
+class WorkDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentCreationDetailBinding
-    private  val viewModel by viewModels<CreationDetailViewModel>()
+    private lateinit var binding: FragmentWorkDetailBinding
+    private  val viewModel by viewModels<WorkDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentCreationDetailBinding.inflate(inflater, container, false)
+        binding = FragmentWorkDetailBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -57,18 +57,18 @@ class CreationDetailFragment : Fragment() {
         })
 
         viewModel.images.observe(viewLifecycleOwner, Observer {
-            Glide.with(this).load(it[0].Image).error(R.drawable.img_creation_detail_thumbnail).into(binding.imgThumbnail)
+            Glide.with(this).load(it[0].Image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
         })
 
-        viewModel.creationDetailStatus.observe(viewLifecycleOwner, Observer { status ->
+        viewModel.workDetailStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status!!){
-                CreationApiStatus.LOADING ->{
+                WorkDetailViewModel.WorkApiStatus.LOADING ->{
                     //ローディングアニメーション？？
                 }
-                CreationApiStatus.DONE ->{
-                    viewModel.setCreationDetail()
+                WorkDetailViewModel.WorkApiStatus.DONE ->{
+                    viewModel.setWorkDetail()
                 }
-                CreationApiStatus.ERROR ->{
+                WorkDetailViewModel.WorkApiStatus.ERROR ->{
                     Toast.makeText(context, "作品が取得できませんでした", Toast.LENGTH_LONG).show()
                 }
             }

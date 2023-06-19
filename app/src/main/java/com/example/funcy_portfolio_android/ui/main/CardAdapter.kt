@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.databinding.CreateCardBinding
-import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkDataList
 
-class CardAdapter:ListAdapter<WorkData, CardAdapter.WorkDataViewHolder>(DiffCallBack){
+class CardAdapter:ListAdapter<WorkDataList, CardAdapter.WorkDataViewHolder>(DiffCallBack){
 
     class WorkDataViewHolder(private var binding: CreateCardBinding):
             RecyclerView.ViewHolder(binding.root){
-                fun bind(workData: WorkData){
-                    binding.work = workData
+                fun bind(workDataList: WorkDataList){
+                    binding.work = workDataList
                     binding.executePendingBindings()
                 }
             }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<WorkData>(){
-        override fun areItemsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
+    companion object DiffCallBack : DiffUtil.ItemCallback<WorkDataList>(){
+        override fun areItemsTheSame(oldItem: WorkDataList, newItem: WorkDataList): Boolean {
             return oldItem.work_id == newItem.work_id
         }
 
-        override fun areContentsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
+        override fun areContentsTheSame(oldItem: WorkDataList, newItem: WorkDataList): Boolean {
             return oldItem.images == newItem.images
         }
 

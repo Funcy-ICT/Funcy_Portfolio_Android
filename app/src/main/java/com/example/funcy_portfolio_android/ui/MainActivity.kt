@@ -1,6 +1,7 @@
 package com.example.funcy_portfolio_android.ui
 
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         bottomNavigation.setupWithNavController(navController.navController)
 
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        binding.root.requestFocus()
+        return super.dispatchTouchEvent(ev)
     }
 
     // オプションメニューを使う場合に参考になりそうなので残し

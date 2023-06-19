@@ -26,12 +26,17 @@
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:descendantFocusability="beforeDescendants">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginHorizontal="8dp"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
                 tools:context=".ui.signup.SignupFragment">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,7 +94,8 @@
                         android:id="@+id/editDisplayName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={viewModel.displayName}" />
+                        android:text="@={viewModel.displayName}"
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,11 +139,12 @@
                     app:layout_constraintStart_toEndOf="@+id/textFamilyName"
                     app:layout_constraintTop_toBottomOf="@id/inputDisplayName">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editFamilyName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.familyName}" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editFamilyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@={viewModel.familyName}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

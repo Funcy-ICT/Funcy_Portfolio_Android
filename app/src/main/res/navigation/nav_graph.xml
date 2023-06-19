@@ -36,32 +36,32 @@
         tools:layout="@layout/fragment_main">
 
         <action
-            android:id="@+id/action_MainFragment_to_CreationDetailFragment"
-            app:destination="@id/CreationDetailFragment" />
+            android:id="@+id/action_MainFragment_to_WorkDetailFragment"
+            app:destination="@id/WorkDetailFragment" />
         <action
-            android:id="@+id/action_MainFragment_to_CreationRegisterFragment"
-            app:destination="@id/CreationRegisterFragment" />
+            android:id="@+id/action_MainFragment_to_WorkRegisterFragment"
+            app:destination="@id/WorkRegisterFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/CreationDetailFragment"
-        android:name="com.example.funcy_portfolio_android.ui.creationDetail.CreationDetailFragment"
-        android:label="@string/creation_detail_fragment_label"
-        tools:layout="@layout/fragment_creation_detail">
+        android:id="@+id/WorkDetailFragment"
+        android:name="com.example.funcy_portfolio_android.ui.workDetail.WorkDetailFragment"
+        android:label="@string/work_detail_fragment_label"
+        tools:layout="@layout/fragment_work_detail">
 
         <action
-            android:id="@+id/action_CreationDetailFragment_to_MainFragment"
+            android:id="@+id/action_WorkDetailFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/CreationRegisterFragment"
-        android:name="com.example.funcy_portfolio_android.ui.creationRegister.CreationRegisterFragment"
-        android:label="@string/creation_register_fragment_label"
-        tools:layout="@layout/fragment_creation_register">
+        android:id="@+id/WorkRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.workRegister.WorkRegisterFragment"
+        android:label="@string/work_register_fragment_label"
+        tools:layout="@layout/fragment_work_register">
 
         <action
-            android:id="@+id/action_CreationRegisterFragment_to_MainFragment"
+            android:id="@+id/action_WorkRegisterFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
     </fragment>
 
@@ -71,8 +71,8 @@
         android:label="Mypage Fragment"
         tools:layout="@layout/fragment_mypage" >
         <action
-            android:id="@+id/action_MypageFragment_to_CreationRegisterFragment"
-            app:destination="@id/CreationRegisterFragment" />
+            android:id="@+id/action_MypageFragment_to_WorkRegisterFragment"
+            app:destination="@id/WorkRegisterFragment" />
     </fragment>
 
     <fragment
@@ -92,8 +92,8 @@
         android:label="Group Register Fragment"
         tools:layout="@layout/fragment_group_register" >
         <action
-            android:id="@+id/action_GroupRegisterFragment_to_groupCreationRegisterFragment"
-            app:destination="@id/groupCreationRegisterFragment" />
+            android:id="@+id/action_GroupRegisterFragment_to_groupWorkRegisterFragment"
+            app:destination="@id/groupWorkRegisterFragment" />
         <action
             android:id="@+id/action_GroupRegisterFragment_to_groupMypageFragment"
             app:destination="@id/groupMypageFragment" />
@@ -106,9 +106,10 @@
         tools:layout="@layout/fragment_setting" />
 
     <fragment
-        android:id="@+id/groupCreationRegisterFragment"
-        android:name="com.example.funcy_portfolio_android.ui.groupCreationRegister.GroupCreationRegisterFragment"
-        android:label="GroupCreationRegisterFragment" />
+        android:id="@+id/groupWorkRegisterFragment"
+        android:name="com.example.funcy_portfolio_android.ui.groupWorkRegister.GroupWorkRegisterFragment"
+        android:label="GroupWorkRegisterFragment"
+        tools:layout="@layout/fragment_group_work_register"/>
 
     <fragment
         android:id="@+id/groupMypageFragment"

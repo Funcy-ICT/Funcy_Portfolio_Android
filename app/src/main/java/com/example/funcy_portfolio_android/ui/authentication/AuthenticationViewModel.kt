@@ -6,11 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.AuthData
-import com.example.funcy_portfolio_android.network.ApiService
+import com.example.funcy_portfolio_android.model.repository.UserRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class AuthenticationViewModel : ViewModel() {
+    private val userRepository = UserRepository()
+
     val inputCode = MutableLiveData<String>("")
 
     private val _authStatus = MutableLiveData<AuthApiStatus>(AuthApiStatus.INIT)
@@ -21,7 +23,7 @@ class AuthenticationViewModel : ViewModel() {
     fun sendAuthCode(userId: String) {
         viewModelScope.launch {
             try {
-                val response = ApiService.service.sendAuthCode(
+                val response = userRepository.userAuthentication(
                     AuthData(inputCode.value!!, userId)
                 )
                 if (response.isSuccessful) {

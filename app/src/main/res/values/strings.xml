@@ -3,38 +3,38 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="main_fragment_label">Main Fragment</string>
-    <string name="creation_detail_fragment_label">CreationDetail Fragment</string>
-    <string name="creation_register_fragment_label">CreationRegister Fragment</string>
+    <string name="work_detail_fragment_label">WorkDetail Fragment</string>
+    <string name="work_register_fragment_label">WorkRegister Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_main_fragment">Hello main fragment</string>
-    <string name="hello_creation_detail_fragment">Hello creationDetail fragment</string>
-    <string name="hello_creation_register_fragment">Hello creationRegister fragment</string>
+    <string name="hello_work_detail_fragment">Hello workDetail fragment</string>
+    <string name="hello_work_register_fragment">Hello workRegister fragment</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--  CreationRegisterFragment  -->
-    <string name="creation_public_setting">公開設定</string>
-    <string name="creation_public">公開</string>
-    <string name="creation_private">非公開</string>
-    <string name="creation_title">タイトル</string>
-    <string name="creation_desc">説明文</string>
-    <string name="creation_github_link">GitHubリンク</string>
-    <string name="creation_youtube_link">YouTubeリンク</string>
-    <string name="creation_tag">タグの設定</string>
-    <string name="creation_add_tag">タグ追加</string>
-    <string name="creation_member">関わったメンバー</string>
-    <string name="creation_necessary">*</string>
-    <string name="creation_error_title_null">タイトルが入力されていません</string>
-    <string name="creation_add_img">画像の追加</string>
-    <string name="creation_list">作品一覧</string>
+    <!--  WorkRegisterFragment  -->
+    <string name="work_public_setting">公開設定</string>
+    <string name="work_public">公開</string>
+    <string name="work_private">非公開</string>
+    <string name="work_title">タイトル</string>
+    <string name="work_desc">説明文</string>
+    <string name="work_github_link">GitHubリンク</string>
+    <string name="work_youtube_link">YouTubeリンク</string>
+    <string name="work_tag">タグの設定</string>
+    <string name="work_add_tag">タグ追加</string>
+    <string name="work_member">関わったメンバー</string>
+    <string name="work_necessary">*</string>
+    <string name="work_error_title_null">タイトルが入力されていません</string>
+    <string name="work_add_img">画像の追加</string>
+    <string name="work_list">作品一覧</string>
 
     <string name="toolbar_back">戻る</string>
     <string name="toolbar_icon">アイコン</string>
     <string name="toolbar_register">投稿</string>
     <string name="toolbar_draft">下書き</string>
 
-    <!--  CreationDetailFragment  -->
+    <!--  WorkDetailFragment  -->
     <string name="detail_user_name">名前</string>
     <string name="detail_title">タイトル</string>
     <string name="detail_desc">説明文</string>
