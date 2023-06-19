@@ -4,18 +4,18 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -113,17 +113,17 @@ class SignupFragment : Fragment() {
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             val sharedPref = SharedPref(requireActivity())
-            when (status) {
-                SignupApiStatus.LOADING -> {
+
+            when(status){
+                SignupViewModel.SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
                     binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
-
-                SignupApiStatus.SUCCESS -> {
-                    binding.textDialog.text =
-                        resources.getString(R.string.comp_registration_message)
+                
+                SignupViewModel.SignupApiStatus.SUCCESS -> {
+                    binding.textDialog.text = resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
@@ -139,15 +139,14 @@ class SignupFragment : Fragment() {
                         }, 2000
                     )
                 }
-
-                SignupApiStatus.FAILURE -> {
+                
+                SignupViewModel.SignupApiStatus.FAILURE -> {
                     binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
                     Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                 }
-
-                SignupApiStatus.INIT -> {}
+                SignupViewModel.SignupApiStatus.INIT -> {}
                 else -> {}
             }
         })

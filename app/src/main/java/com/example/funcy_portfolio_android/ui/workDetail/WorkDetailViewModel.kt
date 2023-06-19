@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.creationDetail
+package com.example.funcy_portfolio_android.ui.workDetail
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -10,28 +10,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.data.CreationData
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.network.ApiService
+import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 
-enum class CreationApiStatus { LOADING, ERROR, DONE }
+class WorkDetailViewModel : ViewModel() {
+    private val TAG = "WorkDetailViewModel"
 
-private const val TAG = "CreationDetailViewModel"
+    private val workRepository = WorkRepository()
 
-class CreationDetailViewModel : ViewModel() {
+    enum class WorkApiStatus { LOADING, ERROR, DONE }
+
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
-    private val _creation = MutableLiveData<CreationData>()
-    val creation: LiveData<CreationData> = _creation
+    private val _work = MutableLiveData<WorkData>()
+    val work: LiveData<WorkData> = _work
 
-    private val _creationDetailStatus = MutableLiveData<CreationApiStatus>()
-    val creationDetailStatus: LiveData<CreationApiStatus> = _creationDetailStatus
+    private val _workDetailStatus = MutableLiveData<WorkApiStatus>()
+    val workDetailStatus: LiveData<WorkApiStatus> = _workDetailStatus
 
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
@@ -55,20 +57,20 @@ class CreationDetailViewModel : ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        getCreationFromNetwork("Token1", "w1")
+        getWorkFromNetwork("Token1", "w1")
     }
 
 
-    private fun getCreationFromNetwork(token: String, creationId: String) {
+    private fun getWorkFromNetwork(token: String, workId: String) {
         viewModelScope.launch {
-            _creationDetailStatus.value = CreationApiStatus.LOADING
+            _workDetailStatus.value = WorkApiStatus.LOADING
             try {
-                _creation.value = ApiService.service.getCreationDetail(token, creationId)
+                _work.value = workRepository.getWorkDetail(token, workId)
                 Log.e(TAG, "アクセス成功")
-                _creationDetailStatus.value = CreationApiStatus.DONE
+                _workDetailStatus.value = WorkApiStatus.DONE
             } catch (e: Exception) {
                 Log.e(TAG, "アクセス失敗　エラー：$e")
-                _creationDetailStatus.value = CreationApiStatus.ERROR
+                _workDetailStatus.value = WorkApiStatus.ERROR
             }
         }
     }
@@ -82,14 +84,14 @@ class CreationDetailViewModel : ViewModel() {
         }
     }
 
-    fun setCreationDetail() {
-        val creationValue = _creation.value!!
-        _title.value = creationValue.title
-        _images.value = creationValue.images
-        _explanation.value = creationValue.description
-        _tagList.value = creationValue.tags
-        _youtubeUrl.value = creationValue.movie_url
-        _githubUrl.value = creationValue.URL
+    fun setWorkDetail() {
+        val workValue = _work.value!!
+        _title.value = workValue.title
+        _images.value = workValue.images
+        _explanation.value = workValue.description
+        _tagList.value = workValue.tags
+        _youtubeUrl.value = workValue.movie_url
+        _githubUrl.value = workValue.URL
     }
 
     //Web遷移系の処理//////////////////////////////////

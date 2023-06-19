@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.funcy_portfolio_android.ui.creationDetail.CreationDetailViewModel" />
+            type="com.example.funcy_portfolio_android.ui.workDetail.WorkDetailViewModel" />
     </data>
 
     <ScrollView
@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.creationDetail.CreationDetailFragment">
+        tools:context=".ui.workDetail.WorkDetailFragment">
 
         <ImageButton
             android:id="@+id/btBack"
@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgAccount"
-            app:srcCompat="@drawable/img_creation_detail_thumbnail" />
+            app:srcCompat="@drawable/img_work_detail_thumbnail" />
 
         <TextView
             android:id="@+id/tvTitle"
