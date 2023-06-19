@@ -36,11 +36,11 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabDetail.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_CreationDetailFragment)
+            findNavController().navigate(R.id.action_MainFragment_to_WorkDetailFragment)
         }
 
         binding.fabRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_CreationRegisterFragment)
+            findNavController().navigate(R.id.action_MainFragment_to_WorkRegisterFragment)
         }
     }
 }

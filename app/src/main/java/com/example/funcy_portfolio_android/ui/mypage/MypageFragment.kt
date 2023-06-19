@@ -56,7 +56,7 @@ class MypageFragment : Fragment() {
         }
 
         binding.fabDetail.setOnClickListener {
-            findNavController().navigate(R.id.action_MypageFragment_to_CreationRegisterFragment)
+            findNavController().navigate(R.id.action_MypageFragment_to_WorkRegisterFragment)
         }
 
 //        val Worklist = listOf<WorkData>(
