@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.funcy_portfolio_android.ui.signup.SignupViewModel" />
@@ -95,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@={viewModel.displayName}"
-                        android:inputType="text"/>
+                        android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,12 +140,12 @@
                     app:layout_constraintStart_toEndOf="@+id/textFamilyName"
                     app:layout_constraintTop_toBottomOf="@id/inputDisplayName">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editFamilyName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="@={viewModel.familyName}"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editFamilyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewModel.familyName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -180,6 +181,7 @@
                         android:id="@+id/editFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:text="@={viewModel.firstName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
