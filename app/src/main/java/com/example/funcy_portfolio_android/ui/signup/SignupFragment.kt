@@ -95,8 +95,12 @@ class SignupFragment : Fragment() {
             }
 
             //キーボードの格納
-            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            val inputManager =
+                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(
+                view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
 
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
@@ -109,6 +113,7 @@ class SignupFragment : Fragment() {
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             val sharedPref = SharedPref(requireActivity())
+
             when(status){
                 SignupViewModel.SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
@@ -116,6 +121,7 @@ class SignupFragment : Fragment() {
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
+
                 SignupViewModel.SignupApiStatus.SUCCESS -> {
                     binding.textDialog.text = resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
@@ -131,11 +137,12 @@ class SignupFragment : Fragment() {
                         ,2000
                     )
                 }
+
                 SignupViewModel.SignupApiStatus.FAILURE -> {
                     binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
-                    Toast.makeText(context,"エラー", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                 }
                 SignupViewModel.SignupApiStatus.INIT -> {}
                 else -> {}
