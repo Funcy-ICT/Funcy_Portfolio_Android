@@ -50,7 +50,7 @@ class SignupFragment : Fragment() {
             val grade = binding.spinnerGrade.selectedItem.toString()
             val course = binding.spinnerCourse.selectedItem.toString()
 
-            if(!setError()){
+            if (!setError()) {
                 AlertDialog.Builder(activity)
                     .setTitle("この内容で送信しますか？")
                     .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
@@ -59,13 +59,17 @@ class SignupFragment : Fragment() {
                     })
                     .setNegativeButton("キャンセル", null)
                     .show()
-            }else{
+            } else {
                 Toast.makeText(context, "入力エラー", Toast.LENGTH_SHORT).show()
             }
 
             //キーボードの格納
-            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            val inputManager =
+                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(
+                view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
 
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
@@ -78,15 +82,17 @@ class SignupFragment : Fragment() {
 
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             val sharedPref = SharedPref(requireActivity())
-            when(status){
+            when (status) {
                 SignupViewModel.SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
                     binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
                     binding.buttonSignup.visibility = View.GONE
                 }
+
                 SignupViewModel.SignupApiStatus.SUCCESS -> {
-                    binding.textDialog.text = resources.getString(R.string.comp_registration_message)
+                    binding.textDialog.text =
+                        resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
@@ -94,18 +100,22 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            sharedPref.saveSharedPrefString(Keys.USERID.name, viewModel.userId.value.toString())
+                            sharedPref.saveSharedPrefString(
+                                Keys.USERID.name,
+                                viewModel.userId.value.toString()
+                            )
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
-                        }
-                        ,2000
+                        }, 2000
                     )
                 }
+
                 SignupViewModel.SignupApiStatus.FAILURE -> {
                     binding.background.visibility = View.GONE
                     binding.progressDialog.visibility = View.GONE
                     binding.buttonSignup.visibility = View.VISIBLE
-                    Toast.makeText(context,"エラー", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                 }
+
                 SignupViewModel.SignupApiStatus.INIT -> {}
                 else -> {}
             }
@@ -163,73 +173,74 @@ class SignupFragment : Fragment() {
             binding.inputMailAddress.isErrorEnabled = false
         }
 
-
-        Log.d("Error", (emptyError or mailError or passError).toString())
-        return emptyError or mailError or passError
-
         //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
         //focusableとfocusableInTouchをtrueにセットする必要あり
         //↓もしフォーカスが外れたらキーボードを閉じる
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->  //x
-            if(!hasFocus)showoffKeyboard()
+
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->  //x
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editConfirmPassword.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
 
         //キー入力を検知してフォーカスを外す
         binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editFirstName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editMailAddress.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editConfirmPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
 
+        Log.d("Error", (emptyError or mailError or passError).toString())
+        return emptyError or mailError or passError
     }
 
-    private fun getActions(i:Int,keyEvent:KeyEvent?):Boolean{
-        if( i== EditorInfo.IME_ACTION_SEARCH||
-            i== EditorInfo.IME_ACTION_DONE||
-            keyEvent!=null&&
-            keyEvent.action == KeyEvent.ACTION_DOWN&&
-            keyEvent.keyCode== KeyEvent.KEYCODE_ENTER){
-            if(keyEvent==null||!keyEvent.isShiftPressed){
+    private fun getActions(i: Int, keyEvent: KeyEvent?): Boolean {
+        if (i == EditorInfo.IME_ACTION_SEARCH ||
+            i == EditorInfo.IME_ACTION_DONE ||
+            keyEvent != null &&
+            keyEvent.action == KeyEvent.ACTION_DOWN &&
+            keyEvent.keyCode == KeyEvent.KEYCODE_ENTER
+        ) {
+            if (keyEvent == null || !keyEvent.isShiftPressed) {
                 binding.root.requestFocus()
                 return true
-            }else{
+            } else {
                 return false
             }
-        }else{
+        } else {
             return false
         }
     }
 
-    private fun showoffKeyboard(){
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    private fun showoffKeyboard() {
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
