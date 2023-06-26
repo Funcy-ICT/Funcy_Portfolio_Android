@@ -1,15 +1,14 @@
 package com.example.funcy_portfolio_android.ui.login
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentLoginBinding
+import com.example.funcy_portfolio_android.ui.common.KeyboardUtils
 
 
 class LoginFragment : Fragment() {
@@ -29,12 +28,7 @@ class LoginFragment : Fragment() {
 
         //他を押したときにキーボード閉じる処理（対象のviewにfocusableとfocusableInTouchModeをtrueでつける必要あり）
         binding.clLogin.setOnFocusChangeListener { _, hasFocus ->  //x
-            if (hasFocus) showoffKeyboard()
-        }
-        binding.etPassword.setOnFocusChangeListener { v, hasFocus ->
-            if (!hasFocus) {
-                showoffKeyboard()
-            }
+            if (hasFocus) KeyboardUtils.showoffKeyboard(requireContext(), binding.root.windowToken)
         }
 
         binding.btLogin.setOnClickListener {
@@ -43,11 +37,5 @@ class LoginFragment : Fragment() {
         binding.btUserRegister.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_SignupFragment)
         }
-    }
-
-    fun showoffKeyboard() {
-        val imm =
-            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

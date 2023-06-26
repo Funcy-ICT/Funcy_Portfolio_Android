@@ -21,6 +21,7 @@ import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
 import com.example.funcy_portfolio_android.model.localDataSource.Keys
 import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
+import com.example.funcy_portfolio_android.ui.common.KeyboardUtils.showoffKeyboard
 
 
 class SignupFragment : Fragment() {
@@ -119,14 +120,9 @@ class SignupFragment : Fragment() {
             }
         })
 
-        //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
-        //focusableとfocusableInTouchをtrueにセットする必要あり
-        //↓もしフォーカスが外れたらキーボードを閉じる
+        //EditTextのキーボードの非表示処理
         binding.layout.setOnFocusChangeListener { _, hasFocus ->  //x
-            if (hasFocus) showoffKeyboard()
-        }
-        binding.editConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
+            if (hasFocus) showoffKeyboard(requireContext(), binding.root.windowToken)
         }
     }
 
@@ -183,12 +179,5 @@ class SignupFragment : Fragment() {
 
         Log.d("Error", (emptyError or mailError or passError).toString())
         return emptyError or mailError or passError
-    }
-
-
-    fun showoffKeyboard() {
-        val imm =
-            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
