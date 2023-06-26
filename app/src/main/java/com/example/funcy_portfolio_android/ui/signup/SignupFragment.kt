@@ -120,6 +120,48 @@ class SignupFragment : Fragment() {
                 else -> {}
             }
         })
+
+        //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
+        //focusableとfocusableInTouchをtrueにセットする必要あり
+        //↓もしフォーカスが外れたらキーボードを閉じる
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->  //x
+            if (!hasFocus) showoffKeyboard()
+        }
+        binding.editFamilyName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
+        }
+        binding.editFirstName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
+        }
+        binding.editMailAddress.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
+        }
+        binding.editPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
+        }
+        binding.editConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
+        }
+
+        //キー入力を検知してフォーカスを外す
+        binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
+        binding.editFamilyName.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
+        binding.editFirstName.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
+        binding.editMailAddress.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
+        binding.editPassword.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
+        binding.editConfirmPassword.setOnEditorActionListener { _, i, keyEvent ->
+            return@setOnEditorActionListener getActions(i, keyEvent)
+        }
     }
 
     private fun setError(): Boolean {
@@ -173,54 +215,11 @@ class SignupFragment : Fragment() {
             binding.inputMailAddress.isErrorEnabled = false
         }
 
-        //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
-        //focusableとfocusableInTouchをtrueにセットする必要あり
-        //↓もしフォーカスが外れたらキーボードを閉じる
-
-        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->  //x
-            if (!hasFocus) showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
-        }
-        binding.editConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) showoffKeyboard()
-        }
-
-        //キー入力を検知してフォーカスを外す
-        binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-        binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-        binding.editFirstName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-        binding.editMailAddress.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-        binding.editPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-        binding.editConfirmPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i, keyEvent)
-        }
-
         Log.d("Error", (emptyError or mailError or passError).toString())
         return emptyError or mailError or passError
     }
 
-    private fun getActions(i: Int, keyEvent: KeyEvent?): Boolean {
+    fun getActions(i: Int, keyEvent: KeyEvent?): Boolean {
         if (i == EditorInfo.IME_ACTION_SEARCH ||
             i == EditorInfo.IME_ACTION_DONE ||
             keyEvent != null &&
@@ -238,7 +237,7 @@ class SignupFragment : Fragment() {
         }
     }
 
-    private fun showoffKeyboard() {
+    fun showoffKeyboard() {
         val imm =
             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)

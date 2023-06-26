@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
+
     // オプションメニューを使う場合に参考になりそうなので残し
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        menuInflater.inflate(R.menu.menu_main, menu)
