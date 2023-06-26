@@ -25,7 +25,7 @@ class WorkDetailViewModel : ViewModel() {
 
     enum class WorkApiStatus { LOADING, ERROR, DONE }
 
-    private val _userName = MutableLiveData<String>()
+    private val _userName = MutableLiveData<String>("田中太郎")
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
@@ -35,13 +35,13 @@ class WorkDetailViewModel : ViewModel() {
     private val _workDetailStatus = MutableLiveData<WorkApiStatus>()
     val workDetailStatus: LiveData<WorkApiStatus> = _workDetailStatus
 
-    private val _title = MutableLiveData<String>()
+    private val _title = MutableLiveData<String>("こんにちはアプリ")
     val title: LiveData<String> = _title
 
     private val _images = MutableLiveData<List<ImageData>>()
     val images: LiveData<List<ImageData>> = _images
 
-    private val _explanation = MutableLiveData<String>()
+    private val _explanation = MutableLiveData<String>("あああああああああああああ")
     val explanation: LiveData<String> = _explanation
 
     private val _tagList = MutableLiveData<List<TagData>>()
@@ -54,9 +54,6 @@ class WorkDetailViewModel : ViewModel() {
     val githubUrl: LiveData<String> = _githubUrl
 
     init {
-        //仮置きのテキスト
-        _userName.value = "田中太郎"
-
         getWorkFromNetwork("Token1", "w1")
     }
 
