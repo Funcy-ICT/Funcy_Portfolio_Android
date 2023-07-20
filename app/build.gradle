@@ -75,4 +75,7 @@ dependencies {
 
     //coil
     implementation "io.coil-kt:coil:1.1.1"
+
+    //YouTube埋め込み
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
 }
