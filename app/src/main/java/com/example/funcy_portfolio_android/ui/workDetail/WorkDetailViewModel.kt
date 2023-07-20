@@ -1,8 +1,6 @@
 package com.example.funcy_portfolio_android.ui.workDetail
 
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
@@ -47,14 +45,18 @@ class WorkDetailViewModel : ViewModel() {
     private val _tagList = MutableLiveData<List<TagData>>()
     val tagList: LiveData<List<TagData>> = _tagList
 
-    private val _youtubeUrl = MutableLiveData<String>()
+    private val _youtubeUrl = MutableLiveData<String>("https://www.youtube.com/watch?v=SR0Ho1eyYJE")
     val youtubeUrl: LiveData<String> = _youtubeUrl
+
+    private val _youtubeVideoId = MutableLiveData<String>("")
+    val youtubeVideoId:LiveData<String> = _youtubeVideoId
 
     private val _githubUrl = MutableLiveData<String>()
     val githubUrl: LiveData<String> = _githubUrl
 
     init {
         getWorkFromNetwork("Token1", "w1")
+        setYouTubeVideoId()
     }
 
 
@@ -64,6 +66,7 @@ class WorkDetailViewModel : ViewModel() {
             try {
                 _work.value = workRepository.getWorkDetail(token, workId)
                 Log.e(TAG, "アクセス成功")
+                setYouTubeVideoId()
                 _workDetailStatus.value = WorkApiStatus.DONE
             } catch (e: Exception) {
                 Log.e(TAG, "アクセス失敗　エラー：$e")
@@ -81,6 +84,15 @@ class WorkDetailViewModel : ViewModel() {
         }
     }
 
+    private fun setYouTubeVideoId(){
+        // とりあえずURLの”v=”移行をvideoIdにする
+        val videoId = _youtubeUrl.value.let {
+            it.toString().split("v=")[1]
+        }?:"Error"
+        Log.d("youtube", "$videoId")
+        _youtubeVideoId.value = videoId
+    }
+
     fun setWorkDetail() {
         val workValue = _work.value!!
         _title.value = workValue.title
@@ -92,20 +104,9 @@ class WorkDetailViewModel : ViewModel() {
     }
 
     //Web遷移系の処理//////////////////////////////////
-    /** YouTube */
-    fun navigateToYouTube(url: String, context: Context) {
-        val uri = Uri.parse(url)
-        try {
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            context.startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            navigateToCustomTab(url, context)
-        }
-    }
-
     /** GitHub用 CustomTab */
-    fun navigateToCustomTab(url: String, context: Context) {
-        val uri = Uri.parse(url)
+    fun navigateToCustomTab(context: Context) {
+        val uri = Uri.parse(_githubUrl.value)
         CustomTabsIntent.Builder().also { builder ->
             builder.setShowTitle(true)
             builder.build().also {

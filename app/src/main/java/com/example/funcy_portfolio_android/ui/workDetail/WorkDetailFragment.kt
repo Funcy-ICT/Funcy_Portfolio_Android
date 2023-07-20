@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentWorkDetailBinding
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 
 class WorkDetailFragment : Fragment() {
@@ -36,11 +38,10 @@ class WorkDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvVideoLink.setOnClickListener {
-            viewModel.navigateToYouTube(binding.tvVideoLink.text.toString(), requireContext())
-        }
-        binding.tvGithubLink.setOnClickListener {
-            viewModel.navigateToCustomTab(binding.tvGithubLink.text.toString(), requireContext())
+        viewLifecycleOwner.lifecycle.addObserver(binding.videoView)
+
+        binding.imgGithub.setOnClickListener {
+            viewModel.navigateToCustomTab(requireContext())
         }
         binding.btBack.setOnClickListener {
             findNavController().popBackStack()
@@ -60,6 +61,14 @@ class WorkDetailFragment : Fragment() {
             Glide.with(this).load(it[0].Image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
         })
 
+        viewModel.youtubeVideoId.observe(viewLifecycleOwner) { youtubeVideoId ->
+            binding.videoView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    youTubePlayer.cueVideo(youtubeVideoId, 0F)
+                }
+            })
+        }
+
         viewModel.workDetailStatus.observe(viewLifecycleOwner, Observer { status ->
             when(status!!){
                 WorkDetailViewModel.WorkApiStatus.LOADING ->{
@@ -74,5 +83,4 @@ class WorkDetailFragment : Fragment() {
             }
         })
     }
-
 }

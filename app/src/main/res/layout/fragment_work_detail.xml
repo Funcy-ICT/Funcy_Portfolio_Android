@@ -83,16 +83,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-        <TextView
-            android:id="@+id/tvGithub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="GitHub"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flexTag" />
-
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/flexTag"
             android:layout_width="match_parent"
@@ -106,39 +96,34 @@
 
         </com.google.android.material.chip.ChipGroup>
 
-        <TextView
-            android:id="@+id/tvVideo"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imgGithub"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/github_mark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flexTag" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgGithub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgGithub"
+            app:layout_constraintTop_toTopOf="@id/imgGithub" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="動画"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvGithub" />
-
-        <TextView
-            android:id="@+id/tvGithubLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:text="@{viewModel.githubUrl}"
-            android:textColor="#004BB1"
-            app:layout_constraintStart_toEndOf="@+id/tvGithub"
-            app:layout_constraintTop_toBottomOf="@+id/flexTag" />
-
-        <TextView
-            android:id="@+id/tvVideoLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:text="@{viewModel.youtubeUrl}"
-            android:textColor="#004BB1"
-            app:layout_constraintStart_toEndOf="@+id/tvVideo"
-            app:layout_constraintTop_toBottomOf="@+id/tvGithubLink" />
+            app:layout_constraintTop_toBottomOf="@id/imgGithub" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -156,8 +141,7 @@
             android:background="@null"
             app:layout_constraintEnd_toStartOf="@+id/btShare"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bt_edit"
-            android:visibility="gone"/>
+            app:srcCompat="@drawable/bt_edit" />
 
         <ImageButton
             android:id="@+id/btShare"
@@ -168,8 +152,7 @@
             android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bt_share"
-            android:visibility="gone"/>
+            app:srcCompat="@drawable/bt_share" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
