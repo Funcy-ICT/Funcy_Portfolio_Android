@@ -5,7 +5,7 @@ data class WorkDataList(
 )
 
 data class WorkData(
-    val work_id: Int,
+    val workID: String,
     val title: String,
-    val images: String
+    val thumbnail: String
 )

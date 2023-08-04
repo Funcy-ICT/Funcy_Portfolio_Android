@@ -36,6 +36,7 @@ class MainViewModel : ViewModel() {
                 _works.value = WorkRepository().getWorks(token).works
                 _status.value = FuncyApiStatus.DONE
                 Log.d(TAG, "通信出来たよ")
+                Log.d("API TEST", _works.value.toString())
             } catch (e: Exception) {
                 _status.value = FuncyApiStatus.ERROR
                 _works.value = listOf()

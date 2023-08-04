@@ -22,7 +22,7 @@ class CardAdapterBefore (private val worklist: List<WorkData>) : RecyclerView.Ad
 
     override fun onBindViewHolder(viewHolder: CardAdapterBefore.ViewHolder, position: Int) {
         val work = worklist[position]
-        viewHolder.image.setImageResource(work.work_id)
+//        viewHolder.image.setImageResource(work.thumbnail)
         viewHolder.title.text = work.title
     }
     override fun getItemCount() = worklist.size

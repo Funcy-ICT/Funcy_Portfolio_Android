@@ -20,11 +20,11 @@ class CardAdapter:ListAdapter<WorkData, CardAdapter.WorkDataViewHolder>(DiffCall
 
     companion object DiffCallBack : DiffUtil.ItemCallback<WorkData>(){
         override fun areItemsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
-            return oldItem.work_id == newItem.work_id
+            return oldItem.workID == newItem.workID
         }
 
         override fun areContentsTheSame(oldItem: WorkData, newItem: WorkData): Boolean {
-            return oldItem.images == newItem.images
+            return oldItem.thumbnail == newItem.thumbnail
         }
 
     }
