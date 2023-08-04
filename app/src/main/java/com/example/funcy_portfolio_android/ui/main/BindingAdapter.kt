@@ -5,10 +5,10 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.funcy_portfolio_android.model.data.WorkDataList
+import com.example.funcy_portfolio_android.model.data.WorkData
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<WorkDataList>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<WorkData>?){
     val adapter = recyclerView.adapter as CardAdapter
     adapter.submitList(data)
 }

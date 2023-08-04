@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkDetails
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -29,8 +29,8 @@ class WorkDetailViewModel : ViewModel() {
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
-    private val _work = MutableLiveData<WorkData>()
-    val work: LiveData<WorkData> = _work
+    private val _work = MutableLiveData<WorkDetails>()
+    val work: LiveData<WorkDetails> = _work
 
     private val _workDetailStatus = MutableLiveData<WorkApiStatus>()
     val workDetailStatus: LiveData<WorkApiStatus> = _workDetailStatus

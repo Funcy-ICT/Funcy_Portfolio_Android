@@ -1,6 +1,6 @@
 package com.example.funcy_portfolio_android.model.data
 
-data class WorkData(
+data class WorkDetails(
     val title: String,
     val description: String,
     val images: List<ImageData>,
