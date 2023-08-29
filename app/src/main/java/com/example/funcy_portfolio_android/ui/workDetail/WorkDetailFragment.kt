@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentWorkDetailBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -53,13 +52,27 @@ class WorkDetailFragment : Fragment() {
             //shareの処理
         }
 
+        viewModel.images.observe(viewLifecycleOwner){ images ->
+            val adapter = ImageCarouselAdapter(images)
+            binding.viewPagerImageCarousel.adapter = adapter
+            binding.viewPagerImageCarousel.offscreenPageLimit = 3
+
+            val margin = view.context.resources.getDimension(R.dimen.card_margin)
+            val offset = view.context.resources.getDimension(R.dimen.card_offset)
+            binding.viewPagerImageCarousel.setPageTransformer { page, position ->
+                val offset = position * (2 * offset + margin)
+                page.translationX = -offset
+            }
+        }
+
         viewModel.tagList.observe(viewLifecycleOwner, Observer {
             viewModel.setEachTag(binding.flexTag, requireContext())
         })
 
-        viewModel.images.observe(viewLifecycleOwner, Observer {
-            Glide.with(this).load(it[0].Image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
-        })
+
+//        viewModel.images.observe(viewLifecycleOwner, Observer {
+//            Glide.with(this).load(it[0].Image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
+//        })
 
         viewModel.youtubeVideoId.observe(viewLifecycleOwner) { youtubeVideoId ->
             binding.videoView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {

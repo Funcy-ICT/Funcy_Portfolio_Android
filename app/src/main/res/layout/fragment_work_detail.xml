@@ -50,17 +50,17 @@
             app:layout_constraintStart_toEndOf="@+id/imgAccount"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <ImageView
-            android:id="@+id/imgThumbnail"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerImageCarousel"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_marginTop="24dp"
-            android:background="#C4C4C4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_centerInParent="true"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgAccount"
-            app:srcCompat="@drawable/img_work_detail_thumbnail" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAccount" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -71,7 +71,7 @@
             android:text="@{viewModel.title}"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgThumbnail" />
+            app:layout_constraintTop_toBottomOf="@+id/viewPagerImageCarousel" />
 
         <TextView
             android:id="@+id/tvExplanation"
@@ -119,8 +119,7 @@
             android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginHorizontal="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgGithub" />

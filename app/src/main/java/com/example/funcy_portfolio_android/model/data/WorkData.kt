@@ -12,9 +12,9 @@ data class WorkData(
 )
 
 data class ImageData(
-    val Image: String
+    val image: String
 )
 
 data class TagData(
-    val Tag: String
+    val tag: String
 )

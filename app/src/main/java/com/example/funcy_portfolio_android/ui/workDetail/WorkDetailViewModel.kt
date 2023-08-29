@@ -33,19 +33,19 @@ class WorkDetailViewModel : ViewModel() {
     private val _workDetailStatus = MutableLiveData<WorkApiStatus>()
     val workDetailStatus: LiveData<WorkApiStatus> = _workDetailStatus
 
-    private val _title = MutableLiveData<String>("こんにちはアプリ")
+    private val _title = MutableLiveData<String>("")
     val title: LiveData<String> = _title
 
     private val _images = MutableLiveData<List<ImageData>>()
     val images: LiveData<List<ImageData>> = _images
 
-    private val _explanation = MutableLiveData<String>("あああああああああああああ")
+    private val _explanation = MutableLiveData<String>("")
     val explanation: LiveData<String> = _explanation
 
     private val _tagList = MutableLiveData<List<TagData>>()
     val tagList: LiveData<List<TagData>> = _tagList
 
-    private val _youtubeUrl = MutableLiveData<String>("https://www.youtube.com/watch?v=SR0Ho1eyYJE")
+    private val _youtubeUrl = MutableLiveData<String>("")
     val youtubeUrl: LiveData<String> = _youtubeUrl
 
     private val _youtubeVideoId = MutableLiveData<String>("")
@@ -55,7 +55,21 @@ class WorkDetailViewModel : ViewModel() {
     val githubUrl: LiveData<String> = _githubUrl
 
     init {
-        getWorkFromNetwork("Token1", "w1")
+        getWorkFromNetwork("22d6f03f-fa89-4294-9636-799c25a88282", "w1")
+        _title.value = "こんにちはアプリ"
+        _explanation.value = "あああああああああああああ"
+        _tagList.value = listOf(
+            TagData(tag = "hoge"),
+            TagData(tag = "fuga"),
+            TagData(tag = "hugu"),
+
+        )
+        _images.value = listOf(
+            ImageData("http://img.youtube.com/vi/7x5_25twfE4/sddefault.jpg"),
+            ImageData("http://img.youtube.com/vi/W5sKBjyBwYg/sddefault.jpg"),
+            ImageData("http://img.youtube.com/vi/W7ocuQu8DPo/sddefault.jpg")
+        )
+        _youtubeUrl.value = "https://www.youtube.com/watch?v=SR0Ho1eyYJE"
         setYouTubeVideoId()
     }
 
@@ -79,7 +93,7 @@ class WorkDetailViewModel : ViewModel() {
         chipGroup.removeAllViews()
         _tagList.value?.forEach { tag ->
             val chip = Chip(context)
-            chip.text = tag.Tag
+            chip.text = tag.tag
             chipGroup.addView(chip)
         }
     }
