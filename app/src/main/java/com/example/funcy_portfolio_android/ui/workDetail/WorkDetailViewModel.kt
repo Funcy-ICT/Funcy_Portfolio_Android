@@ -66,11 +66,11 @@ class WorkDetailViewModel : ViewModel() {
         )
         _images.value = listOf(
             ImageData("http://img.youtube.com/vi/7x5_25twfE4/sddefault.jpg"),
-            ImageData("http://img.youtube.com/vi/W5sKBjyBwYg/sddefault.jpg"),
+            ImageData("https://i.gyazo.com/7b3470cc94b8bf54896d84d21d9ad7d1.jpg"),
             ImageData("http://img.youtube.com/vi/W7ocuQu8DPo/sddefault.jpg")
         )
         _youtubeUrl.value = "https://www.youtube.com/watch?v=SR0Ho1eyYJE"
-        setYouTubeVideoId()
+        parseYoutubeUrl()
     }
 
 
@@ -115,6 +115,7 @@ class WorkDetailViewModel : ViewModel() {
         _tagList.value = workValue.tags
         _youtubeUrl.value = workValue.movie_url
         _githubUrl.value = workValue.URL
+        parseYoutubeUrl()
     }
 
     //Web遷移系の処理//////////////////////////////////
@@ -126,6 +127,19 @@ class WorkDetailViewModel : ViewModel() {
             builder.build().also {
                 it.launchUrl(context, uri)
             }
+        }
+    }
+
+    private fun parseYoutubeUrl() {
+        val regex = Regex(pattern = "^.*(youtu\\.be\\/|v\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\&v=)([^#\\&\\?]*).*")
+        val videoId = regex.find(_youtubeUrl.value.toString())
+        if(videoId != null){
+            val id = videoId.groupValues[2]
+            Log.d("parseYoutubeURL", id)
+            _youtubeVideoId.value = id
+        }else{
+            Log.d("parseYoutubeURL", "Error")
+            _youtubeVideoId.value = "Error"
         }
     }
 }
