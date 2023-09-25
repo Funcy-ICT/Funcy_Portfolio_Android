@@ -56,6 +56,9 @@ fun BorderButton(
         border = BorderStroke(
             width = 1.dp,
             color = FuncyColor.primary),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = FuncyColor.white,
+        ),
         onClick = { onClick() }
     ) {
         Text(
