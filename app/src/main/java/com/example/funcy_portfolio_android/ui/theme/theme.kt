@@ -1,6 +1,5 @@
 package com.example.funcy_portfolio_android.ui.theme
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 
 /***
@@ -19,11 +18,4 @@ object FuncyColor {
     val gray = Gray
     val backgroundGray = BackGroundGray
     val smoke = Smoke
-}
-
-@Composable
-fun FuncyTheme(
-    content: @Composable () -> Unit,
-) {
-
 }
