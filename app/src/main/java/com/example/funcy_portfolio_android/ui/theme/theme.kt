@@ -2,10 +2,11 @@ package com.example.funcy_portfolio_android.ui.theme
 
 import androidx.compose.ui.graphics.Brush
 
-/***
+/**
  * Funcy Color Pallete
  * usage ex. color=FuncyColor.primary
- * CAUTION! gradientPink 's Type is Brush()
+ *
+ * CAUTION!: gradientPink 's Type is Brush()
  */
 object FuncyColor {
     val primary = Primary
