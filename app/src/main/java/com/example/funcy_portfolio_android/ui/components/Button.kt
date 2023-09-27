@@ -19,6 +19,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.funcy_portfolio_android.ui.theme.FuncyColor
 
+/**
+ * Button filled with Gradient(FuncyColor.gradientPink)
+ * @param text is Button Text
+ * @param onClick called when this button is clicked
+ */
 @Composable
 fun InnerButton(
     modifier: Modifier = Modifier,
@@ -46,6 +51,11 @@ fun InnerButton(
     }
 }
 
+/**
+ * Bordered Button filled with FuncyColor.white
+ * @param text is Button Text
+ * @param onClick called when this button is clicked
+ */
 @Composable
 fun BorderButton(
     modifier: Modifier = Modifier,
@@ -68,6 +78,11 @@ fun BorderButton(
     }
 }
 
+/**
+ * Text Button with FuncyColor.primary text
+ * @param text is Button Text
+ * @param onClick called when this button is clicked
+ */
 @Composable
 fun TextButton(
     modifier: Modifier = Modifier,
