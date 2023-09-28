@@ -1,4 +1,4 @@
-package com.example.funcy_portfolio_android.ui.composable
+package com.example.funcy_portfolio_android.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
@@ -13,15 +13,11 @@ import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.funcy_portfolio_android.ui.theme.FuncyColor
 
 
 /**
@@ -32,18 +28,18 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchChip(
+    modifier: Modifier = Modifier,
     text: String,
     isSelected: Boolean,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit,
 ) {
-    var isSelected by remember { mutableStateOf(isSelected) }
     val checkedChipColor = FilterChipDefaults.filterChipColors(
-        selectedContainerColor = Color(0xFFFFC2E2),
-        selectedLabelColor = Color(0xFF3b4043),
-        selectedLeadingIconColor = Color(0xFF3b4043)
+        selectedContainerColor = FuncyColor.primary,
+        selectedLabelColor = FuncyColor.text,
+        selectedLeadingIconColor = FuncyColor.text
     )
     FilterChip(
-        onClick = { isSelected = !isSelected },
+        onClick = { onClick() },
         selected = isSelected,
         label = { Text("#" + text, overflow = TextOverflow.Ellipsis) },
         leadingIcon = {
@@ -51,7 +47,7 @@ fun SearchChip(
                 Icon(
                     imageVector = Icons.Default.Done,
                     contentDescription = null,
-                    Modifier.size(InputChipDefaults.IconSize)
+                    modifier.size(InputChipDefaults.IconSize)
                 )
             }
         },
@@ -71,44 +67,35 @@ fun SearchChip(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SkillChip(
+    modifier: Modifier = Modifier,
     text: String,
     isEditable: Boolean,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
 ) {
-    var editable by remember { mutableStateOf(isEditable) }
     val checkedChipColor = InputChipDefaults.inputChipColors(
-        selectedContainerColor = Color(0xFFFFFFFF)
+        selectedContainerColor = FuncyColor.white
     )
     val checkedChipBorder = InputChipDefaults.inputChipBorder(
-        selectedBorderColor = Color(0xFF3b4043),
+        selectedBorderColor = FuncyColor.text,
         selectedBorderWidth = 1.dp
     )
     InputChip(
         onClick = { onClick() },
-        selected = editable,
+        selected = isEditable,
         label = { Text("#" + text) },
         trailingIcon = {
-            if (editable) {
+            if (isEditable) {
                 Icon(
                     Icons.Default.Close,
                     contentDescription = null,
-                    Modifier.size(InputChipDefaults.AvatarSize)
+                    modifier.size(InputChipDefaults.AvatarSize)
                 )
             } else {
                 null
             }
         },
-        colors = if (editable) {
-            checkedChipColor
-        } else {
-            InputChipDefaults.inputChipColors()
-        },
-        border = if (editable) {
-            checkedChipBorder
-        } else {
-            InputChipDefaults.inputChipBorder()
-        }
+        colors = checkedChipColor,
+        border = checkedChipBorder
     )
 }
 
@@ -116,7 +103,7 @@ fun SkillChip(
 @Preview(showBackground = true)
 @Composable
 fun SearchChipPreview() {
-    SearchChip(text = "kotlin", isSelected = false)
+    SearchChip(text = "kotlin", isSelected = false, onClick = {})
 }
 
 
