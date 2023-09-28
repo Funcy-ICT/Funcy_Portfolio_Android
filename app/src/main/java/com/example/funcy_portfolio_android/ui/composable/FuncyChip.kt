@@ -24,22 +24,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
-// chipをタップすると，色が変化し，アイコンが出現する
+/**
+ * SearchChipはメイン画面のChipでタップすると色が変化し，チェックアイコンが出現する
+ * @param text Chipに表示されるテキスト内容
+ * @param isSelected Chipが選択されているかどうか状態を監視する
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchChip(content: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    var chekced by remember { mutableStateOf(false) }
+fun SearchChip(
+    text: String,
+    isSelected: Boolean,
+    modifier: Modifier = Modifier
+) {
+    var isSelected by remember { mutableStateOf(isSelected) }
     val checkedChipColor = FilterChipDefaults.filterChipColors(
         selectedContainerColor = Color(0xFFFFC2E2),
         selectedLabelColor = Color(0xFF3b4043),
         selectedLeadingIconColor = Color(0xFF3b4043)
     )
     FilterChip(
-        onClick = { chekced = !chekced },
-        selected = chekced,
-        label = { Text(content, overflow = TextOverflow.Ellipsis) },
+        onClick = { isSelected = !isSelected },
+        selected = isSelected,
+        label = { Text("#" + text, overflow = TextOverflow.Ellipsis) },
         leadingIcon = {
-            if (chekced) {
+            if (isSelected) {
                 Icon(
                     imageVector = Icons.Default.Done,
                     contentDescription = null,
@@ -47,7 +55,7 @@ fun SearchChip(content: String, onClick: () -> Unit, modifier: Modifier = Modifi
                 )
             }
         },
-        colors = if (chekced) {
+        colors = if (isSelected) {
             checkedChipColor
         } else {
             FilterChipDefaults.filterChipColors()
@@ -55,19 +63,20 @@ fun SearchChip(content: String, onClick: () -> Unit, modifier: Modifier = Modifi
     )
 }
 
-
-// editStateはタグ編集判定のための変数
-// true -> ✕アイコンが出現
-// false -> 普通のchip
+/**
+ * SkillChipはマイページや作品投稿画面のChipで作成や編集が可能になっている
+ * @param text Chipに表示されるテキスト内容
+ * @param isEditable Chipが編集可能かどうかの状態を監視する
+ * */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SkillChip(
-    content: String,
+    text: String,
+    isEditable: Boolean,
     onClick: () -> Unit,
-    editState: Boolean,
     modifier: Modifier = Modifier
 ) {
-    var checked by remember { mutableStateOf(false) }
+    var editable by remember { mutableStateOf(isEditable) }
     val checkedChipColor = InputChipDefaults.inputChipColors(
         selectedContainerColor = Color(0xFFFFFFFF)
     )
@@ -76,11 +85,11 @@ fun SkillChip(
         selectedBorderWidth = 1.dp
     )
     InputChip(
-        onClick = { checked = !checked },
-        selected = checked,
-        label = { Text(content) },
+        onClick = { onClick() },
+        selected = editable,
+        label = { Text("#" + text) },
         trailingIcon = {
-            if (editState) {
+            if (editable) {
                 Icon(
                     Icons.Default.Close,
                     contentDescription = null,
@@ -90,12 +99,12 @@ fun SkillChip(
                 null
             }
         },
-        colors = if (checked) {
+        colors = if (editable) {
             checkedChipColor
         } else {
             InputChipDefaults.inputChipColors()
         },
-        border = if (checked) {
+        border = if (editable) {
             checkedChipBorder
         } else {
             InputChipDefaults.inputChipBorder()
@@ -107,7 +116,7 @@ fun SkillChip(
 @Preview(showBackground = true)
 @Composable
 fun SearchChipPreview() {
-    SearchChip(content = "#kotlin", onClick = {})
+    SearchChip(text = "kotlin", isSelected = false)
 }
 
 
@@ -115,7 +124,7 @@ fun SearchChipPreview() {
 @Composable
 fun SkillChipPreview() {
     Column {
-        SkillChip(content = "#kotlin", onClick = {}, editState = false)
-        SkillChip(content = "#kotlin", onClick = {}, editState = true)
+        SkillChip(text = "kotlin", onClick = {}, isEditable = false)
+        SkillChip(text = "kotlin", onClick = {}, isEditable = true)
     }
 }
