@@ -9,12 +9,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.funcy_portfolio_android.ui.theme.FuncyColor
@@ -29,6 +31,7 @@ fun GradientInnerButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 ) {
     val gradient = FuncyColor.gradientPink
 
@@ -46,6 +49,7 @@ fun GradientInnerButton(
             Text(
                 text = text,
                 color = FuncyColor.white,
+                style = textStyle,
             )
         }
     }
@@ -55,6 +59,9 @@ fun GradientInnerButton(
  *  Filled Button
  * @param text is Button Text
  * @param onClick called when this button is clicked
+ * @param color is Button container Color
+ * @param textColor is Button textColor
+ * @param textStyle
  */
 @Composable
 fun InnerButton(
@@ -63,6 +70,7 @@ fun InnerButton(
     onClick: () -> Unit,
     color: Color = FuncyColor.primary,
     textColor: Color = FuncyColor.white,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 ) {
     Button(
         colors = ButtonDefaults.buttonColors(containerColor = color),
@@ -71,6 +79,7 @@ fun InnerButton(
         Text(
             text = text,
             color = textColor,
+            style = textStyle,
         )
     }
 }
@@ -80,25 +89,35 @@ fun InnerButton(
  * Bordered Button filled with FuncyColor.white
  * @param text is Button Text
  * @param onClick called when this button is clicked
+ * @param color is Button container Color
+ * @param borderColor is boderLine's Color
+ * @param textColor is Button Text Color
+ * @param textStyle
  */
 @Composable
 fun BorderButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
+    color: Color = FuncyColor.white,
+    borderColor: Color = FuncyColor.primary,
+    textColor: Color = FuncyColor.primary,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 ) {
     OutlinedButton(
         border = BorderStroke(
             width = 1.dp,
-            color = FuncyColor.primary),
+            color = borderColor,
+        ),
         colors = ButtonDefaults.buttonColors(
-            containerColor = FuncyColor.white,
+            containerColor = color,
         ),
         onClick = { onClick() }
     ) {
         Text(
             text = text,
-            color = FuncyColor.text,
+            color = textColor,
+            style = textStyle,
         )
     }
 }
@@ -113,13 +132,16 @@ fun TextButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
+    textColor: Color = FuncyColor.primary,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 ){
     androidx.compose.material3.TextButton(
         onClick = { onClick() }
     ) {
         Text(
             text = text,
-            color = FuncyColor.primary,
+            color = textColor,
+            style = textStyle,
         )
     }
 }
