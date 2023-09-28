@@ -4,13 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,20 +35,21 @@ fun SearchChip(
 ) {
     val checkedChipColor = FilterChipDefaults.filterChipColors(
         selectedContainerColor = FuncyColor.primary,
-        selectedLabelColor = FuncyColor.text,
-        selectedLeadingIconColor = FuncyColor.text
+        selectedLabelColor = FuncyColor.white,
+        selectedLeadingIconColor = FuncyColor.white
     )
     FilterChip(
         onClick = { onClick() },
         selected = isSelected,
-        label = { Text("#" + text, overflow = TextOverflow.Ellipsis) },
-        leadingIcon = {
+        label = {
             if (isSelected) {
-                Icon(
-                    imageVector = Icons.Default.Done,
-                    contentDescription = null,
-                    modifier.size(InputChipDefaults.IconSize)
+                Text(
+                    "#" + text,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyMedium
                 )
+            } else {
+                Text("#" + text, overflow = TextOverflow.Ellipsis)
             }
         },
         colors = if (isSelected) {
@@ -103,7 +104,7 @@ fun SkillChip(
 @Preview(showBackground = true)
 @Composable
 fun SearchChipPreview() {
-    SearchChip(text = "kotlin", isSelected = false, onClick = {})
+    SearchChip(text = "kotlin", isSelected = true, onClick = {})
 }
 
 
