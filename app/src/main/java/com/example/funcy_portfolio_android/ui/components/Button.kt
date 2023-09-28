@@ -25,7 +25,7 @@ import com.example.funcy_portfolio_android.ui.theme.FuncyColor
  * @param onClick called when this button is clicked
  */
 @Composable
-fun InnerButton(
+fun GradientInnerButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
@@ -50,6 +50,31 @@ fun InnerButton(
         }
     }
 }
+
+/**
+ *  Filled Button
+ * @param text is Button Text
+ * @param onClick called when this button is clicked
+ */
+@Composable
+fun InnerButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit,
+    color: Color = FuncyColor.primary,
+    textColor: Color = FuncyColor.white,
+) {
+    Button(
+        colors = ButtonDefaults.buttonColors(containerColor = color),
+        onClick = { onClick() },
+    ) {
+        Text(
+            text = text,
+            color = textColor,
+        )
+    }
+}
+
 
 /**
  * Bordered Button filled with FuncyColor.white
@@ -106,10 +131,17 @@ fun PreviewButtons() {
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        GradientInnerButton(text = "テスト", onClick = {})
         InnerButton(text = "テスト", onClick = {})
         BorderButton(text = "テスト", onClick = {})
         TextButton(text = "テスト", onClick = {})
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGradientInnerButton() {
+    GradientInnerButton(text = "テスト", onClick = {})
 }
 
 @Preview(showBackground = true)
