@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,16 +26,17 @@ import com.example.funcy_portfolio_android.ui.theme.FuncyColor
  * Button filled with Gradient(FuncyColor.gradientPink)
  * @param text is Button Text
  * @param onClick called when this button is clicked
+ * @param gradientBrush is Type of Brush. Gradient apply on Button Container
+ * @param textStyle
  */
 @Composable
-fun GradientInnerButton(
+fun GradientButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
+    gradientBrush: Brush = FuncyColor.gradientPink,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 ) {
-    val gradient = FuncyColor.gradientPink
-
     Button(
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
         contentPadding = PaddingValues(),
@@ -42,7 +44,7 @@ fun GradientInnerButton(
     ) {
         Box (
             modifier = modifier
-                .background(brush = gradient)
+                .background(brush = gradientBrush)
                 .padding(horizontal = 24.dp, vertical = 10.dp)
             ,
         ){
@@ -153,7 +155,7 @@ fun PreviewButtons() {
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        GradientInnerButton(text = "テスト", onClick = {})
+        GradientButton(text = "テスト", onClick = {})
         InnerButton(text = "テスト", onClick = {})
         BorderButton(text = "テスト", onClick = {})
         TextButton(text = "テスト", onClick = {})
@@ -163,7 +165,7 @@ fun PreviewButtons() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewGradientInnerButton() {
-    GradientInnerButton(text = "テスト", onClick = {})
+    GradientButton(text = "テスト", onClick = {})
 }
 
 @Preview(showBackground = true)
