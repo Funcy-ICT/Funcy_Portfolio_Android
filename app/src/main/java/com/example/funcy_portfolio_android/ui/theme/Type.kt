@@ -57,7 +57,7 @@ object FuncyTypography {
 
     val titleSmall = TextStyle(
         fontSize = 12.sp,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontFamily = notoSansFamily
     )
@@ -85,7 +85,7 @@ object FuncyTypography {
 
     val labelMedium = TextStyle(
         fontSize = 16.sp,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal,
         fontFamily = notoSansFamily
     )
