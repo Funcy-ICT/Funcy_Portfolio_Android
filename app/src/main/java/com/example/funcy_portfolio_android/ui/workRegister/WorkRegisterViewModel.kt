@@ -92,7 +92,7 @@ class WorkRegisterViewModel : ViewModel() {
                 WorkData(
                     title,
                     description,
-                    thumbnail,
+                    thumbnail.toString(),
                     user_icon,
                     user_name,
                     userID,
