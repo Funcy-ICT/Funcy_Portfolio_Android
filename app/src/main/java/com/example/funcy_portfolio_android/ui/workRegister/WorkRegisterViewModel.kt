@@ -11,6 +11,11 @@ import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
+
 
 class WorkRegisterViewModel : ViewModel() {
 
@@ -34,6 +39,9 @@ class WorkRegisterViewModel : ViewModel() {
         tagFlag = -1
     }
 
+    fun getThumbnails(): List<Uri> {
+        return thumbnail.value?.toList()!!
+    }
     fun getTag(): List<String> {
         return tags.toList()
     }
@@ -73,6 +81,30 @@ class WorkRegisterViewModel : ViewModel() {
 
     fun getTagFlag(): Boolean {
         return (tagFlag > 0)
+    }
+
+    fun convertImageToUrl(thumbnails: List<Uri>): String{
+        val multiPartList = mutableListOf<MultipartBody.Part>()
+        var res = ""
+
+        for (thumbnail in thumbnails) {
+            val file: File = thumbnail.path?.let { File(it) }!!
+            Log.e("file", file.toString())
+            multiPartList.add(
+                MultipartBody.Part.createFormData(
+                    "file",
+                    file.name,
+                    file.asRequestBody("image/*".toMediaTypeOrNull())
+                )
+            )
+        }
+
+        viewModelScope.launch {
+            res = workRepository.convertImageToUrl(multiPartList)
+            Log.e("res",res)
+        }
+
+        return res
     }
 
     fun registerWork(
