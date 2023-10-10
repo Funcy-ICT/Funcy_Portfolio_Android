@@ -34,6 +34,7 @@ android {
     buildFeatures {
         dataBinding true
     }
+    namespace 'com.example.funcy_portfolio_android'
 }
 
 dependencies {
