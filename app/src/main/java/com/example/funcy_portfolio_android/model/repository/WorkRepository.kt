@@ -9,6 +9,8 @@ import java.io.IOException
 class WorkRepository() {
     private val service = ConnectFuncyApi.ApiService.service
 
+    private val userToken = com.example.funcy_portfolio_android.BuildConfig.USER_TOKEN
+
     suspend fun registerWork(work: WorkData): String? {
         val data = work
         var res = ""
@@ -26,8 +28,9 @@ class WorkRepository() {
         return res
     }
 
-    suspend fun getWorkDetail(token: String, workId: String): WorkData {
-        val response = service.getWorkDetail(token = token, workId = workId)
+    suspend fun getWorkDetail(workId: String): WorkData {
+
+        val response = service.getWorkDetail(token = userToken, workId = workId)
         var workData: WorkData? = null
         if (response.isSuccessful) {
             workData = response.body()

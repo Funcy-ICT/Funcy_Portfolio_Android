@@ -10,7 +10,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.BuildConfig
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
@@ -58,21 +57,23 @@ class WorkDetailViewModel : ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        //仮置きデータ用
-        getWorkFromNetwork(
-            token = BuildConfig.WORK_DETAIL_TOKEN,
-            workId = BuildConfig.WORK_DETAIL_ID
-        )
+        // 詳細画面のworkIdはここに入れてください
+        getWorkFromNetwork(workId = null)
     }
 
 
-    private fun getWorkFromNetwork(token: String, workId: String) {
+    private fun getWorkFromNetwork(workId: String?) {
         viewModelScope.launch {
             _workDetailStatus.value = WorkApiStatus.LOADING
             try {
-                _work.value = workRepository.getWorkDetail(token, workId)
-                Log.e(TAG, "アクセス成功")
-                _workDetailStatus.value = WorkApiStatus.DONE
+                if (workId == null) {
+                    Log.e(TAG, "アクセス失敗 workId not found　エラー")
+                    _workDetailStatus.value = WorkApiStatus.ERROR
+                } else {
+                    _work.value = workRepository.getWorkDetail(workId)
+                    Log.e(TAG, "アクセス成功")
+                    _workDetailStatus.value = WorkApiStatus.DONE
+                }
             } catch (e: Exception) {
                 Log.e(TAG, "アクセス失敗　エラー：$e")
                 _workDetailStatus.value = WorkApiStatus.ERROR

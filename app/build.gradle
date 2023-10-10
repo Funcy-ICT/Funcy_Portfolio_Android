@@ -24,17 +24,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            // app/gradle.propertiesをつくり、以下の2行を追加してください
+            // app/gradle.propertiesをつくり、以下の3行を追加してください
             // SERVER_IP=10.124.xx.xxx
             // SERVER_PORT=xxxx
+            // USER_TOKEN="xxxxxx"
             buildConfigField("String", "SERVER_IP", "\"${SERVER_IP}\"")
             buildConfigField("int", "SERVER_PORT", "${SERVER_PORT}")
-
-            // 作品詳細のデータが必要な場合は以下の2行を追加してください
-            // WORK_DETAIL_TOKEN="xxxxxx"
-            // WORK_DETAIL_ID="xxx-xxx"
-            buildConfigField("String", "WORK_DETAIL_TOKEN", "${WORK_DETAIL_TOKEN}")
-            buildConfigField("String", "WORK_DETAIL_ID", "${WORK_DETAIL_ID}")
+            buildConfigField("String", "USER_TOKEN", "${USER_TOKEN}")
         }
     }
     compileOptions {
