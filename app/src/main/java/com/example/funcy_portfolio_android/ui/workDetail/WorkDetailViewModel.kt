@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.funcy_portfolio_android.BuildConfig
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
@@ -57,7 +58,11 @@ class WorkDetailViewModel : ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        getWorkFromNetwork("Token1", "w1")
+        //仮置きデータ用
+        getWorkFromNetwork(
+            token = BuildConfig.WORK_DETAIL_TOKEN,
+            workId = BuildConfig.WORK_DETAIL_ID
+        )
     }
 
 
@@ -90,8 +95,8 @@ class WorkDetailViewModel : ViewModel() {
         _images.value = workValue.images
         _explanation.value = workValue.description
         _tagList.value = workValue.tags
-        _youtubeUrl.value = workValue.movie_url
-        _githubUrl.value = workValue.URL
+        _youtubeUrl.value = workValue.movieUrl
+        _githubUrl.value = workValue.workUrl
     }
 
     //Web遷移系の処理//////////////////////////////////
