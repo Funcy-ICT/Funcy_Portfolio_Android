@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +20,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.funcy_portfolio_android.ui.theme.FuncyColor
+import com.example.funcy_portfolio_android.ui.theme.FuncyTypography
 
 /**
  * Button filled with Gradient(FuncyColor.gradientPink)
@@ -35,7 +35,7 @@ fun GradientButton(
     text: String,
     onClick: () -> Unit,
     gradientBrush: Brush = FuncyColor.gradientPink,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = FuncyTypography.labelMedium,
 ) {
     Button(
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
@@ -72,7 +72,7 @@ fun InnerButton(
     onClick: () -> Unit,
     color: Color = FuncyColor.primary,
     textColor: Color = FuncyColor.white,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = FuncyTypography.labelMedium,
 ) {
     Button(
         colors = ButtonDefaults.buttonColors(containerColor = color),
@@ -104,7 +104,7 @@ fun BorderButton(
     color: Color = FuncyColor.white,
     borderColor: Color = FuncyColor.primary,
     textColor: Color = FuncyColor.primary,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = FuncyTypography.labelMedium,
 ) {
     OutlinedButton(
         border = BorderStroke(
@@ -135,7 +135,7 @@ fun TextButton(
     text: String,
     onClick: () -> Unit,
     textColor: Color = FuncyColor.primary,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = FuncyTypography.labelMedium,
 ){
     androidx.compose.material3.TextButton(
         onClick = { onClick() }
