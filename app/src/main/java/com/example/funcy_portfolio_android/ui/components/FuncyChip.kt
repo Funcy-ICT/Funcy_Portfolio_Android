@@ -10,7 +10,6 @@ import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,6 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.funcy_portfolio_android.ui.theme.FuncyColor
+import com.example.funcy_portfolio_android.ui.theme.FuncyTypography
 
 
 /**
@@ -44,12 +44,16 @@ fun SearchChip(
         label = {
             if (isSelected) {
                 Text(
-                    "#" + text,
+                    text = "#" + text,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = FuncyTypography.titleSmall,
                 )
             } else {
-                Text("#" + text, overflow = TextOverflow.Ellipsis)
+                Text(
+                    text = "#" + text,
+                    overflow = TextOverflow.Ellipsis,
+                    style = FuncyTypography.titleSmall,
+                )
             }
         },
         colors = if (isSelected) {
@@ -83,7 +87,12 @@ fun SkillChip(
     InputChip(
         onClick = { onClick() },
         selected = isEditable,
-        label = { Text("#" + text) },
+        label = {
+            Text(
+                text = "#" + text,
+                style = FuncyTypography.titleSmall,
+            )
+                },
         trailingIcon = {
             if (isEditable) {
                 Icon(
