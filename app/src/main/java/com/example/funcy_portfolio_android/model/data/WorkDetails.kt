@@ -6,11 +6,12 @@ data class WorkDetails(
     val thumbnail: String,
     val user_icon: String,
     val user_name: String,
+    val userID: String,
     val images: List<ImageData>,
     val work_url: String,
     val movie_url: String,
     val tags: List<TagData>,
-    val groupID: String?,
+    val group: String?,
     val security: Int,
 )
 
