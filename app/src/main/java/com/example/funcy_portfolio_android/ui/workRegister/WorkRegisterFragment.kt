@@ -5,6 +5,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -37,18 +38,19 @@ class WorkRegisterFragment : Fragment() {
     private var image_launchar = registerForActivityResult(
         ActivityResultContracts.PickMultipleVisualMedia(5)
     ) {
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val cr:ContentResolver = requireContext().contentResolver
-        val cursor = cr.query(it[0], proj, null, null, null)
-        var res = ""
-        if (cursor!!.moveToFirst()) {
-            val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            res = cursor.getString(column_index)
+        for (i in it) {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            val cr:ContentResolver = requireContext().contentResolver
+            val cursor = cr.query(i, proj, null, null, null)
+            var res = ""
+            if (cursor!!.moveToFirst()) {
+                val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                res = cursor.getString(column_index)
+            }
+            cursor.close()
+            val file = File(res)
+            viewModel.setImageFile(file)
         }
-        cursor.close()
-        val file = File(res)
-        Log.e("file",file.toString())
-
         viewModel.saveImage(it)
     }
 
@@ -118,8 +120,7 @@ class WorkRegisterFragment : Fragment() {
                 AlertDialog.Builder(activity)
                     .setTitle("作品を投稿しますか？")
                     .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
-                        val imageUrlList: String = viewModel.convertImageToUrl(viewModel.getThumbnails())
-                        Log.e("imageUrlList",imageUrlList)
+                        val imageUrlList: String = viewModel.convertImageToUrl()
 
                         viewModel.registerWork(
                             binding.etWorkTitle.text.toString(),

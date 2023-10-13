@@ -37,7 +37,7 @@ class WorkRepository() {
         var res = ""
         withContext(IO) {
             try {
-                val response = serviceImage.convertImageToUrl(file).execute().body()
+                val response = serviceImage.convertImageToUrl(file).body()
                 if (response != null) {
                     res = response.toString()
                 }

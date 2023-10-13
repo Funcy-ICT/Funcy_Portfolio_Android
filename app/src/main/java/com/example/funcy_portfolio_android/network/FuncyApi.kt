@@ -2,6 +2,7 @@ package com.example.funcy_portfolio_android.network
 
 import com.example.funcy_portfolio_android.model.data.AuthData
 import com.example.funcy_portfolio_android.model.data.SignupData
+import com.example.funcy_portfolio_android.model.data.UrlList
 import com.example.funcy_portfolio_android.model.data.UserIdData
 import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.data.WorkDataList
@@ -44,5 +45,5 @@ interface FuncyApi {
     @POST("upload/file")
     suspend fun convertImageToUrl(
         @Part file: List<MultipartBody.Part>
-    ): Call<List<MultipartBody.Part>>
+    ): Response<UrlList>
 }

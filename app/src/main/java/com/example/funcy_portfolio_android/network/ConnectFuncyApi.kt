@@ -6,8 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private val URL = "http://10.124.48.28:9000/"
-private val IMAGE_URL = "http://10.124.48.28:3004/"
+private val URL = "http://192.168.11.10:9000/"
+private val IMAGE_URL = "http://192.168.11.10:3004/"
 
 private val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
 

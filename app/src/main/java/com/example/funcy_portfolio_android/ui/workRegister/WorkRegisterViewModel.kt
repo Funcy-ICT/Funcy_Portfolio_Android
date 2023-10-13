@@ -13,6 +13,7 @@ import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
@@ -32,6 +33,8 @@ class WorkRegisterViewModel : ViewModel() {
         get() = _thumbnail
     private var tagFlag: Int
 
+    private var imageFileList: MutableList<File> = mutableListOf()
+
     init {
         //サムネイルの初期値として[no_image]の画像を設定
         _thumbnail.value =
@@ -39,9 +42,6 @@ class WorkRegisterViewModel : ViewModel() {
         tagFlag = -1
     }
 
-    fun getThumbnails(): List<Uri> {
-        return thumbnail.value?.toList()!!
-    }
     fun getTag(): List<String> {
         return tags.toList()
     }
@@ -83,25 +83,26 @@ class WorkRegisterViewModel : ViewModel() {
         return (tagFlag > 0)
     }
 
-    fun convertImageToUrl(thumbnails: List<Uri>): String{
+    fun setImageFile(source: File) {
+        imageFileList.add(source)
+    }
+    fun convertImageToUrl(): String{
         val multiPartList = mutableListOf<MultipartBody.Part>()
         var res = ""
 
-        for (thumbnail in thumbnails) {
-            val file: File = thumbnail.path?.let { File(it) }!!
-            Log.e("file", file.toString())
+        for (imageFile in imageFileList) {
             multiPartList.add(
                 MultipartBody.Part.createFormData(
                     "file",
-                    file.name,
-                    file.asRequestBody("image/*".toMediaTypeOrNull())
+                    imageFile.name,
+                    imageFile.asRequestBody("image/*".toMediaTypeOrNull())
                 )
             )
         }
 
         viewModelScope.launch {
             res = workRepository.convertImageToUrl(multiPartList)
-            Log.e("res",res)
+            Log.e("convertImageToUrlRes",res)
         }
 
         return res
