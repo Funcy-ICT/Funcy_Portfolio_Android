@@ -1,7 +1,7 @@
 package com.example.funcy_portfolio_android.model.data
 
 /**
- * 作品一覧画面(main)のデータクラス
+ * 作品一覧画面 (main) のデータクラス
  */
 
 data class WorkDataList(

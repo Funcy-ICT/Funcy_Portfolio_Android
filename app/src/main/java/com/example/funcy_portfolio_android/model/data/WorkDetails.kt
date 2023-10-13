@@ -1,5 +1,8 @@
 package com.example.funcy_portfolio_android.model.data
 
+/**
+ * 作品詳細 (workDetail) のデータクラス
+ */
 data class WorkDetails(
     val title: String,
     val description: String,
