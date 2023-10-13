@@ -62,14 +62,14 @@ class SignupViewModel : ViewModel() {
             try {
                 val res =userRepository.userRegistration(
                     SignupData(
+                        "noIcon",
                         familyName.value!!,
+                        firstName.value!!,
+                        sendMailAddress,
+                        password.value!!,
+                        grade,
                         course,
                         displayName.value!!,
-                        firstName.value!!,
-                        grade,
-                        "noIcon",
-                        sendMailAddress,
-                        password.value!!
                     )
                 )
                 if (res.isSuccessful) {
