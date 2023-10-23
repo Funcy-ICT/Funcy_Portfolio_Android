@@ -1,8 +1,8 @@
 package com.example.funcy_portfolio_android.model.data
 
 data class AuthData(
-    val userID: String,
-    val code: String
+    val code: String,
+    val userID: String
 )
 
 data class UserIdData(

@@ -1,17 +1,10 @@
 package com.example.funcy_portfolio_android.model.data
 
-/**
- * 作品詳細 (workDetail) のデータクラス
- */
-data class WorkDetails(
+data class WorkData(
     val title: String,
     val description: String,
-    val thumbnail: String,
-    val user_icon: String,
-    val user_name: String,
-    val userID: String,
     val images: List<ImageData>,
-    val work_url: String,
+    val URL: String,
     val movie_url: String,
     val tags: List<TagData>,
     val group: String?,
@@ -19,9 +12,9 @@ data class WorkDetails(
 )
 
 data class ImageData(
-    val image: String
+    val Image: String
 )
 
 data class TagData(
-    val tag: String
+    val Tag: String
 )
