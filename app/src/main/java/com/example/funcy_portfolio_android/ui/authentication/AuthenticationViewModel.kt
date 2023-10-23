@@ -24,7 +24,7 @@ class AuthenticationViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = userRepository.userAuthentication(
-                    AuthData(userId, inputCode.value!!)
+                    AuthData(inputCode.value!!, userId)
                 )
                 if (response.isSuccessful) {
                     Log.i("Authentication", "認証が完了しました${response.body()}")
