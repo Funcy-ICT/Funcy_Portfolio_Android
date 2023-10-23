@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.databinding.CreateCardBinding
 import com.example.funcy_portfolio_android.model.data.WorkDataList
 
-class CardAdapter:ListAdapter<WorkDataList, CardAdapter.WorkDataViewHolder>(DiffCallBack){
+class CardAdapter : ListAdapter<WorkDataList, CardAdapter.WorkDataViewHolder>(DiffCallBack) {
 
-    class WorkDataViewHolder(private var binding: CreateCardBinding):
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(workDataList: WorkDataList){
-                    binding.work = workDataList
-                    binding.executePendingBindings()
-                }
-            }
+    class WorkDataViewHolder(private var binding: CreateCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(workDataList: WorkDataList) {
+            binding.work = workDataList
+            binding.executePendingBindings()
+        }
+    }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<WorkDataList>(){
+    companion object DiffCallBack : DiffUtil.ItemCallback<WorkDataList>() {
         override fun areItemsTheSame(oldItem: WorkDataList, newItem: WorkDataList): Boolean {
-            return oldItem.work_id == newItem.work_id
+            return oldItem.workID == newItem.workID
         }
 
         override fun areContentsTheSame(oldItem: WorkDataList, newItem: WorkDataList): Boolean {
-            return oldItem.images == newItem.images
+            return oldItem.thumbnail == newItem.thumbnail
         }
 
     }
@@ -43,9 +43,6 @@ class CardAdapter:ListAdapter<WorkDataList, CardAdapter.WorkDataViewHolder>(Diff
         holder.bind(workData)
     }
 }
-
-
-
 
 
 //@BindingAdapter
