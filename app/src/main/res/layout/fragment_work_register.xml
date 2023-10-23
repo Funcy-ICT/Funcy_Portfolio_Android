@@ -20,7 +20,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/toolbar_color">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -77,240 +77,284 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-            <ScrollView
-                android:id="@+id/scrollView"
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".ui.workRegister.WorkRegisterFragment">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:context=".ui.workRegister.WorkRegisterFragment">
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:focusable="true">
 
+                <ImageButton
+                    android:id="@+id/btAddTag"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bt_tag_circle"
+                    android:contentDescription="@string/work_add_tag"
+                    android:src="@drawable/bt_add_24dp"
+                    app:layout_constraintEnd_toStartOf="@id/flexTag"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTag" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/flexTag"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    android:layout_margin="12dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvTag"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTag" />
+
+                <TextView
+                    android:id="@+id/tvPublicSetting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/work_public_setting"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvWorkTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/work_title"
+                    app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
+                    app:layout_constraintTop_toBottomOf="@+id/swPublic" />
+
+                <TextView
+                    android:id="@+id/tvNecessary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/work_necessary"
+                    android:textColor="@color/red"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvWorkTitle"
+                    app:layout_constraintStart_toEndOf="@+id/tvWorkTitle"
+                    app:layout_constraintTop_toTopOf="@+id/tvWorkTitle" />
+
+                <TextView
+                    android:id="@+id/tvWorkDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/work_desc"
+                    app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
+                    app:layout_constraintTop_toBottomOf="@+id/otfTitle" />
+
+                <TextView
+                    android:id="@+id/tvGitHubLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/work_github_link"
+                    app:layout_constraintStart_toStartOf="@+id/tvWorkDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/otfDescription" />
+
+                <TextView
+                    android:id="@+id/tvYouTubeLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/work_youtube_link"
+                    app:layout_constraintStart_toStartOf="@+id/tvGitHubLink"
+                    app:layout_constraintTop_toBottomOf="@+id/otfGitHubLink" />
+
+                <TextView
+                    android:id="@+id/tvTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/work_tag"
+                    app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
+                    app:layout_constraintTop_toBottomOf="@+id/otfYouTubeLink" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swPublic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:checked="true"
+                    android:text="@string/work_public"
+                    style="@style/SwitchMaterialStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfTitle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusableInTouchMode="true"
-                    android:focusable="true">
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWorkTitle">
 
-                    <ImageButton
-                        android:id="@+id/btAddTag"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/bt_tag_circle"
-                        android:contentDescription="@string/work_add_tag"
-                        android:src="@drawable/bt_add_24dp"
-                        app:layout_constraintEnd_toStartOf="@id/flexTag"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTag" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/flexTag"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="true"
-                        android:layout_margin="12dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="0dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/tvTag"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTag" />
-
-                    <TextView
-                        android:id="@+id/tvPublicSetting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/work_public_setting"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvWorkTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/work_title"
-                        app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
-                        app:layout_constraintTop_toBottomOf="@+id/swPublic" />
-
-                    <TextView
-                        android:id="@+id/tvNecessary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/work_necessary"
-                        android:textColor="@color/red"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvWorkTitle"
-                        app:layout_constraintStart_toEndOf="@+id/tvWorkTitle"
-                        app:layout_constraintTop_toTopOf="@+id/tvWorkTitle" />
-
-                    <TextView
-                        android:id="@+id/tvWorkDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/work_desc"
-                        app:layout_constraintStart_toStartOf="@+id/tvPublicSetting"
-                        app:layout_constraintTop_toBottomOf="@+id/otfTitle" />
-
-                    <TextView
-                        android:id="@+id/tvGitHubLink"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/work_github_link"
-                        app:layout_constraintStart_toStartOf="@+id/tvWorkDesc"
-                        app:layout_constraintTop_toBottomOf="@+id/otfDescription" />
-
-                    <TextView
-                        android:id="@+id/tvYouTubeLink"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/work_youtube_link"
-                        app:layout_constraintStart_toStartOf="@+id/tvGitHubLink"
-                        app:layout_constraintTop_toBottomOf="@+id/otfGitHubLink" />
-
-                    <TextView
-                        android:id="@+id/tvTag"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/work_tag"
-                        app:layout_constraintStart_toStartOf="@+id/tvYouTubeLink"
-                        app:layout_constraintTop_toBottomOf="@+id/otfYouTubeLink" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/swPublic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:checked="true"
-                        android:text="@string/work_public"
-                        style="@style/SwitchMaterialStyle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvPublicSetting" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/otfTitle"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWorkTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="24dp"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="60"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvWorkTitle">
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etWorkTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfDescription"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="2000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/otfDescription"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWorkDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfGitHubLink"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etGitHubLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="24dp"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="2000"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc">
+                        android:inputType="textUri" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etWorkDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/otfYouTubeLink"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/otfGitHubLink"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etYoutubeLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="24dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvGitHubLink">
+                        android:inputType="textUri" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etGitHubLink"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textUri"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/tvAddImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="@string/work_add_img"
+                    app:layout_constraintStart_toStartOf="@+id/tvTag"
+                    app:layout_constraintTop_toBottomOf="@id/flexTag" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/otfYouTubeLink"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="24dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvYouTubeLink">
+                <ImageButton
+                    android:id="@+id/btAddImage"
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@null"
+                    android:paddingBottom="40dp"
+                    android:src="@drawable/bt_image_24dp"
+                    app:layout_constraintStart_toStartOf="@+id/btAddTag"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etYoutubeLink"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textUri"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rlThumbnail"
+                    android:layout_width="312dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btAddImage"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddImage" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-                    <TextView
-                        android:id="@+id/tvAddImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
-                        android:text="@string/work_add_img"
-                        app:layout_constraintStart_toStartOf="@+id/tvTag"
-                        app:layout_constraintTop_toBottomOf="@id/flexTag" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/progressDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginVertical="280dp"
+            android:visibility="gone"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/btAddImage"
-                        android:layout_width="50dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="40dp"
-                        android:background="@null"
-                        android:paddingBottom="40dp"
-                        android:src="@drawable/bt_image_24dp"
-                        app:layout_constraintStart_toStartOf="@+id/btAddTag"
-                        app:layout_constraintTop_toBottomOf="@id/tvAddImage" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rlThumbnail"
-                        android:layout_width="312dp"
-                        android:layout_height="85dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/btAddImage"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAddImage" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
+                <TextView
+                    android:id="@+id/textDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="通信中です"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animation_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="invisible"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/anim_loading" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

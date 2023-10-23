@@ -11,12 +11,11 @@ import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class WorkRegisterViewModel : ViewModel() {
 
     private val workRepository = WorkRepository()
-
-    var res: String? = ""
 
     private val _tagList: MutableLiveData<List<String>> = MutableLiveData(listOf())
     val tagList: LiveData<List<String>> = _tagList
@@ -26,6 +25,12 @@ class WorkRegisterViewModel : ViewModel() {
     val thumbnail: LiveData<MutableList<Uri>>
         get() = _thumbnail
     private var tagFlag: Int
+
+    enum class WorkRegisterApiStatus { LOADING, FAILURE, SUCCESS, INIT }
+
+    private val _workRegisterStatus =
+        MutableLiveData<WorkRegisterViewModel.WorkRegisterApiStatus>(WorkRegisterViewModel.WorkRegisterApiStatus.INIT)
+    val workRegisterStatus: LiveData<WorkRegisterApiStatus> = _workRegisterStatus
 
     init {
         //サムネイルの初期値として[no_image]の画像を設定
@@ -82,23 +87,38 @@ class WorkRegisterViewModel : ViewModel() {
         work_url: String,
         youtube_url: String
     ): String? {
+        _workRegisterStatus.value = WorkRegisterViewModel.WorkRegisterApiStatus.LOADING
+        var res: String? = ""
         viewModelScope.launch {
-            val postTagList = stringTagListToTagList(tags)
-            res = workRepository.registerWork(
-                WorkData(
-                    title,
-                    description,
-                    listOf(ImageData("")),
-                    work_url,
-                    youtube_url,
-                    postTagList,
-                    null,
-                    security
+            try {
+                val postTagList = stringTagListToTagList(tags)
+                res = workRepository.registerWork(
+                    WorkData(
+                        title,
+                        description,
+                        listOf(ImageData("")),
+                        work_url,
+                        youtube_url,
+                        postTagList,
+                        null,
+                        security
+                    )
                 )
-            )
-            Log.e("res", res!!)
+                if (res != "") {
+                    Log.d("WorkRegister", "送信成功: ${res!!}")
+                    _workRegisterStatus.value = WorkRegisterViewModel.WorkRegisterApiStatus.SUCCESS
+                } else {
+                    Log.d("WorkRegister", "エラー: ${res!!}")
+                    _workRegisterStatus.value = WorkRegisterViewModel.WorkRegisterApiStatus.FAILURE
+                }
+            } catch (e: HttpException) {
+                Log.d("WorkRegister", "通信エラー$e")
+                _workRegisterStatus.value = WorkRegisterViewModel.WorkRegisterApiStatus.FAILURE
+            } catch (e: Throwable) {
+                Log.d("WorkRegister", "エラー$e")
+                _workRegisterStatus.value = WorkRegisterViewModel.WorkRegisterApiStatus.FAILURE
+            }
         }
-
         return res
     }
 
