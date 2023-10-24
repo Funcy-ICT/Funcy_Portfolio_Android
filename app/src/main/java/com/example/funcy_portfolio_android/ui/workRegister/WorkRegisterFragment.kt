@@ -1,9 +1,13 @@
 package com.example.funcy_portfolio_android.ui.workRegister
 
 import android.app.AlertDialog
+import android.content.ContentResolver
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -11,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,13 +26,31 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentWorkRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import java.io.File
+import kotlin.math.log
 
 class WorkRegisterFragment : Fragment() {
     private val viewModel: WorkRegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentWorkRegisterBinding
 
+    var imageIntent: Intent? = null
     //画像選択
-    private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
+    private var image_launchar = registerForActivityResult(
+        ActivityResultContracts.PickMultipleVisualMedia(5)
+    ) {
+        for (i in it) {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            val cr:ContentResolver = requireContext().contentResolver
+            val cursor = cr.query(i, proj, null, null, null)
+            var res = ""
+            if (cursor!!.moveToFirst()) {
+                val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                res = cursor.getString(column_index)
+            }
+            cursor.close()
+            val file = File(res)
+            viewModel.setImageFile(file)
+        }
         viewModel.saveImage(it)
     }
 
@@ -97,6 +120,8 @@ class WorkRegisterFragment : Fragment() {
                 AlertDialog.Builder(activity)
                     .setTitle("作品を投稿しますか？")
                     .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+                        val imageUrlList: String = viewModel.convertImageToUrl()
+
                         viewModel.registerWork(
                             binding.etWorkTitle.text.toString(),
                             binding.etWorkDescription.text.toString(),
@@ -118,7 +143,8 @@ class WorkRegisterFragment : Fragment() {
         }
     
         binding.btAddImage.setOnClickListener {
-            image_launchar.launch(arrayOf("image/*"))
+            image_launchar.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+
         }
 
         //フォーカスが外れたとき→別の場所おしたときキーボード隠す

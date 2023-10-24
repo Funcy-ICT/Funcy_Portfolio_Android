@@ -18,3 +18,7 @@ data class ImageData(
 data class TagData(
     val Tag: String
 )
+
+data class UrlList(
+    val urls: List<String>
+)

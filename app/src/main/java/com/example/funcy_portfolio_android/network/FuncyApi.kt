@@ -2,9 +2,11 @@ package com.example.funcy_portfolio_android.network
 
 import com.example.funcy_portfolio_android.model.data.AuthData
 import com.example.funcy_portfolio_android.model.data.SignupData
+import com.example.funcy_portfolio_android.model.data.UrlList
 import com.example.funcy_portfolio_android.model.data.UserIdData
 import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.data.WorkDataList
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -38,4 +40,10 @@ interface FuncyApi {
     suspend fun getWorks(
         @Header("token") token: String
     ): List<WorkDataList>
+
+    @Multipart
+    @POST("upload/file")
+    suspend fun convertImageToUrl(
+        @Part file: List<MultipartBody.Part>
+    ): Response<UrlList>
 }
