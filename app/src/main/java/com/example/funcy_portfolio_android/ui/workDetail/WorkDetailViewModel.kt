@@ -57,7 +57,10 @@ class WorkDetailViewModel : ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        getWorkFromNetwork("Token1", "w1")
+        getWorkFromNetwork(
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmI4ZDgwMWQtZDE1My00MzQyLThlYzEtZDdhOTRiMGRhMzNiIiwiaWF0IjoxNjk1NjI0ODkyfQ.KmprdUToZAlBzCri-zgWv6xAVsNzsjdSbbcMOEbgOj4",
+            "51e9310d-5e4e-4d02-9bbe-56d85cbd1756"
+        )
     }
 
 

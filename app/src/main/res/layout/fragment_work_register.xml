@@ -312,10 +312,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/progressDialog"
+        <FrameLayout
+            android:id="@+id/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:visibility="gone"
+            android:background="@color/black"></FrameLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/progressDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
             android:layout_marginVertical="280dp"
             android:visibility="gone"
@@ -327,19 +335,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textDialog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="通信中です"
-                    app:layout_constraintBottom_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/animation_view"
@@ -349,7 +346,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="invisible"
+                    android:paddingStart="60dp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/anim_loading" />

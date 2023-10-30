@@ -125,17 +125,15 @@ class WorkRegisterFragment : Fragment() {
             }
         }
 
+        /* ローディング */
         viewModel.workRegisterStatus.observe(viewLifecycleOwner, Observer { status ->
             when (status) {
                 WorkRegisterViewModel.WorkRegisterApiStatus.LOADING -> {
+                    binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
-                    binding.animationView.visibility = View.VISIBLE
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.SUCCESS -> {
-                    //ぐるぐるバー
-                    binding.textDialog.text =
-                        resources.getString(R.string.comp_registration_message)
                     binding.animationView.visibility = View.GONE
                     Handler(Looper.getMainLooper()).postDelayed(
                         {
@@ -146,9 +144,13 @@ class WorkRegisterFragment : Fragment() {
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.FAILURE -> {
-                    binding.progressDialog.visibility = View.GONE
-                    binding.animationView.visibility = View.GONE
-                    Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            binding.background.visibility = View.GONE
+                            binding.progressDialog.visibility = View.GONE
+                            Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
+                        }, 2000
+                    )
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.INIT -> {}
