@@ -131,12 +131,34 @@ class WorkRegisterFragment : Fragment() {
                 WorkRegisterViewModel.WorkRegisterApiStatus.LOADING -> {
                     binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
+                    binding.btRegister.isEnabled = false
+                    binding.btAddTag.isEnabled = false
+                    binding.btBack.isEnabled = false
+                    binding.btAddImage.isEnabled = false
+                    binding.etWorkDescription.isEnabled = false
+                    binding.etWorkTitle.isEnabled = false
+                    binding.etYoutubeLink.isEnabled = false
+                    binding.etGitHubLink.isEnabled = false
+                    binding.swPublic.isEnabled = false
+                    binding.btDraft.isEnabled = false
+                    binding.btIcon.isEnabled = false
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.SUCCESS -> {
                     binding.animationView.visibility = View.GONE
                     Handler(Looper.getMainLooper()).postDelayed(
                         {
+                            binding.btRegister.isEnabled = true
+                            binding.btAddTag.isEnabled = true
+                            binding.btBack.isEnabled = true
+                            binding.btAddImage.isEnabled = true
+                            binding.etWorkDescription.isEnabled = true
+                            binding.etWorkTitle.isEnabled = true
+                            binding.etYoutubeLink.isEnabled = true
+                            binding.etGitHubLink.isEnabled = true
+                            binding.swPublic.isEnabled = true
+                            binding.btDraft.isEnabled = true
+                            binding.btIcon.isEnabled = true
                             binding.progressDialog.visibility = View.GONE
                             findNavController().navigate(R.id.action_WorkRegisterFragment_to_MainFragment)
                         }, 2000
@@ -148,6 +170,17 @@ class WorkRegisterFragment : Fragment() {
                         {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
+                            binding.btRegister.isEnabled = true
+                            binding.btAddTag.isEnabled = true
+                            binding.btBack.isEnabled = true
+                            binding.btAddImage.isEnabled = true
+                            binding.etWorkDescription.isEnabled = true
+                            binding.etWorkTitle.isEnabled = true
+                            binding.etYoutubeLink.isEnabled = true
+                            binding.etGitHubLink.isEnabled = true
+                            binding.swPublic.isEnabled = true
+                            binding.btDraft.isEnabled = true
+                            binding.btIcon.isEnabled = true
                             Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                         }, 2000
                     )
