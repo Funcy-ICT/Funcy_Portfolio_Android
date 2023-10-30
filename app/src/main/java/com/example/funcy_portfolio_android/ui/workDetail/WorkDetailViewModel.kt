@@ -57,17 +57,23 @@ class WorkDetailViewModel : ViewModel() {
         //仮置きのテキスト
         _userName.value = "田中太郎"
 
-        getWorkFromNetwork("Token1", "w1")
+        // 詳細画面のworkIdはここに入れてください
+        getWorkFromNetwork(workId = null)
     }
 
 
-    private fun getWorkFromNetwork(token: String, workId: String) {
+    private fun getWorkFromNetwork(workId: String?) {
         viewModelScope.launch {
             _workDetailStatus.value = WorkApiStatus.LOADING
             try {
-                _work.value = workRepository.getWorkDetail(token, workId)
-                Log.e(TAG, "アクセス成功")
-                _workDetailStatus.value = WorkApiStatus.DONE
+                if (workId == null) {
+                    Log.e(TAG, "アクセス失敗 workId not found　エラー")
+                    _workDetailStatus.value = WorkApiStatus.ERROR
+                } else {
+                    _work.value = workRepository.getWorkDetail(workId)
+                    Log.e(TAG, "アクセス成功")
+                    _workDetailStatus.value = WorkApiStatus.DONE
+                }
             } catch (e: Exception) {
                 Log.e(TAG, "アクセス失敗　エラー：$e")
                 _workDetailStatus.value = WorkApiStatus.ERROR
@@ -90,8 +96,8 @@ class WorkDetailViewModel : ViewModel() {
         _images.value = workValue.images
         _explanation.value = workValue.description
         _tagList.value = workValue.tags
-        _youtubeUrl.value = workValue.movie_url
-        _githubUrl.value = workValue.URL
+        _youtubeUrl.value = workValue.movieUrl
+        _githubUrl.value = workValue.workUrl
     }
 
     //Web遷移系の処理//////////////////////////////////

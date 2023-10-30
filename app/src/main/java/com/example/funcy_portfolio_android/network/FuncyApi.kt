@@ -21,7 +21,7 @@ interface FuncyApi {
     suspend fun getWorkDetail(
         @Header("token") token: String,
         @Path("workID") workId: String
-    ): WorkData
+    ): Response<WorkData>
 
     //登録データ送信
     @POST("sign/up")

@@ -1,13 +1,15 @@
 package com.example.funcy_portfolio_android.model.repository
 
 import com.example.funcy_portfolio_android.model.data.WorkData
-import com.example.funcy_portfolio_android.network.ApiService
+import com.example.funcy_portfolio_android.network.ConnectFuncyApi
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
 class WorkRepository() {
-    private val service = ApiService.service
+    private val service = ConnectFuncyApi.ApiService.service
+
+    private val userToken = com.example.funcy_portfolio_android.BuildConfig.USER_TOKEN
 
     suspend fun registerWork(work: WorkData): String? {
         val data = work
@@ -26,7 +28,24 @@ class WorkRepository() {
         return res
     }
 
-    suspend fun getWorkDetail(token: String, workId:String) = service.getWorkDetail(token = token, workId =  workId)
+    suspend fun getWorkDetail(workId: String): WorkData {
+
+        val response = service.getWorkDetail(token = userToken, workId = workId)
+        var workData: WorkData? = null
+        if (response.isSuccessful) {
+            workData = response.body()
+        }
+        return workData ?: WorkData(
+            title = "",
+            description = "",
+            images = listOf(),
+            workUrl = "",
+            movieUrl = "",
+            tags = listOf(),
+            group = null,
+            security = 0
+        )
+    }
 
     suspend fun getWork(token: String) = service.getWorks(token = token)
 }

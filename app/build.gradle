@@ -23,6 +23,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            // app/gradle.propertiesをつくり、以下の3行を追加してください
+            // SERVER_IP=10.124.xx.xxx
+            // SERVER_PORT=xxxx
+            // USER_TOKEN="xxxxxx"
+            buildConfigField("String", "SERVER_IP", "\"${SERVER_IP}\"")
+            buildConfigField("int", "SERVER_PORT", "${SERVER_PORT}")
+            buildConfigField("String", "USER_TOKEN", "${USER_TOKEN}")
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

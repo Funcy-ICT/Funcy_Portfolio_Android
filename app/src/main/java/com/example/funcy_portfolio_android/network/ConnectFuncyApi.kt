@@ -1,31 +1,53 @@
 package com.example.funcy_portfolio_android.network
 
+import com.example.funcy_portfolio_android.BuildConfig
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private val URL = "http://192.168.3.17:9000/"
+data class ServerConfig(
+    val serverIP: String,
+    val serverPort: Int
+)
 
-private val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+class ConnectFuncyApi {
 
-private val httpClient = OkHttpClient.Builder()
-    .addInterceptor(logger)
-    .build()
+    // サーバーのURLを取得するための関数
+    // debug環境で動く
+    private fun getServerURL(): String {
+        val properties = readServerConfig()
+        val serverIP: String = properties.serverIP
+        val serverPort: Int = properties.serverPort
 
-val gson = GsonBuilder()
-    .serializeNulls()
-    .create()
+        return "http://$serverIP:$serverPort/"
+    }
 
-private val retrofit = Retrofit.Builder()
-    .baseUrl(URL)
-    .client(httpClient)
-    .addConverterFactory(GsonConverterFactory.create(gson))
-    .build()
+    private fun readServerConfig(): ServerConfig {
+        return ServerConfig(BuildConfig.SERVER_IP, BuildConfig.SERVER_PORT)
+    }
 
-object ApiService {
-    val service: FuncyApi by lazy {
-        retrofit.create(FuncyApi::class.java)
+    private val logger =
+        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+
+    private val httpClient = OkHttpClient.Builder()
+        .addInterceptor(logger)
+        .build()
+
+    val gson = GsonBuilder()
+        .serializeNulls()
+        .create()
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(getServerURL())
+        .client(httpClient)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
+
+    object ApiService {
+        val service: FuncyApi by lazy {
+            ConnectFuncyApi().retrofit.create(FuncyApi::class.java)
+        }
     }
 }
