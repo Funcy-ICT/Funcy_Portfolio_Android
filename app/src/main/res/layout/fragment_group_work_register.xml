@@ -18,7 +18,8 @@
 
             <Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/toolbar_color">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -49,33 +50,30 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ibGroupBack"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.567"
-                         />
+                        app:layout_constraintVertical_bias="0.567" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/btGroupRegister"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:contentDescription="@string/toolbar_register"
-                        android:minHeight="48dp"
-                        android:src="@drawable/bt_register_toolbar"
+                        android:text="@string/toolbar_register"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/primary_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/btGroupDraft"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
-                        android:contentDescription="@string/toolbar_draft"
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        android:src="@drawable/bt_draft_toolbar"
+                        android:text="@string/toolbar_draft"
+                        android:textColor="@color/primary_color"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btGroupRegister"
+                        app:layout_constraintEnd_toStartOf="@id/btGroupRegister"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -122,7 +120,8 @@
                     android:checked="true"
                     android:text="@string/work_public"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGroupPublicSetting" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvGroupPublicSetting"
+                    style="@style/SwitchMaterialStyle" />
 
                 <TextView
                     android:id="@+id/tvGroupWorkTitle"
