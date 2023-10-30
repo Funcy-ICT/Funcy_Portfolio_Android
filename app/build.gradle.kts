@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 @Suppress("UnstableApiUsage")
@@ -54,7 +55,7 @@ dependencies {
     implementation("androidx.browser:browser:1.4.0")
     implementation("com.google.android:flexbox:1.1.0")
     implementation("com.github.bumptech.glide:glide:4.4.0")
-    kapt("com.github.bumptech.glide:compiler:4.4.0")
+    ksp("com.github.bumptech.glide:compiler:4.4.0")
 
     // http通信
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -67,14 +68,14 @@ dependencies {
 
     implementation("net.cachapa.expandablelayout:expandablelayout:2.9.2")
 
-    val retrofit_version = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
     implementation("com.github.bumptech.glide:glide:4.13.0")
 
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
 
     //coil
     implementation("io.coil-kt:coil:1.1.1")
