@@ -26,9 +26,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setupWithNavController(navController.navController)
 
     }
-
-
-
+    
     
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
