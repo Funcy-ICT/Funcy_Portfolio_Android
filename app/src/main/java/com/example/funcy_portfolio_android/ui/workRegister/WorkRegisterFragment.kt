@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,6 +20,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentWorkRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
@@ -126,11 +126,17 @@ class WorkRegisterFragment : Fragment() {
         }
 
         /* ローディング */
+        Glide.with(this).load(R.raw.anim_loading).into(binding.animationView) // gif画像のセット
         viewModel.workRegisterStatus.observe(viewLifecycleOwner, Observer { status ->
             when (status) {
                 WorkRegisterViewModel.WorkRegisterApiStatus.LOADING -> {
+                    binding.imageDone.visibility = View.GONE
+                    binding.imageDont.visibility = View.GONE
                     binding.background.visibility = View.VISIBLE
                     binding.progressDialog.visibility = View.VISIBLE
+                    binding.animationView.visibility = View.VISIBLE
+                    binding.textDialog.text =
+                        resources.getString(R.string.work_loading_message)
                     binding.btRegister.isEnabled = false
                     binding.btAddTag.isEnabled = false
                     binding.btBack.isEnabled = false
@@ -145,7 +151,10 @@ class WorkRegisterFragment : Fragment() {
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.SUCCESS -> {
+                    binding.textDialog.text =
+                        resources.getString(R.string.work_registration_message)
                     binding.animationView.visibility = View.GONE
+                    binding.imageDone.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
                         {
                             binding.btRegister.isEnabled = true
@@ -159,6 +168,7 @@ class WorkRegisterFragment : Fragment() {
                             binding.swPublic.isEnabled = true
                             binding.btDraft.isEnabled = true
                             binding.btIcon.isEnabled = true
+                            binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             findNavController().navigate(R.id.action_WorkRegisterFragment_to_MainFragment)
                         }, 2000
@@ -166,6 +176,10 @@ class WorkRegisterFragment : Fragment() {
                 }
 
                 WorkRegisterViewModel.WorkRegisterApiStatus.FAILURE -> {
+                    binding.textDialog.text =
+                        resources.getString(R.string.work_error_message)
+                    binding.animationView.visibility = View.GONE
+                    binding.imageDont.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
                         {
                             binding.background.visibility = View.GONE
@@ -181,7 +195,7 @@ class WorkRegisterFragment : Fragment() {
                             binding.swPublic.isEnabled = true
                             binding.btDraft.isEnabled = true
                             binding.btIcon.isEnabled = true
-                            Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                         }, 2000
                     )
                 }
@@ -190,6 +204,7 @@ class WorkRegisterFragment : Fragment() {
                 else -> {}
             }
         })
+
 
         binding.btAddImage.setOnClickListener {
             image_launchar.launch(arrayOf("image/*"))

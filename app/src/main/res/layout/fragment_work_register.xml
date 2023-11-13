@@ -322,8 +322,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/progressDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="64dp"
             android:layout_marginVertical="280dp"
             android:visibility="gone"
@@ -335,23 +335,66 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="16dp">
 
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animation_view"
+                <TextView
+                    android:id="@+id/textDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="通信中です"
+                    app:layout_constraintBottom_toTopOf="@id/animation_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--                <com.airbnb.lottie.LottieAnimationView-->
+                <!--                    android:id="@+id/animation_view"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent"-->
+                <!--                    android:paddingStart="60dp"-->
+                <!--                    app:lottie_autoPlay="true"-->
+                <!--                    app:lottie_loop="true"-->
+                <!--                    app:lottie_rawRes="@raw/anim_loading" />-->
+
+                <ImageView
+                    android:id="@+id/animation_view"
+                    android:paddingTop="8dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:paddingStart="60dp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/anim_loading" />
+                    app:srcCompat="@drawable/ic_done_check" />
 
+                <ImageView
+                    android:id="@+id/imageDont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_dont" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
+
