@@ -7,11 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -23,6 +21,7 @@ import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentSignupBinding
 import com.example.funcy_portfolio_android.model.localDataSource.Keys
 import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
+import com.example.funcy_portfolio_android.ui.common.KeyboardUtils.showoffKeyboard
 
 
 class SignupFragment : Fragment() {
@@ -115,6 +114,7 @@ class SignupFragment : Fragment() {
             val sharedPref = SharedPref(requireActivity())
 
             when(status){
+
                 SignupViewModel.SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
                     binding.background.visibility = View.VISIBLE
@@ -123,7 +123,8 @@ class SignupFragment : Fragment() {
                 }
 
                 SignupViewModel.SignupApiStatus.SUCCESS -> {
-                    binding.textDialog.text = resources.getString(R.string.comp_registration_message)
+                    binding.textDialog.text =
+                        resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
@@ -131,10 +132,12 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            sharedPref.saveSharedPrefString(Keys.USERID.name, viewModel.userId.value.toString())
+                            sharedPref.saveSharedPrefString(
+                                Keys.USERID.name,
+                                viewModel.userId.value.toString()
+                            )
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
-                        }
-                        ,2000
+                        }, 2000
                     )
                 }
 
@@ -144,10 +147,16 @@ class SignupFragment : Fragment() {
                     binding.buttonSignup.visibility = View.VISIBLE
                     Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                 }
+
                 SignupViewModel.SignupApiStatus.INIT -> {}
                 else -> {}
             }
         })
+
+        //EditTextのキーボードの非表示処理
+        binding.layout.setOnFocusChangeListener { _, hasFocus ->  //x
+            if (hasFocus) showoffKeyboard(requireContext(), binding.root.windowToken)
+        }
     }
 
     private fun setError(): Boolean {
@@ -201,73 +210,7 @@ class SignupFragment : Fragment() {
             binding.inputMailAddress.isErrorEnabled = false
         }
 
-
         Log.d("Error", (emptyError or mailError or passError).toString())
         return emptyError or mailError or passError
-
-        //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
-        //focusableとfocusableInTouchをtrueにセットする必要あり
-        //↓もしフォーカスが外れたらキーボードを閉じる
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->  //x
-            if(!hasFocus)showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
-        }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
-        }
-        binding.editConfirmPassword.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
-        }
-
-        //キー入力を検知してフォーカスを外す
-        binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-        binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-        binding.editFirstName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-        binding.editMailAddress.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-        binding.editPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-        binding.editConfirmPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
-        }
-
-    }
-
-    private fun getActions(i:Int,keyEvent:KeyEvent?):Boolean{
-        if( i== EditorInfo.IME_ACTION_SEARCH||
-            i== EditorInfo.IME_ACTION_DONE||
-            keyEvent!=null&&
-            keyEvent.action == KeyEvent.ACTION_DOWN&&
-            keyEvent.keyCode== KeyEvent.KEYCODE_ENTER){
-            if(keyEvent==null||!keyEvent.isShiftPressed){
-                binding.root.requestFocus()
-                return true
-            }else{
-                return false
-            }
-        }else{
-            return false
-        }
-    }
-
-    private fun showoffKeyboard(){
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

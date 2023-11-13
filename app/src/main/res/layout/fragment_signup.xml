@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.funcy_portfolio_android.ui.signup.SignupViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants">
+
 
         <FrameLayout
             android:id="@+id/background"
@@ -19,24 +25,17 @@
             android:layout_height="match_parent"
             android:alpha="0.6"
             android:visibility="gone"
-            android:background="@color/black">
-
-        </FrameLayout>
+            android:background="@color/black"></FrameLayout>
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:descendantFocusability="beforeDescendants">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="8dp"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 tools:context=".ui.signup.SignupFragment">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,7 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@={viewModel.displayName}"
-                        android:inputType="text"/>
+                        android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,12 +138,12 @@
                     app:layout_constraintStart_toEndOf="@+id/textFamilyName"
                     app:layout_constraintTop_toBottomOf="@id/inputDisplayName">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editFamilyName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="@={viewModel.familyName}"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editFamilyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewModel.familyName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -180,6 +179,7 @@
                         android:id="@+id/editFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:text="@={viewModel.firstName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
