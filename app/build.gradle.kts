@@ -7,12 +7,12 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    compileSdk = 31
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.funcy_portfolio_android"
         minSdk = 26
-        targetSdk = 31
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
