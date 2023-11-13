@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -22,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.model.data.WorkDataList
 
@@ -49,7 +51,7 @@ fun GroupMyPageItem(workDataList: WorkDataList, onClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .height(200.dp)
-            .background(Color.Cyan, RoundedCornerShape(12.dp))
+            .background(Color(0xFFF0F3F5), RoundedCornerShape(12.dp))
             .clickable { onClick() }
     ) {
         Column {
@@ -61,10 +63,24 @@ fun GroupMyPageItem(workDataList: WorkDataList, onClick: () -> Unit = {}) {
                     .height(140.dp),
                 contentScale = ContentScale.Crop
             )
-            Text(
-                text = workDataList.images,
-                modifier = Modifier.padding(8.dp)
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 12.dp, vertical = 8.dp)
+            ) {
+                Text(
+                    text = workDataList.title,
+                    maxLines = 1,
+                    fontSize = 14.sp
+                )
+                Text(
+                    text = workDataList.images,
+                    fontSize = 12.sp,
+                    color = Color(0xFF707F89),
+                    maxLines = 1,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
         }
     }
 }
