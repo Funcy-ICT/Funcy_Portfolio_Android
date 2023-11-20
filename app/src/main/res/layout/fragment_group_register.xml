@@ -40,12 +40,13 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+            android:descendantFocusability="beforeDescendants"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
             <!--    TODO:テキストの文字をstrings.xmlに追加    -->
 
             <TextView
@@ -74,7 +75,7 @@
                     android:id="@+id/etGroupName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -149,7 +150,7 @@
                     android:id="@+id/etGroupMailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -184,7 +185,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvGroupName"
                 app:tint="@color/black"
-                android:background="@null"/>
+                android:background="@null" />
 
             <Button
                 android:id="@+id/btRegisterGroupWork"
@@ -207,6 +208,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 </layout>
