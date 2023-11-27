@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.funcy_portfolio_android.ui.signup.SignupViewModel" />
@@ -27,16 +28,18 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:descendantFocusability="beforeDescendants"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:descendantFocusability="beforeDescendants">
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="115dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="8dp"
-                android:focusableInTouchMode="true"
                 android:focusable="true"
+                android:focusableInTouchMode="true"
                 tools:context=".ui.signup.SignupFragment">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,12 +71,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/registration_public_name"
-                    app:layout_constraintBottom_toBottomOf="@id/imageAccount"
+                    app:layout_constraintBottom_toBottomOf="@id/icon"
                     app:layout_constraintEnd_toStartOf="@+id/inputDisplayName"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/imageAccount" />
+                    app:layout_constraintTop_toTopOf="@id/icon" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputDisplayName"
@@ -84,7 +87,7 @@
                     android:ems="10"
                     android:paddingVertical="4dp"
                     app:layout_constraintBottom_toBottomOf="@id/textDisplayName"
-                    app:layout_constraintEnd_toStartOf="@+id/imageAccount"
+                    app:layout_constraintEnd_toStartOf="@+id/icon"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_weight="3"
                     app:layout_constraintStart_toEndOf="@+id/textDisplayName"
@@ -94,22 +97,35 @@
                         android:id="@+id/editDisplayName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={viewModel.displayName}"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                        android:text="@={viewModel.displayName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageAccount"
-                    android:layout_width="0dp"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/icon"
+                    android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginTop="24dp"
+                    android:background="#0000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/inputDisplayName"
                     app:layout_constraintTop_toBottomOf="@+id/topConstraint"
-                    app:srcCompat="@drawable/img_account" />
+                    app:cardCornerRadius="32dp"
+                    app:cardElevation="0dp">
+
+                    <ImageButton
+                        android:id="@+id/imageAccount"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img_account"
+                        android:contentDescription="@null" />
+                </androidx.cardview.widget.CardView>
+
 
                 <TextView
                     android:id="@+id/textFamilyName"
@@ -139,12 +155,12 @@
                     app:layout_constraintStart_toEndOf="@+id/textFamilyName"
                     app:layout_constraintTop_toBottomOf="@id/inputDisplayName">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editFamilyName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="@={viewModel.familyName}"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editFamilyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewModel.familyName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

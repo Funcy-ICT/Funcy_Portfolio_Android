@@ -1,8 +1,10 @@
 package com.example.funcy_portfolio_android.ui.signup
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -29,6 +31,7 @@ class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
     private val viewModel by viewModels<SignupViewModel>()
+    private val REQUEST_GALLARY_TAKE = 2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,6 +106,10 @@ class SignupFragment : Fragment() {
             )
         }
 
+        binding.imageAccount.setOnClickListener {
+            openGallery()
+        }
+
         viewModel.selectedItem.observe(viewLifecycleOwner, Observer {
             viewModel.setCourseId()
         })
@@ -114,7 +121,7 @@ class SignupFragment : Fragment() {
         viewModel.signupStatus.observe(viewLifecycleOwner, Observer { status ->
             val sharedPref = SharedPref(requireActivity())
 
-            when(status){
+            when (status) {
                 SignupViewModel.SignupApiStatus.LOADING -> {
                     binding.imageDone.visibility = View.GONE
                     binding.background.visibility = View.VISIBLE
@@ -123,7 +130,8 @@ class SignupFragment : Fragment() {
                 }
 
                 SignupViewModel.SignupApiStatus.SUCCESS -> {
-                    binding.textDialog.text = resources.getString(R.string.comp_registration_message)
+                    binding.textDialog.text =
+                        resources.getString(R.string.comp_registration_message)
                     binding.progressBar.visibility = View.GONE
                     binding.imageDone.visibility = View.VISIBLE
                     Handler(Looper.getMainLooper()).postDelayed(
@@ -131,10 +139,12 @@ class SignupFragment : Fragment() {
                             binding.background.visibility = View.GONE
                             binding.progressDialog.visibility = View.GONE
                             binding.buttonSignup.visibility = View.VISIBLE
-                            sharedPref.saveSharedPrefString(Keys.USERID.name, viewModel.userId.value.toString())
+                            sharedPref.saveSharedPrefString(
+                                Keys.USERID.name,
+                                viewModel.userId.value.toString()
+                            )
                             findNavController().navigate(R.id.action_SignupFragment_to_authenticationFragment)
-                        }
-                        ,2000
+                        }, 2000
                     )
                 }
 
@@ -144,10 +154,31 @@ class SignupFragment : Fragment() {
                     binding.buttonSignup.visibility = View.VISIBLE
                     Toast.makeText(context, "エラー", Toast.LENGTH_SHORT).show()
                 }
+
                 SignupViewModel.SignupApiStatus.INIT -> {}
                 else -> {}
             }
         })
+    }
+
+    //ギャラリーを開く
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, REQUEST_GALLARY_TAKE)
+    }
+
+    //ギャラリーで選択した画像を設定
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            2 -> {
+                if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_GALLARY_TAKE) {
+                    binding.imageAccount.setImageURI(data?.data)
+                }
+            }
+        }
     }
 
     private fun setError(): Boolean {
@@ -208,66 +239,68 @@ class SignupFragment : Fragment() {
         //これを発動させるためにxmlの背景部分にあたるView(constraintlayoutなど)の
         //focusableとfocusableInTouchをtrueにセットする必要あり
         //↓もしフォーカスが外れたらキーボードを閉じる
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->  //x
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->  //x
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editDisplayName.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editDisplayName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
-        binding.editConfirmPassword.setOnFocusChangeListener{ _,hasFocus->
-            if(!hasFocus)showoffKeyboard()
+        binding.editConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) showoffKeyboard()
         }
 
         //キー入力を検知してフォーカスを外す
         binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editDisplayName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editFirstName.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editMailAddress.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
         binding.editConfirmPassword.setOnEditorActionListener { _, i, keyEvent ->
-            return@setOnEditorActionListener getActions(i,keyEvent)
+            return@setOnEditorActionListener getActions(i, keyEvent)
         }
 
     }
 
-    private fun getActions(i:Int,keyEvent:KeyEvent?):Boolean{
-        if( i== EditorInfo.IME_ACTION_SEARCH||
-            i== EditorInfo.IME_ACTION_DONE||
-            keyEvent!=null&&
-            keyEvent.action == KeyEvent.ACTION_DOWN&&
-            keyEvent.keyCode== KeyEvent.KEYCODE_ENTER){
-            if(keyEvent==null||!keyEvent.isShiftPressed){
+    private fun getActions(i: Int, keyEvent: KeyEvent?): Boolean {
+        if (i == EditorInfo.IME_ACTION_SEARCH ||
+            i == EditorInfo.IME_ACTION_DONE ||
+            keyEvent != null &&
+            keyEvent.action == KeyEvent.ACTION_DOWN &&
+            keyEvent.keyCode == KeyEvent.KEYCODE_ENTER
+        ) {
+            if (keyEvent == null || !keyEvent.isShiftPressed) {
                 binding.root.requestFocus()
                 return true
-            }else{
+            } else {
                 return false
             }
-        }else{
+        } else {
             return false
         }
     }
 
-    private fun showoffKeyboard(){
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    private fun showoffKeyboard() {
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
