@@ -97,13 +97,13 @@ class WorkRegisterFragment : Fragment() {
                 AlertDialog.Builder(activity)
                     .setTitle("作品を投稿しますか？")
                     .setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
-                        viewModel.registerWork(
-                            binding.etWorkTitle.text.toString(),
-                            binding.etWorkDescription.text.toString(),
-                            1,
-                            binding.etGitHubLink.text.toString(),
-                            binding.etYoutubeLink.text.toString()
-                        )
+//                        viewModel.registerWork(
+//                            binding.etWorkTitle.text.toString(),
+//                            binding.etWorkDescription.text.toString(),
+//                            1,
+//                            binding.etGitHubLink.text.toString(),
+//                            binding.etYoutubeLink.text.toString()
+//                        )
 
                         findNavController().navigate(R.id.action_WorkRegisterFragment_to_MainFragment)
 

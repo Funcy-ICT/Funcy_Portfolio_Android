@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentGroupMypageBinding
-import com.example.funcy_portfolio_android.model.data.WorkDataList
 
 class GroupMypageFragment : Fragment() {
 
@@ -29,22 +26,22 @@ class GroupMypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val Worklist = listOf<WorkDataList>(
-            WorkDataList(R.drawable.garden_strand, "garden_strand", "ネックレス"),
-            WorkDataList(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
-            WorkDataList(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
-            WorkDataList(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
-            WorkDataList(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
-            WorkDataList(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
-            WorkDataList(R.drawable.whitey_belt, "whitey_belt","ベルト"),
-            WorkDataList(R.drawable.copper_wire_rack, "whitey_belt","ラック"),
-            WorkDataList(R.drawable.gilt_desk_trio, "whitey_belt","小物入れ"),
-            WorkDataList(R.drawable.shrug_bag, "whitey_belt","バッグ")
-        )
+//        val Worklist = listOf<WorkDataList>(
+//            WorkDataList(R.drawable.garden_strand, "garden_strand", "ネックレス"),
+//            WorkDataList(R.drawable.gatsby_hat, "gatsby_hat","ハット"),
+//            WorkDataList(R.drawable.stella_sunglasses, "stella_sunglasses","グラス"),
+//            WorkDataList(R.drawable.strut_earrings, "strut_earrings","イヤリング"),
+//            WorkDataList(R.drawable.vagabond_sack, "vagabond_sack","リュックサック"),
+//            WorkDataList(R.drawable.varsity_socks, "varsity_sovks","ソックス"),
+//            WorkDataList(R.drawable.whitey_belt, "whitey_belt","ベルト"),
+//            WorkDataList(R.drawable.copper_wire_rack, "whitey_belt","ラック"),
+//            WorkDataList(R.drawable.gilt_desk_trio, "whitey_belt","小物入れ"),
+//            WorkDataList(R.drawable.shrug_bag, "whitey_belt","バッグ")
+//        )
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rvGroupWorkList)
-
-        recyclerView.adapter = CardAdapterBefore(Worklist)
-        recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+//        val recyclerView = view.findViewById<RecyclerView>(R.id.rvGroupWorkList)
+//
+//        recyclerView.adapter = CardAdapterBefore(Worklist)
+//        recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
     }
 }

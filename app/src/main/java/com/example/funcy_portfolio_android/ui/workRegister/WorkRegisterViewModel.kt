@@ -1,16 +1,11 @@
 package com.example.funcy_portfolio_android.ui.workRegister
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.model.data.WorkDetails
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
-import kotlinx.coroutines.launch
 
 class WorkRegisterViewModel : ViewModel() {
 
@@ -75,32 +70,32 @@ class WorkRegisterViewModel : ViewModel() {
         return (tagFlag > 0)
     }
 
-    fun registerWork(
-        title: String,
-        description: String,
-        security: Int,
-        work_url: String,
-        youtube_url: String
-    ): String? {
-        viewModelScope.launch {
-            val postTagList = stringTagListToTagList(tags)
-            res = workRepository.registerWork(
-                WorkDetails(
-                    title,
-                    description,
-                    listOf(ImageData("")),
-                    work_url,
-                    youtube_url,
-                    postTagList,
-                    null,
-                    security
-                )
-            )
-            Log.e("res", res!!)
-        }
-
-        return res
-    }
+//    fun registerWork(
+//        title: String,
+//        description: String,
+//        security: Int,
+//        work_url: String,
+//        youtube_url: String
+//    ): String? {
+//        viewModelScope.launch {
+//            val postTagList = stringTagListToTagList(tags)
+//            res = workRepository.registerWork(
+//                WorkDetails(
+//                    title,
+//                    description,
+//                    listOf(ImageData("")),
+//                    work_url,
+//                    youtube_url,
+//                    postTagList,
+//                    null,
+//                    security
+//                )
+//            )
+//            Log.e("res", res!!)
+//        }
+//
+//        return res
+//    }
 
     //tagsのList<String>をList<TagData>に変換する(一応プライベートにしました)
     private fun stringTagListToTagList(stringList: List<String>): List<TagData> {
