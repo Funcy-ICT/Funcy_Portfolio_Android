@@ -37,5 +37,5 @@ interface FuncyApi {
     @GET("works/10") // 取得する作品数
     suspend fun getWorks(
         @Header("token") token: String
-    ): List<WorkDataList>
+    ): WorkDataList
 }
