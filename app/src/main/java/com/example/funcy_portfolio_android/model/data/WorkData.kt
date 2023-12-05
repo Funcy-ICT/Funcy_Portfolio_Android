@@ -16,3 +16,7 @@ data class WorkData(
     val description: String,
     val icon: String,
 )
+
+fun WorkDataList.toWorkList():List<WorkData>{
+    return works
+}
