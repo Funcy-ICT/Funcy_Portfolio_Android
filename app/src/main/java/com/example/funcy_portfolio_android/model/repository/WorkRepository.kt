@@ -1,6 +1,8 @@
 package com.example.funcy_portfolio_android.model.repository
 
+import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.data.WorkDetails
+import com.example.funcy_portfolio_android.model.data.toWorkList
 import com.example.funcy_portfolio_android.network.ApiService
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
@@ -29,5 +31,5 @@ class WorkRepository() {
     suspend fun getWorkDetail(token: String, workId: String) =
         service.getWorkDetail(token = token, workId = workId)
 
-    suspend fun getWork(token: String) = service.getWorks(token = token)
+    suspend fun getWork(token: String):List<WorkData> = service.getWorks(token = token).toWorkList()
 }
