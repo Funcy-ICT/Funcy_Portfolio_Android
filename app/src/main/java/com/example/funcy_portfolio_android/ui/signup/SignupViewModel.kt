@@ -14,6 +14,7 @@ import retrofit2.HttpException
 
 class SignupViewModel : ViewModel() {
     private val userRepository = UserRepository()
+
     enum class SignupApiStatus { LOADING, FAILURE, SUCCESS, INIT }
 
     val selectedItem = MutableLiveData<Int>()
@@ -60,16 +61,16 @@ class SignupViewModel : ViewModel() {
         _signupStatus.value = SignupApiStatus.LOADING
         viewModelScope.launch {
             try {
-                val res =userRepository.userRegistration(
+                val res = userRepository.userRegistration(
                     SignupData(
-                        familyName.value!!,
-                        course,
-                        displayName.value!!,
-                        firstName.value!!,
-                        grade,
-                        "noIcon",
-                        sendMailAddress,
-                        password.value!!
+                        course = course,
+                        displayName = displayName.value!!,
+                        familyName = familyName.value!!,
+                        firstName = firstName.value!!,
+                        grade = grade,
+                        icon = "noIcon",
+                        mail = sendMailAddress,
+                        password = password.value!!
                     )
                 )
                 if (res.isSuccessful) {

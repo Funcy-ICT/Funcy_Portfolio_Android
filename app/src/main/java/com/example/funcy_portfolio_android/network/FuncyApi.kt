@@ -3,25 +3,30 @@ package com.example.funcy_portfolio_android.network
 import com.example.funcy_portfolio_android.model.data.AuthData
 import com.example.funcy_portfolio_android.model.data.SignupData
 import com.example.funcy_portfolio_android.model.data.UserIdData
-import com.example.funcy_portfolio_android.model.data.WorkData
 import com.example.funcy_portfolio_android.model.data.WorkDataList
+import com.example.funcy_portfolio_android.model.data.WorkDetails
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 
 interface FuncyApi {
     /* 作品の投稿（個人） */
     @Headers("token:Token1")
     @POST("work")
-    fun registerWorkData(@Body work: WorkData): Call<WorkData>
+    fun registerWorkData(@Body work: WorkDetails): Call<WorkDetails>
 
     //作品詳細取得
     @GET("work/{workID}")
     suspend fun getWorkDetail(
         @Header("token") token: String,
         @Path("workID") workId: String
-    ): WorkData
+    ): WorkDetails
 
     //登録データ送信
     @POST("sign/up")

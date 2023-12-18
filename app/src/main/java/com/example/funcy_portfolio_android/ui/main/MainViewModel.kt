@@ -14,8 +14,8 @@ class MainViewModel : ViewModel() {
     private val workRepository = WorkRepository()
 
     //作品一覧を収納するデータホルダーを定義
-    private val _works = MutableLiveData<List<WorkDataList>>()
-    val works: LiveData<List<WorkDataList>> = _works
+    private val _works = MutableLiveData<WorkDataList>()
+    val works: LiveData<WorkDataList> = _works
 
     //Funcyサーバーとの接続状況を収納するホルダーを定義
     private val _status = MutableLiveData<FuncyApiStatus>()

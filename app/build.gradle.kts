@@ -7,12 +7,12 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.funcy_portfolio_android"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -91,4 +91,10 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // coil-compose
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // lifecycle-compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
 }

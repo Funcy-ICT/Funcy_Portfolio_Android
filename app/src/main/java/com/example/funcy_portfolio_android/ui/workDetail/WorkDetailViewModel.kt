@@ -13,6 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
 import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkDetails
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -29,8 +30,8 @@ class WorkDetailViewModel : ViewModel() {
     val userName: LiveData<String> = _userName
 
     //ここから作品詳細
-    private val _work = MutableLiveData<WorkData>()
-    val work: LiveData<WorkData> = _work
+    private val _work = MutableLiveData<WorkDetails>()
+    val work: LiveData<WorkDetails> = _work
 
     private val _workDetailStatus = MutableLiveData<WorkApiStatus>()
     val workDetailStatus: LiveData<WorkApiStatus> = _workDetailStatus
@@ -79,7 +80,7 @@ class WorkDetailViewModel : ViewModel() {
         chipGroup.removeAllViews()
         _tagList.value?.forEach { tag ->
             val chip = Chip(context)
-            chip.text = tag.Tag
+            chip.text = tag.tag
             chipGroup.addView(chip)
         }
     }
@@ -91,7 +92,7 @@ class WorkDetailViewModel : ViewModel() {
         _explanation.value = workValue.description
         _tagList.value = workValue.tags
         _youtubeUrl.value = workValue.movie_url
-        _githubUrl.value = workValue.URL
+        _githubUrl.value = workValue.work_url
     }
 
     //Web遷移系の処理//////////////////////////////////
