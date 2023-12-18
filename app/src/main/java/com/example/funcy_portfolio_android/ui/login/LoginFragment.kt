@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.funcy_portfolio_android.R
@@ -32,7 +33,12 @@ class LoginFragment : Fragment() {
         }
 
         binding.btLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_LoginFragment_to_MainFragment)
+            val mailAddress = binding.etMailAddress.text.toString()
+            if( mailAddress.matches(Regex("[a-zA-Z0-9._-]+@fun\\.ac\\.jp$"))) {
+                    findNavController().navigate(R.id.action_LoginFragment_to_MainFragment)
+            } else {
+                Toast.makeText(requireContext(), "メールアドレスが正しくありません", Toast.LENGTH_SHORT).show()
+            }
         }
         binding.btUserRegister.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_SignupFragment)
