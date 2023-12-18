@@ -80,7 +80,11 @@ class WorkRegisterViewModel : ViewModel() {
         description: String,
         security: Int,
         work_url: String,
-        youtube_url: String
+        youtube_url: String,
+        group: String,
+        user_icon: String,
+        user_name: String,
+        userID: String
     ): String? {
         viewModelScope.launch {
             val postTagList = stringTagListToTagList(tags)
@@ -88,11 +92,15 @@ class WorkRegisterViewModel : ViewModel() {
                 WorkData(
                     title,
                     description,
+                    thumbnail.toString(),
+                    user_icon,
+                    user_name,
+                    userID,
                     listOf(ImageData("")),
                     work_url,
                     youtube_url,
                     postTagList,
-                    null,
+                    group,
                     security
                 )
             )

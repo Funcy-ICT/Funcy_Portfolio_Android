@@ -3,6 +3,7 @@ package com.example.funcy_portfolio_android.ui.workRegister
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -21,10 +22,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.funcy_portfolio_android.R
 import com.example.funcy_portfolio_android.databinding.FragmentWorkRegisterBinding
 import com.example.funcy_portfolio_android.databinding.ItemTagBinding
+import com.example.funcy_portfolio_android.model.localDataSource.SharedPref
+import com.example.funcy_portfolio_android.ui.mypage.MypageViewModel
 
 class WorkRegisterFragment : Fragment() {
     private val viewModel: WorkRegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentWorkRegisterBinding
+    private val sharePreference = SharedPref(requireActivity())
+
 
     //画像選択
     private var image_launchar = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) {
@@ -102,7 +107,11 @@ class WorkRegisterFragment : Fragment() {
                             binding.etWorkDescription.text.toString(),
                             1,
                             binding.etGitHubLink.text.toString(),
-                            binding.etYoutubeLink.text.toString()
+                            binding.etYoutubeLink.text.toString(),
+                            "no group",
+                            "no icon",
+                            MypageViewModel().userName.toString(),
+                            sharePreference.readSharedPref(SharedPref.KEY_USER_DATA).toString()
                         )
 
                         findNavController().navigate(R.id.action_WorkRegisterFragment_to_MainFragment)

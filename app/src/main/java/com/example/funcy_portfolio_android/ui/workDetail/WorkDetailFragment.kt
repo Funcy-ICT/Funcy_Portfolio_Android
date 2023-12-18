@@ -57,7 +57,7 @@ class WorkDetailFragment : Fragment() {
         })
 
         viewModel.images.observe(viewLifecycleOwner, Observer {
-            Glide.with(this).load(it[0].Image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
+            Glide.with(this).load(it[0].image).error(R.drawable.img_work_detail_thumbnail).into(binding.imgThumbnail)
         })
 
         viewModel.workDetailStatus.observe(viewLifecycleOwner, Observer { status ->
