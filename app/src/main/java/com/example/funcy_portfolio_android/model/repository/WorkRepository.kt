@@ -1,6 +1,7 @@
 package com.example.funcy_portfolio_android.model.repository
 
 import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkDetails
 import com.example.funcy_portfolio_android.network.ApiService
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
@@ -9,7 +10,7 @@ import java.io.IOException
 class WorkRepository() {
     private val service = ApiService.service
 
-    suspend fun registerWork(work: WorkData): String? {
+    suspend fun registerWork(work: WorkDetails): String? {
         val data = work
         var res = ""
 

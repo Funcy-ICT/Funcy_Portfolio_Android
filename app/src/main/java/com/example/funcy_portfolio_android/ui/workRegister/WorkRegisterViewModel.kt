@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.funcy_portfolio_android.model.data.ImageData
 import com.example.funcy_portfolio_android.model.data.TagData
-import com.example.funcy_portfolio_android.model.data.WorkData
+import com.example.funcy_portfolio_android.model.data.WorkDetails
 import com.example.funcy_portfolio_android.model.repository.WorkRepository
 import kotlinx.coroutines.launch
 
@@ -85,15 +85,19 @@ class WorkRegisterViewModel : ViewModel() {
         viewModelScope.launch {
             val postTagList = stringTagListToTagList(tags)
             res = workRepository.registerWork(
-                WorkData(
-                    title,
-                    description,
-                    listOf(ImageData("")),
-                    work_url,
-                    youtube_url,
-                    postTagList,
-                    null,
-                    security
+                WorkDetails(
+                    title = title,
+                    description = description,
+                    thumbnail = "",
+                    user_icon = "",
+                    user_name = "",
+                    userID = "",
+                    images = listOf(ImageData("")),
+                    work_url = work_url,
+                    movie_url = youtube_url,
+                    tags = postTagList,
+                    group = null,
+                    security = security
                 )
             )
             Log.e("res", res!!)
