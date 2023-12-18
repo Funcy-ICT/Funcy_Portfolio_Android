@@ -91,4 +91,10 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+Co
+    // coil-compose
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // lifecycle-compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
 }
