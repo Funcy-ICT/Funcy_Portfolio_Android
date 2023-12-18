@@ -79,7 +79,7 @@ class WorkDetailViewModel : ViewModel() {
         chipGroup.removeAllViews()
         _tagList.value?.forEach { tag ->
             val chip = Chip(context)
-            chip.text = tag.Tag
+            chip.text = tag.tag
             chipGroup.addView(chip)
         }
     }
@@ -91,7 +91,7 @@ class WorkDetailViewModel : ViewModel() {
         _explanation.value = workValue.description
         _tagList.value = workValue.tags
         _youtubeUrl.value = workValue.movie_url
-        _githubUrl.value = workValue.URL
+        _githubUrl.value = workValue.work_url
     }
 
     //Web遷移系の処理//////////////////////////////////
