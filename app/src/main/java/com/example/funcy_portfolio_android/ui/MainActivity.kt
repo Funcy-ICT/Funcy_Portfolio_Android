@@ -46,3 +46,18 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 }
+
+
+/**
+ * MainActivity Composeの検証用
+ * 基本的にコメントに．composeの移行，テストの際のみ使用
+ */
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        setContent {
+//            AppHost(startDestination = Destination.MainScreen.route)
+//        }
+//    }
+//}
